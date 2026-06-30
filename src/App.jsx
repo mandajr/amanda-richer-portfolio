@@ -1,38 +1,40 @@
 import { useState, useEffect } from 'react';
 import {
-  PenTool, Mic, GraduationCap, Smartphone, Palette, Landmark, Users,
-  X, ExternalLink, ChevronDown, Mail
+  X, ExternalLink, ChevronDown, Mail, Phone, Download,
+  PenTool, Mic, GraduationCap, Smartphone, HeartPulse, Landmark, Palette,
 } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('nexus');
   const [selectedNode, setSelectedNode] = useState(null);
-  const [expandedCard, setExpandedCard] = useState(null);
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 80);
-    return () => clearTimeout(t);
-  }, []);
+  useEffect(() => { setMounted(true); }, []);
 
   // ─────────────────────────────────────────────
   // PALETTE  ·  watercolor + cream
   // ─────────────────────────────────────────────
+  // Dark leadership theme — deep navy canvas, cream text, brass-gold accent.
+  // The dark ground reads gallery-sophisticated, makes the photography and the
+  // gold accents pop, and keeps navy-and-gold authority. Node tones are
+  // brightened so they stay legible and vivid against the dark panels.
   const c = {
-    cream: '#FAF5ED',
-    creamDeep: '#F4EBDB',
-    creamShade: '#EEE1C6',
-    coral: '#ED7E47',
-    hotpink: '#E84855',
-    magenta: '#D63E72',
-    teal: '#2DA8A8',
-    gold: '#C99A2E',
-    indigo: '#3D5A80',
-    sage: '#6B8E5A',
-    ink: '#2C2825',
-    inkSoft: '#5C544D',
-    inkLight: '#8A8077',
-    line: '#D9CDB3',
+    cream: '#0E141F',      // content area / card / node fill (near-black, faint navy)
+    creamDeep: '#141C2A',  // raised panel (ecomap card, etc.)
+    creamShade: '#26303F', // tile gradient / subtle borders
+    coral: '#D88C5A',      // bronze / amber (brightened)
+    hotpink: '#D67E8A',    // rose
+    magenta: '#A091D6',    // lilac
+    teal: '#46A6B4',       // teal
+    gold: '#DCB45C',       // brass gold accent
+    indigo: '#6E97D6',     // steel blue (deep navy reads as this on dark)
+    sage: '#93AC6E',       // olive
+    ink: '#ECEFF4',        // primary light text
+    inkSoft: '#B7C0D0',    // secondary text
+    inkLight: '#828FA6',   // muted labels
+    line: '#283442',       // hairline on near-black
+    sidebarBg: '#080C14',  // deepest — sidebar / page frame (near-black)
+    sidebarText: 'rgba(236,239,244,0.72)',
+    sidebarActive: '#DCB45C', // gold
   };
 
   // ─────────────────────────────────────────────
@@ -41,65 +43,64 @@ export default function App() {
   const nodes = [
     {
       id: 'writing', short: 'Writing', full: 'Writing & Journalism',
-      angle: -90, color: c.coral, Icon: PenTool, tabLink: 'prose',
+      angle: -90 + 2 * (360 / 7), color: c.coral, tabLink: 'writing', Icon: PenTool,
       what: 'Long-form essays, policy analysis, and reported journalism that translate systems-level patterns into public argument.',
       why: 'Writing makes structural harm visible to people who would never sit through a policy briefing.',
-      where: 'Substack · Runta News · op-eds · white papers',
-      threads: ['onehealth', 'tbi', 'ai'],
+      where: 'Substack · Runta News (guest reporter) · op-eds · white papers',
+      threads: ['tbi', 'ai'],
     },
     {
       id: 'speaking', short: 'Speaking', full: 'Public Speaking',
-      angle: -90 + (360 / 7), color: c.hotpink, Icon: Mic, tabLink: 'about',
-      what: 'Plenaries, panels, and keynotes at international, national, and local convenings — bringing lived experience into rooms that often exclude it.',
+      angle: -90 + 3 * (360 / 7), color: c.hotpink, tabLink: 'governance', Icon: Mic,
+      what: 'Plenaries, panels, and subject-matter-expert testimony at international, national, and local convenings — bringing lived experience into rooms that often exclude it.',
       why: 'Decisions about displaced people happen in rooms most never enter. I enter them, then bring the framing back.',
-      where: 'CSW70 (UN) · UNITAR · NHCHC · NAEH · NGO Working Group to End Homelessness',
-      threads: ['onehealth', 'knowledge'],
+      where: 'UN · NHCHC · UNITAR · CSW70 · NAEH',
+      threads: ['knowledge'],
     },
     {
       id: 'teaching', short: 'Teaching', full: 'Training & Education',
-      angle: -90 + 2 * (360 / 7), color: c.magenta, Icon: GraduationCap, tabLink: 'consultancy',
-      what: 'Curriculum, workshops, and one-on-one mentorship for researchers, students, NGO staff, and people new to advocacy.',
+      angle: -90 + 5 * (360 / 7), color: c.magenta, tabLink: 'courses', Icon: GraduationCap,
+      what: 'Courses, workshops, and one-on-one mentorship for people new to advocacy, NGO staff, students, and researchers.',
       why: 'Knowledge transfer is how this work survives me. Mentorship is how it grows.',
-      where: 'University of Washington · One Health Clinic · NAEH Advocacy Cohort · ShelterApp volunteers',
+      where: 'Free beginner courses · workshops · NAEH Advocacy Cohort · ShelterApp volunteers',
       threads: ['knowledge', 'ai'],
     },
     {
-      id: 'building', short: 'Building', full: 'Tech for Good',
-      angle: -90 + 3 * (360 / 7), color: c.teal, Icon: Smartphone, tabLink: 'consultancy',
-      what: 'Co-creating tools that reach people who fall outside the reach of conventional services.',
+      id: 'tech', short: 'Tech', full: 'Tech for Good',
+      angle: -90 + 6 * (360 / 7), color: c.teal, tabLink: 'nexus', Icon: Smartphone,
+      what: 'Co-creating tools and resource systems that reach people who fall outside the reach of conventional services.',
       why: 'Tools built without lived expertise repeat the failures of the systems they try to fix.',
-      where: 'ShelterApp (co-creator, 2019) · WA State resource database build-out',
+      where: 'ShelterApp / OutreachApp (co-founder) · WA State resource database',
       threads: ['ai', 'knowledge'],
     },
     {
-      id: 'making', short: 'Making', full: 'Visual Practice',
-      angle: -90 + 4 * (360 / 7), color: c.gold, Icon: Palette, tabLink: 'visual',
-      what: 'Painting from imagination, photography, and mixed creative work under the name Manda J Artistry.',
-      why: 'Image makes legible what argument cannot. The visual practice and the policy practice are the same orientation, in different languages.',
-      where: 'Manda J Artistry · "Unplanned Life" (long-form memoir/fiction)',
-      threads: ['onehealth'],
+      id: 'onehealth', short: 'One Health', full: 'One Health',
+      angle: -90, color: c.sage, tabLink: 'nexus', Icon: HeartPulse,
+      what: 'Consultation and research support at the intersection of human, animal, and environmental health — including co-sheltering for people and their animals.',
+      why: 'Health is shared. People, their animals, and their environments cannot be separated in policy without causing harm.',
+      where: 'UW Center for One Health Research · One Health Clinic · PNW Co-Sheltering Working Group',
+      threads: ['cosheltering', 'tbi'],
     },
     {
-      id: 'leading', short: 'Leading', full: 'Governance',
-      angle: -90 + 5 * (360 / 7), color: c.indigo, Icon: Landmark, tabLink: 'about',
-      what: 'Board and council service shaping policy and program direction across systems serving displaced and unhoused communities.',
+      id: 'governance', short: 'Governance', full: 'Governance & Leadership',
+      angle: -90 + (360 / 7), color: c.indigo, tabLink: 'governance', Icon: Landmark,
+      what: 'Board, council, and committee leadership shaping policy and program direction across systems serving displaced and unhoused communities.',
       why: 'Governance is where direction gets set. Showing up there with lived expertise is non-negotiable.',
-      where: 'NHCHC Board · Seattle/King County HCHN Governance Council · UN NGO Working Group to End Homelessness · WA Balance of State CoC',
+      where: 'Chair, UN Working Group Member State Outreach · NHCHC · Chair, SPU Consumer Review Panel · Housing Narrative Lab',
       threads: ['knowledge', 'tbi'],
     },
     {
-      id: 'advising', short: 'Advising', full: 'Consultancy',
-      angle: -90 + 6 * (360 / 7), color: c.sage, Icon: Users, tabLink: 'consultancy',
-      what: 'Embedded advisory work with research teams, coalitions, and direct-service organizations on displacement, homelessness, and human rights.',
-      why: 'Consultation grounded in lived expertise short-circuits years of avoidable missteps.',
-      where: 'UW One Health Research · cross-sector coalitions · PNW Co-Sheltering Working Group',
-      threads: ['onehealth', 'cosheltering', 'tbi'],
+      id: 'art', short: 'Art', full: 'Visual Practice',
+      angle: -90 + 4 * (360 / 7), color: c.gold, tabLink: 'art', Icon: Palette,
+      what: 'Photography and painting — documentary street work alongside fine-art landscape and wildlife.',
+      why: 'Image makes legible what argument cannot. The visual practice and the policy practice are the same orientation, in different languages.',
+      where: 'Documentary photography · paintings · commissions',
+      threads: ['knowledge'],
     },
   ];
 
   const threads = [
-    { id: 'onehealth',    label: 'One Health',                  color: c.teal },
-    { id: 'cosheltering', label: 'Co-sheltering',               color: c.coral },
+    { id: 'cosheltering', label: 'Co-Sheltering',               color: c.teal },
     { id: 'tbi',          label: 'TBI & Brain Injury',          color: c.indigo },
     { id: 'ai',           label: 'AI as Accommodation',         color: c.magenta },
     { id: 'knowledge',    label: 'Knowledge Transfer',          color: c.gold },
@@ -109,11 +110,12 @@ export default function App() {
   // TAB CONFIG
   // ─────────────────────────────────────────────
   const tabs = [
-    { id: 'nexus',       label: 'Nexus',       color: c.coral },
-    { id: 'consultancy', label: 'Consultancy', color: c.sage },
-    { id: 'visual',      label: 'Visual',      color: c.gold },
-    { id: 'prose',       label: 'Prose',       color: c.magenta },
-    { id: 'about',       label: 'About',       color: c.indigo },
+    { id: 'nexus',      label: 'Nexus',      color: c.teal },
+    { id: 'governance', label: 'Governance', color: c.indigo },
+    { id: 'writing',    label: 'Writing',    color: c.magenta },
+    { id: 'art',        label: 'Art',        color: c.gold },
+    { id: 'courses',    label: 'Courses',    color: c.sage },
+    { id: 'about',      label: 'About',      color: c.hotpink },
   ];
 
   // ─────────────────────────────────────────────
@@ -127,39 +129,38 @@ export default function App() {
     'Long-form article on cognitive prosthetics and AI as accessibility',
   ];
 
-  const consultancyWork = [
+  // Consultant positions — surfaced in the Nexus intro (all of Amanda's
+  // current work is consultancy, so it lives with the introduction).
+  const consultantPositions = [
     {
       id: 'uw',
-      title: 'University of Washington — One Health Research',
+      title: 'UW Center for One Health Research',
       role: 'Displacement Consultant',
-      what: 'Provide consultation, outreach, and networking guidance to researchers working with displaced populations. Review materials designed for unhoused communities. Build pathways between UW and King County service providers.',
-      why: 'Research designed without lived expertise tends to study people rather than serve them. Embedded review changes that.',
-      how: 'Active engagement with the Center for One Health Research; regular collaboration with project leads and community partners.',
-    },
-    {
-      id: 'naeh',
-      title: 'National Alliance to End Homelessness',
-      role: 'Speaker & Lived Experience Advocate',
-      what: 'Deliver national presentations on displacement, policy, and systems change. Contribute to policy recommendations grounded in both lived and professional experience.',
-      why: 'National policy is shaped by who shows up. Lived-experience advocates change the room.',
-      how: 'Lived Experience Advisory Committee · annual conference presentations · advocacy cohort participation.',
+      years: '2018 — Present',
+      what: 'Guide researchers working with displaced populations, review materials designed for unhoused communities, and build pathways between UW and King County service providers.',
     },
     {
       id: 'shelterapp',
-      title: 'ShelterApp',
-      role: 'Co-Creator & Strategist',
-      what: 'Co-created in 2019. Continue contributing to platform strategy, content, and the Washington State resource database expansion.',
-      why: 'Information access is a basic precondition for service access. ShelterApp was designed around that fact.',
-      how: 'Strategic and content guidance · resource database curation · NGO networking.',
+      title: 'ShelterApp / OutreachApp',
+      role: 'Co-Founder',
+      years: '2018 — Present',
+      what: 'Co-founded a national website and app that removes barriers to resources; continue to guide platform strategy and the Washington State resource database.',
     },
     {
       id: 'pnw',
       title: 'PNW Co-Sheltering Working Group',
       role: 'Member · Ecomap Lead',
-      what: 'Co-developing relational mapping, recruitment materials, and convening structure for a multi-state working group on co-sheltering practices for people and their animals.',
-      why: 'The pet-keeping unhoused population is systematically excluded from shelter. Co-sheltering is the structural answer.',
-      how: 'Monthly convenings · ecomap maintenance · recruitment outreach.',
+      years: 'Present',
+      what: 'Co-develop relational mapping, recruitment, and convening structure for a multi-state working group on co-sheltering for people and their animals.',
     },
+  ];
+
+  // Free beginner courses — hosted in /public/courses/.
+  const courseList = [
+    { slug: 'being-valued', title: 'Being Valued, Not Just Visible', blurb: 'The difference between being included and being used — and what fair value actually looks like.' },
+    { slug: 'trauma-informed-care', title: 'Trauma-Informed Care, In Everyday Life', blurb: 'What trauma actually does, and how to treat people — including yourself — with that in mind.' },
+    { slug: 'lived-experience-to-advocacy', title: 'Lived Experience to Effective Advocacy', blurb: 'Housing is a right, not a report card — turning what you already know into change.' },
+    { slug: 'speaking-up-for-yourself', title: 'Speaking Up for Yourself, Without Fighting Your Own Body', blurb: 'Self-advocacy that works with your nervous system, not against it.' },
   ];
 
   const educationItems = [
@@ -170,20 +171,12 @@ export default function App() {
 
   const proseItems = [
     {
-      id: 'aoa',
-      title: 'Architecture of Abandonment',
-      kind: 'White paper',
-      blurb: 'Advocacy white paper documenting how converging federal policy harms compound on communities facing structural harm. Framing introduced at CSW70 (UN Commission on the Status of Women).',
-      status: 'Completed',
-      link: '#REPLACE_AOA_LINK',
-    },
-    {
       id: 'aod',
       title: 'The Architecture of Displacement',
       kind: 'Essay series',
       blurb: 'Educational series on OBBBA and FY27 federal budget impacts on homelessness systems. Includes Aging Out of Options (Parts 1 & 2) on the health-to-homelessness pipeline for older adults, caregivers, and people with disabilities.',
       status: 'Ongoing',
-      link: '#REPLACE_AOD_LINK',
+      link: 'https://substack.com/@amandaricher',
     },
     {
       id: 'culling',
@@ -191,7 +184,7 @@ export default function App() {
       kind: 'White paper',
       blurb: 'Documents converging federal policy harms — Medicaid, SNAP, LIHEAP, caregiver labor — as structural violence.',
       status: 'Completed',
-      link: '#REPLACE_CULLING_LINK',
+      link: 'https://substack.com/@amandaricher',
     },
     {
       id: 'ngo',
@@ -199,7 +192,7 @@ export default function App() {
       kind: 'Long-form analysis',
       blurb: 'Argues that NGO preemptive compliance with HUD Continuum of Care overhauls constitutes complicity in displacement.',
       status: 'Completed',
-      link: '#REPLACE_NGO_LINK',
+      link: 'https://substack.com/@amandaricher',
     },
     {
       id: 'rebuild',
@@ -207,7 +200,7 @@ export default function App() {
       kind: 'Substack',
       blurb: 'Reframes current systemic demolition as an opportunity to build toward universal human rights.',
       status: 'Published',
-      link: '#REPLACE_REBUILD_LINK',
+      link: 'https://substack.com/@amandaricher',
     },
     {
       id: 'runta',
@@ -215,7 +208,7 @@ export default function App() {
       kind: 'Journalism',
       blurb: 'Reporting at the intersection of displacement, community health, and human rights for a multimedia outlet serving Somali and Muslim communities.',
       status: 'Ongoing',
-      link: '#REPLACE_RUNTA_LINK',
+      link: 'https://runtanews.com',
     },
   ];
 
@@ -227,13 +220,79 @@ export default function App() {
     'University of Washington research presentations',
   ];
 
-  const aboutRoles = [
-    'Board Member — National Health Care for the Homeless Council (NHCHC)',
-    'Governance Council — Seattle/King County Health Care for the Homeless Network (HCHN)',
-    'UN NGO Working Group to End Homelessness',
-    'Washington Balance of State Continuum of Care',
-    'PNW Co-Sheltering Working Group',
-    'Displacement Consultant — UW Center for One Health Research',
+  const governanceRoles = [
+    {
+      org: 'UN Working Group to End Homelessness',
+      role: 'Chair, Member State Outreach Committee',
+      years: '2024 — Present',
+      note: 'Lead member-state outreach for the UN civil-society working group.',
+    },
+    {
+      org: 'National Health Care for the Homeless Council',
+      role: 'Speaker & Subject Matter Expert',
+      years: 'Present',
+      note: 'National presenter and subject-matter expert on displacement and health.',
+    },
+    {
+      org: 'Seattle Public Utilities',
+      role: 'Chair, Consumer Review Panel',
+      years: 'Present',
+      note: 'Chair the panel advising the utility’s work and presence within communities.',
+    },
+    {
+      org: 'Housing Narrative Lab',
+      role: 'Advisory Board',
+      years: 'Present',
+      note: 'Advise on narrative strategies to end homelessness.',
+    },
+    {
+      org: 'Seattle/King County Health Care for the Homeless Network',
+      role: 'Chair, Governance Council',
+      years: '2022 — 2023',
+      note: 'Past chair of the governance council.',
+    },
+  ];
+
+  // Art tab. Hero portrait opens the human–animal theme personally; the
+  // documentary series carries it into the field; then sellable prints and
+  // original paintings. Files live in public/photos/.
+  const heroPhoto = { src: '/photos/son-cat.jpg', title: 'Companion', meta: 'Street portrait · Seattle', pos: 'center 20%' };
+
+  const artSections = [
+    {
+      id: 'series',
+      eyebrow: 'Documentary Series',
+      title: 'The Ones Who Stay',
+      statement: 'An ongoing series on the people I work among and the animals who stay beside them through homelessness — the same refusal to look away that drives the policy work. Not for sale.',
+      photos: [
+        { src: '/photos/seeking-kindness.jpg', title: 'Seeking Kindness', meta: 'Seattle' },
+        { src: '/photos/woman-dog.jpg',        title: 'Shared Bowl',      meta: 'Seattle' },
+        { src: '/photos/underpass.jpg',        title: 'Homeward',         meta: 'Seattle' },
+      ],
+    },
+    {
+      id: 'prints',
+      eyebrow: 'Prints Available',
+      title: 'Landscape & Nature',
+      statement: 'Macro, landscape, and wildlife — available as prints.',
+      photos: [
+        { src: '/photos/lavender.jpg',    title: 'Lavender & Bee', meta: 'Macro' },
+        { src: '/photos/arizona.jpg',     title: 'Desert Bloom', meta: 'Arizona' },
+        { src: '/photos/glacier-bay.jpg', title: 'Glacier Bay',  meta: 'Alaska' },
+        { src: '/photos/wood-duck.jpg',   title: 'Still Water',  meta: 'Reflection' },
+      ],
+    },
+    {
+      id: 'paintings',
+      eyebrow: 'Original Work',
+      title: 'Paintings',
+      statement: 'Original paintings on canvas.',
+      photos: [
+        { src: '/photos/painting-pockets.jpg', title: 'Pockets',        meta: 'Original painting' },
+        { src: '/photos/painting-field.jpg',   title: 'Harvest Light',  meta: 'Original painting' },
+        { src: '/photos/painting-cherry.jpg',  title: 'First Bloom',    meta: 'Original painting' },
+      ],
+    },
   ];
 
   // ─────────────────────────────────────────────
@@ -243,7 +302,7 @@ export default function App() {
     @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
 
     *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; overflow-x: hidden; width: 100%; background: ${c.cream}; }
+    html, body { margin: 0; padding: 0; overflow-x: hidden; width: 100%; background: ${c.sidebarBg}; }
 
     .font-display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
     .font-body    { font-family: 'Spectral', Georgia, serif; }
@@ -252,11 +311,11 @@ export default function App() {
     .grain {
       position: absolute; inset: 0; pointer-events: none;
       background-image:
-        radial-gradient(circle at 18% 14%, rgba(237,126,71,0.08), transparent 38%),
-        radial-gradient(circle at 82% 22%, rgba(232,72,85,0.06), transparent 42%),
-        radial-gradient(circle at 24% 78%, rgba(201,154,46,0.07), transparent 44%),
-        radial-gradient(circle at 78% 80%, rgba(45,168,168,0.05), transparent 40%);
-      mix-blend-mode: multiply;
+        radial-gradient(circle at 18% 14%, rgba(46,80,130,0.10), transparent 38%),
+        radial-gradient(circle at 82% 22%, rgba(220,180,92,0.07), transparent 42%),
+        radial-gradient(circle at 24% 78%, rgba(70,166,180,0.07), transparent 44%),
+        radial-gradient(circle at 78% 80%, rgba(46,61,94,0.10), transparent 40%);
+      mix-blend-mode: screen;
     }
 
     @keyframes fadeUp {
@@ -271,6 +330,11 @@ export default function App() {
     }
     .anim-sheet { animation: sheetUp 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 
+    @keyframes ringPulse {
+      0%        { transform: scale(1);   opacity: 0.45; }
+      70%, 100% { transform: scale(1.3); opacity: 0;    }
+    }
+
     button { -webkit-tap-highlight-color: transparent; }
     a { color: inherit; }
   `;
@@ -279,16 +343,16 @@ export default function App() {
   // ECOMAP RENDERER
   // ─────────────────────────────────────────────
   const Ecomap = () => {
-    const cx = 200, cy = 220;
-    const r = 140;          // radius of node circle
-    const nodeR = 48;       // node radius (larger now that labels are gone)
+    const cx = 200, cy = 230;
+    const r = 150;          // orbit radius
+    const nodeR = 50;       // node circle radius — sized so nodes never touch
 
     const sel = selectedNode ? nodes.find(n => n.id === selectedNode) : null;
     const activeThreadIds = sel ? sel.threads : [];
 
     return (
       <div style={{ position: 'relative', width: '100%' }}>
-        <svg viewBox="0 0 400 500" style={{ width: '100%', height: 'auto', display: 'block' }}>
+        <svg viewBox="-30 -6 460 474" style={{ width: '100%', height: 'auto', display: 'block' }}>
           {/* watercolor halo behind everything */}
           <defs>
             <radialGradient id="centerHalo" cx="50%" cy="50%" r="50%">
@@ -313,7 +377,7 @@ export default function App() {
             const rad = (n.angle * Math.PI) / 180;
             const x = cx + r * Math.cos(rad);
             const y = cy + r * Math.sin(rad);
-            const dim = sel && !sel.id === n.id ? 0.18 : 0.32;
+            const dim = sel && sel.id !== n.id ? 0.18 : 0.32;
             return (
               <line key={`spoke-${n.id}`}
                 x1={cx} y1={cy} x2={x} y2={y}
@@ -321,17 +385,6 @@ export default function App() {
                 strokeDasharray="2 4" />
             );
           })}
-
-          {/* foundation arc — lived experience */}
-          <path
-            d={`M 30 420 Q 200 470 370 420`}
-            fill="none" stroke={c.inkLight} strokeWidth="1" strokeDasharray="3 5" opacity="0.55"
-          />
-          <text x={200} y={448} textAnchor="middle"
-            className="font-mono"
-            style={{ fontSize: 9, fill: c.inkSoft, letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-            Foundation · Lived Experience
-          </text>
 
           {/* center node */}
           <circle cx={cx} cy={cy} r={56} fill={c.creamDeep} stroke={c.ink} strokeWidth="1.5" />
@@ -347,37 +400,53 @@ export default function App() {
           </text>
 
           {/* nodes */}
-          {nodes.map(n => {
+          {nodes.map((n, i) => {
             const rad = (n.angle * Math.PI) / 180;
             const x = cx + r * Math.cos(rad);
             const y = cy + r * Math.sin(rad);
             const isSelected = sel && sel.id === n.id;
             const isOther = sel && sel.id !== n.id;
+            const NodeIcon = n.Icon;
+            const labelSize = n.short.length > 9 ? 11 : 13;
             return (
               <g key={n.id} onClick={() => setSelectedNode(n.id)} style={{ cursor: 'pointer' }}>
-                {/* halo behind each node */}
                 <circle cx={x} cy={y} r={nodeR + 16} fill={`url(#halo-${n.id})`} />
+                {!sel && (
+                  <circle cx={x} cy={y} r={nodeR} fill="none" stroke={n.color} strokeWidth="2"
+                    style={{ transformOrigin: `${x}px ${y}px`, animation: `ringPulse 2.8s ease-out ${i * 0.3}s infinite`, pointerEvents: 'none' }} />
+                )}
                 <circle cx={x} cy={y} r={nodeR}
                   fill={c.cream}
                   stroke={n.color}
                   strokeWidth={isSelected ? 3 : 2}
                   opacity={isOther ? 0.55 : 1}
                 />
-                {/* icon */}
-                <foreignObject x={x - 16} y={y - 16} width="32" height="32">
-                  <div style={{
-                    width: 32, height: 32,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: n.color,
-                    opacity: isOther ? 0.55 : 1,
-                  }}>
-                    <n.Icon size={28} strokeWidth={1.6} />
+                {/* symbol above the label */}
+                <foreignObject x={x - 14} y={y - 30} width={28} height={28}
+                  style={{ overflow: 'visible', pointerEvents: 'none', opacity: isOther ? 0.55 : 1 }}>
+                  <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <NodeIcon size={22} color={n.color} strokeWidth={1.75} />
                   </div>
                 </foreignObject>
+                <text x={x} y={y + 22} textAnchor="middle"
+                  style={{ fontSize: labelSize, fontFamily: 'Spectral, Georgia, serif', fontStyle: 'italic', fontWeight: 600, pointerEvents: 'none' }}
+                  fill={n.color}
+                  opacity={isOther ? 0.55 : 1}>
+                  {n.short}
+                </text>
               </g>
             );
           })}
         </svg>
+
+        {/* foundation caption — clean, replaces the old dashed arc */}
+        <div className="font-mono" style={{
+          textAlign: 'center', fontSize: 9, color: c.inkLight,
+          letterSpacing: '0.22em', textTransform: 'uppercase',
+          margin: '2px 0 14px',
+        }}>
+          Foundation · Lived Experience
+        </div>
 
         {/* threads chips */}
         <div style={{
@@ -407,12 +476,15 @@ export default function App() {
 
         {/* hint when nothing selected */}
         {!sel && (
-          <div className="font-mono"
-            style={{
-              textAlign: 'center', fontSize: 10, color: c.inkLight,
-              marginTop: 14, letterSpacing: '0.22em', textTransform: 'uppercase',
+          <div style={{ textAlign: 'center', marginTop: 16 }}>
+            <span className="font-mono" style={{
+              display: 'inline-block',
+              fontSize: 10, color: c.sidebarBg, background: c.gold,
+              padding: '7px 15px', borderRadius: 999,
+              letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
             }}>
-            Tap a node to read more
+              Tap any circle to explore
+            </span>
           </div>
         )}
       </div>
@@ -472,9 +544,9 @@ export default function App() {
               background: c.creamDeep,
               border: `2px solid ${n.color}`,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              color: n.color,
+              color: n.color, fontFamily: 'Spectral, serif', fontStyle: 'italic', fontSize: 13,
             }}>
-              <n.Icon size={22} strokeWidth={1.7} />
+              {n.short.slice(0,2)}
             </div>
             <div>
               <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
@@ -545,7 +617,7 @@ export default function App() {
   // NEXUS TAB
   // ─────────────────────────────────────────────
   const NexusTab = () => (
-    <div className="anim-in" style={{ padding: '32px 22px 110px' }}>
+    <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
       <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 10 }}>
         Seattle, WA · She / Her
       </div>
@@ -553,114 +625,220 @@ export default function App() {
         margin: 0, fontSize: 44, lineHeight: 1.02, fontWeight: 400, color: c.ink, letterSpacing: '-0.01em',
       }}>
         Amanda<br />
-        <span style={{ fontStyle: 'italic', color: c.coral }}>Richer</span>
+        <span style={{ fontStyle: 'italic', color: c.gold }}>Richer</span>
       </h1>
       <p className="font-body" style={{
-        marginTop: 12, fontSize: 17, color: c.inkSoft, lineHeight: 1.45, maxWidth: 340,
+        marginTop: 12, fontSize: 17, color: c.inkSoft, lineHeight: 1.5, maxWidth: 400,
       }}>
-        Displacement consultant, writer, visual artist. Lived expertise organized into a body of work in
-        defense of universal human rights.
+        Displacement consultant. Published researcher. UN civil society representative.
+        A decade helping NGOs and agencies turn frontline reality into policy that holds
+        — from encampments to the United Nations.
       </p>
 
-      {/* CURRENTLY */}
-      <div style={{ marginTop: 36 }}>
+      {/* ECOMAP */}
+      <div style={{
+        marginTop: 48,
+        background: c.creamDeep,
+        borderRadius: 16,
+        padding: '28px 16px 20px',
+        border: `1px solid ${c.creamShade}`,
+      }}>
+        <div className="font-mono" style={{
+          fontSize: 10, color: c.inkLight, letterSpacing: '0.28em',
+          textTransform: 'uppercase', marginBottom: 4, textAlign: 'center',
+        }}>
+          The Work
+        </div>
+        <div className="font-display" style={{
+          fontSize: 20, color: c.ink, fontStyle: 'italic',
+          textAlign: 'center', marginBottom: 8, fontWeight: 400,
+        }}>
+          One orientation, seven practices.
+        </div>
+        <div style={{ maxWidth: 420, margin: '0 auto' }}>
+          <Ecomap />
+        </div>
+      </div>
+
+      {/* CONSULTANCY — current engagements */}
+      <div style={{ marginTop: 40 }}>
+        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
+          Current Engagements
+        </div>
+        {consultantPositions.map((p) => (
+          <div key={p.id} style={{
+            background: c.cream, border: `1px solid ${c.line}`, borderRadius: 14,
+            padding: '16px', marginBottom: 10, borderLeft: `3px solid ${c.gold}`,
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
+              <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
+                {p.role}
+              </div>
+              <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, letterSpacing: '0.12em', flexShrink: 0 }}>
+                {p.years}
+              </div>
+            </div>
+            <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500, lineHeight: 1.2, marginTop: 4 }}>
+              {p.title}
+            </div>
+            <p className="font-body" style={{ fontSize: 13.5, color: c.inkSoft, lineHeight: 1.5, margin: '6px 0 0' }}>
+              {p.what}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* CURRENTLY — active projects */}
+      <div style={{ marginTop: 34 }}>
         <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
           Currently
         </div>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-          {currentlyItems.map((it, i) => (
+          {currentlyItems.map((item, i) => (
             <li key={i} className="font-body" style={{
               fontSize: 14, color: c.ink, lineHeight: 1.45,
               padding: '10px 0',
               borderBottom: i < currentlyItems.length - 1 ? `1px solid ${c.line}` : 'none',
               display: 'flex', gap: 12,
             }}>
-              <span style={{
-                width: 6, height: 6, borderRadius: '50%',
-                background: c.coral, marginTop: 9, flexShrink: 0,
-              }} />
-              <span>{it}</span>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.teal, marginTop: 9, flexShrink: 0 }} />
+              <span>{item}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* ECOMAP */}
-      <div style={{ marginTop: 44 }}>
-        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 6, textAlign: 'center' }}>
-          The Work
-        </div>
-        <div className="font-display" style={{
-          fontSize: 22, color: c.ink, fontStyle: 'italic',
-          textAlign: 'center', marginBottom: 18, fontWeight: 400,
+      {/* FREE COURSES HIGHLIGHT */}
+      <button
+        onClick={() => setActiveTab('courses')}
+        style={{
+          display: 'flex', alignItems: 'center', gap: 14, width: '100%',
+          marginTop: 30, textAlign: 'left', cursor: 'pointer',
+          background: `linear-gradient(135deg, ${c.creamDeep}, ${c.cream})`,
+          border: `1px solid ${c.gold}`,
+          borderRadius: 16, padding: '18px 20px',
         }}>
-          One orientation, seven practices.
+        <GraduationCap size={26} color={c.gold} strokeWidth={1.75} style={{ flexShrink: 0 }} />
+        <div style={{ flex: 1 }}>
+          <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 3 }}>
+            Free Courses
+          </div>
+          <div className="font-display" style={{ fontSize: 18, color: c.ink, fontWeight: 500, fontStyle: 'italic', lineHeight: 1.15 }}>
+            Beginner courses for advocates
+          </div>
+          <div className="font-body" style={{ fontSize: 13, color: c.inkSoft, marginTop: 2 }}>
+            Four free courses for people new to advocacy.
+          </div>
         </div>
-        <Ecomap />
+        <ChevronDown size={18} color={c.gold} style={{ transform: 'rotate(-90deg)', flexShrink: 0 }} />
+      </button>
+    </div>
+  );
+
+  // ─────────────────────────────────────────────
+  // GOVERNANCE & LEADERSHIP TAB
+  // ─────────────────────────────────────────────
+  const GovernanceTab = () => (
+    <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
+      <TabHeader c={c} label="Governance & Leadership" tagline="Board, council, and committee leadership shaping how systems serve displaced and unhoused communities." color={c.indigo} />
+
+      <div style={{ marginTop: 28 }}>
+        {governanceRoles.map((g, i) => (
+          <div key={i} style={{
+            background: c.cream, border: `1px solid ${c.line}`, borderRadius: 14,
+            padding: '16px', marginBottom: 10, borderLeft: `3px solid ${c.indigo}`,
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
+              <div className="font-mono" style={{ fontSize: 9, color: c.indigo, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
+                {g.role}
+              </div>
+              <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, letterSpacing: '0.12em', flexShrink: 0 }}>
+                {g.years}
+              </div>
+            </div>
+            <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500, lineHeight: 1.2, marginTop: 4 }}>
+              {g.org}
+            </div>
+            <p className="font-body" style={{ fontSize: 13.5, color: c.inkSoft, lineHeight: 1.5, margin: '6px 0 0' }}>
+              {g.note}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Selected Engagements */}
+      <div style={{ marginTop: 38 }}>
+        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
+          Selected Engagements
+        </div>
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+          {aboutEngagements.map((e, i) => (
+            <li key={i} className="font-body" style={{
+              fontSize: 14, color: c.ink, lineHeight: 1.45,
+              padding: '10px 0',
+              borderBottom: i < aboutEngagements.length - 1 ? `1px solid ${c.line}` : 'none',
+              display: 'flex', gap: 12,
+            }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.indigo, marginTop: 9, flexShrink: 0 }} />
+              <span>{e}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
 
   // ─────────────────────────────────────────────
-  // CONSULTANCY TAB
+  // COURSES & RESOURCES TAB
   // ─────────────────────────────────────────────
-  const ConsultancyTab = () => (
-    <div className="anim-in" style={{ padding: '32px 22px 110px' }}>
-      <TabHeader c={c} label="Consultancy" tagline="Embedded advisory work at the intersections of displacement, health, and human rights." color={c.sage} />
+  const CoursesTab = () => (
+    <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
+      <TabHeader c={c} label="Courses & Resources" tagline="Free beginner courses for people new to advocacy — and the people who walk alongside them." color={c.sage} />
 
-      <div style={{ marginTop: 30 }}>
-        {consultancyWork.map((w, i) => {
-          const open = expandedCard === `cw-${w.id}`;
-          return (
-            <button key={w.id}
-              onClick={() => setExpandedCard(open ? null : `cw-${w.id}`)}
-              style={{
-                display: 'block',
-                width: '100%',
-                textAlign: 'left',
-                background: c.cream,
-                border: `1px solid ${c.line}`,
-                borderRadius: 14,
-                padding: '16px 16px',
-                marginBottom: 10,
-                cursor: 'pointer',
-              }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10 }}>
-                <div>
-                  <div className="font-mono" style={{ fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: 4 }}>
-                    {w.role}
-                  </div>
-                  <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500, lineHeight: 1.2 }}>
-                    {w.title}
-                  </div>
-                </div>
-                <ChevronDown size={18} color={c.inkLight}
-                  style={{ transform: open ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s', marginTop: 4, flexShrink: 0 }} />
-              </div>
-              {open && (
-                <div style={{ marginTop: 14, borderTop: `1px solid ${c.line}`, paddingTop: 14 }}>
-                  <CardField c={c} label="What" body={w.what} />
-                  <CardField c={c} label="Why"  body={w.why} />
-                  <CardField c={c} label="How"  body={w.how} />
-                </div>
-              )}
-            </button>
-          );
-        })}
+      <div style={{ marginTop: 16, marginBottom: 8 }}>
+        <span className="font-mono" style={{
+          fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.2em',
+          border: `1px solid ${c.sage}`, borderRadius: 999, padding: '4px 10px',
+        }}>
+          Beginner Series · Free
+        </span>
       </div>
 
-      {/* Education & Training */}
-      <div style={{ marginTop: 40 }}>
+      <div style={{ marginTop: 14 }}>
+        {courseList.map((course, i) => (
+          <a key={course.slug}
+            href={`/courses/${course.slug}.html`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'block', background: c.cream, border: `1px solid ${c.line}`,
+              borderRadius: 14, padding: '16px', marginBottom: 10, textDecoration: 'none',
+            }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10 }}>
+              <div className="font-mono" style={{ fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
+                Course {i + 1} · Free
+              </div>
+              <ExternalLink size={14} color={c.inkLight} />
+            </div>
+            <div className="font-display" style={{ fontSize: 18, color: c.ink, fontWeight: 500, lineHeight: 1.2, marginTop: 6, fontStyle: 'italic' }}>
+              {course.title}
+            </div>
+            <p className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.5, marginTop: 6, marginBottom: 0 }}>
+              {course.blurb}
+            </p>
+          </a>
+        ))}
+      </div>
+
+      {/* Beyond the courses */}
+      <div style={{ marginTop: 38 }}>
         <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 14 }}>
-          Education & Training
+          Workshops & Mentorship
         </div>
         {educationItems.map((e, i) => (
           <div key={i} style={{
-            background: c.creamDeep,
-            padding: '14px 16px',
-            borderRadius: 12,
-            marginBottom: 10,
-            borderLeft: `3px solid ${c.sage}`,
+            background: c.creamDeep, padding: '14px 16px', borderRadius: 12,
+            marginBottom: 10, borderLeft: `3px solid ${c.sage}`,
           }}>
             <div className="font-mono" style={{ fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 6 }}>
               {e.kind}
@@ -677,39 +855,99 @@ export default function App() {
   // ─────────────────────────────────────────────
   // VISUAL TAB
   // ─────────────────────────────────────────────
-  const VisualTab = () => (
-    <div className="anim-in" style={{ padding: '32px 22px 110px' }}>
-      <TabHeader c={c} label="Visual" tagline="Painting, photography, and mixed creative work under the name Manda J Artistry." color={c.gold} />
+  const ArtTab = () => (
+    <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
+      <TabHeader c={c} label="Art" tagline="Original photography and painting." color={c.gold} />
 
       <p className="font-body" style={{
         fontSize: 15, color: c.inkSoft, lineHeight: 1.55, marginTop: 18,
       }}>
-        Painting from imagination rather than reference. Focus on natural subjects, transition, and the
-        textures of belonging. Photography and a long-form memoir/fiction project ("Unplanned Life") share
-        the same orientation, in different languages.
+        Documentary work alongside fine-art landscape, macro, and original painting — the same
+        orientation as the policy practice, in a different language: attention turned toward the
+        people and places the frame usually leaves out.
       </p>
 
-      {/* placeholder gallery */}
-      <div style={{
-        marginTop: 24,
-        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10,
+      {/* hero portrait */}
+      <figure style={{
+        margin: '26px 0 0', borderRadius: 14, overflow: 'hidden',
+        border: `1px solid ${c.line}`, background: c.creamDeep, position: 'relative',
       }}>
-        {[1,2,3,4].map(i => (
-          <div key={i} style={{
-            aspectRatio: '1',
-            background: `linear-gradient(135deg, ${c.creamDeep}, ${c.creamShade})`,
-            borderRadius: 10,
-            border: `1px dashed ${c.line}`,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <span className="font-mono" style={{ fontSize: 9, color: c.inkLight, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-              Artwork {i}
-            </span>
+        <img src={heroPhoto.src} alt={heroPhoto.title} loading="lazy"
+          style={{ display: 'block', width: '100%', height: 360, objectFit: 'cover', objectPosition: heroPhoto.pos || 'center' }} />
+        <figcaption style={{
+          position: 'absolute', left: 0, right: 0, bottom: 0, padding: '30px 16px 12px',
+          background: 'linear-gradient(to top, rgba(8,12,20,0.85), transparent)',
+        }}>
+          <div className="font-display" style={{ fontSize: 19, color: '#F2EFE9', fontStyle: 'italic', lineHeight: 1.1 }}>
+            {heroPhoto.title}
           </div>
-        ))}
-      </div>
-      <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, marginTop: 14, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-        Replace tiles with paintings, photographs, or scans
+          <div className="font-mono" style={{ fontSize: 8, color: 'rgba(242,239,233,0.82)', textTransform: 'uppercase', letterSpacing: '0.16em', marginTop: 4 }}>
+            {heroPhoto.meta}
+          </div>
+        </figcaption>
+      </figure>
+
+      {/* sections: series · prints · paintings */}
+      {artSections.map((section) => (
+        <div key={section.id} style={{ marginTop: 34 }}>
+          <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.24em', marginBottom: 6 }}>
+            {section.eyebrow}
+          </div>
+          <div className="font-display" style={{ fontSize: 23, color: c.ink, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.12 }}>
+            {section.title}
+          </div>
+          <p className="font-body" style={{ fontSize: 13.5, color: c.inkSoft, lineHeight: 1.55, margin: '8px 0 0', maxWidth: 520 }}>
+            {section.statement}
+          </p>
+          <div style={{ marginTop: 14, columnCount: 2, columnGap: 12 }}>
+            {section.photos.map((p) => (
+              <figure key={p.src} style={{
+                margin: '0 0 12px', breakInside: 'avoid', borderRadius: 12, overflow: 'hidden',
+                border: `1px solid ${c.line}`, background: c.creamDeep, position: 'relative',
+              }}>
+                <img src={p.src} alt={p.title} loading="lazy"
+                  style={{ display: 'block', width: '100%', height: 'auto' }} />
+                <figcaption style={{
+                  position: 'absolute', left: 0, right: 0, bottom: 0, padding: '20px 12px 9px',
+                  background: 'linear-gradient(to top, rgba(8,12,20,0.82), transparent)',
+                }}>
+                  <div className="font-display" style={{ fontSize: 15, color: '#F2EFE9', fontStyle: 'italic', lineHeight: 1.1 }}>
+                    {p.title}
+                  </div>
+                  <div className="font-mono" style={{ fontSize: 8, color: 'rgba(242,239,233,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', marginTop: 3 }}>
+                    {p.meta}
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      ))}
+      {/* portfolio + inquiry */}
+      <div style={{
+        marginTop: 36, padding: '18px 20px',
+        background: c.creamDeep, border: `1px solid ${c.line}`, borderRadius: 14,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        gap: 16, flexWrap: 'wrap',
+      }}>
+        <div style={{ flex: '1 1 240px' }}>
+          <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 5 }}>
+            Prints, Originals & Sessions
+          </div>
+          <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.5 }}>
+            A portfolio of original photography and painting. Prints and select originals are available,
+            and I take a small number of quick portrait and pet sessions — reach out to buy a piece or book a shoot.
+          </div>
+        </div>
+        <a href="mailto:richer.amanda@gmail.com?subject=Photography%20%E2%80%94%20print%2C%20commission%20or%20session"
+          className="font-mono"
+          style={{
+            flexShrink: 0, fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase',
+            color: c.sidebarBg, background: c.gold, padding: '11px 18px', borderRadius: 999,
+            textDecoration: 'none', fontWeight: 600,
+          }}>
+          Inquire / Book
+        </a>
       </div>
     </div>
   );
@@ -717,9 +955,9 @@ export default function App() {
   // ─────────────────────────────────────────────
   // PROSE TAB
   // ─────────────────────────────────────────────
-  const ProseTab = () => (
-    <div className="anim-in" style={{ padding: '32px 22px 110px' }}>
-      <TabHeader c={c} label="Prose" tagline="Long-form essays, white papers, and reported journalism." color={c.magenta} />
+  const WritingTab = () => (
+    <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
+      <TabHeader c={c} label="Writing" tagline="Long-form essays, white papers, and reported journalism." color={c.magenta} />
 
       <div style={{ marginTop: 24 }}>
         {proseItems.map((p, i) => (
@@ -748,11 +986,6 @@ export default function App() {
             <p className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.5, marginTop: 6, marginBottom: 0 }}>
               {p.blurb}
             </p>
-            {p.link.startsWith('#REPLACE') && (
-              <div className="font-mono" style={{ fontSize: 9, color: c.coral, marginTop: 8, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-                → Add real link
-              </div>
-            )}
           </a>
         ))}
       </div>
@@ -763,8 +996,8 @@ export default function App() {
   // ABOUT TAB
   // ─────────────────────────────────────────────
   const AboutTab = () => (
-    <div className="anim-in" style={{ padding: '32px 22px 110px' }}>
-      <TabHeader c={c} label="About" tagline="Background, roles, and how to reach me." color={c.indigo} />
+    <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
+      <TabHeader c={c} label="About" tagline="Background, working standards, and how to reach me." color={c.indigo} />
 
       {/* Bio */}
       <div style={{ marginTop: 22 }}>
@@ -780,48 +1013,26 @@ export default function App() {
           a single orientation toward universal human rights.
         </p>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
-          Her creative practice operates under the name <em>Manda J Artistry</em>. Visual work, writing, and
-          policy work are not separate disciplines synthesized into a brand — they are expressions of the same
-          orientation, in different languages.
+          Her visual work, writing, and policy work are not separate disciplines synthesized into a
+          brand — they are expressions of the same orientation, in different languages.
         </p>
       </div>
 
-      {/* Roles */}
+      {/* Curriculum Vitae */}
       <div style={{ marginTop: 30 }}>
         <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
-          Roles
+          Curriculum Vitae
         </div>
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-          {aboutRoles.map((r, i) => (
-            <li key={i} className="font-body" style={{
-              fontSize: 14, color: c.ink, lineHeight: 1.45,
-              padding: '10px 0',
-              borderBottom: i < aboutRoles.length - 1 ? `1px solid ${c.line}` : 'none',
-              display: 'flex', gap: 12,
-            }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.indigo, marginTop: 9, flexShrink: 0 }} />
-              <span>{r}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Engagements */}
-      <div style={{ marginTop: 30 }}>
-        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
-          Selected Engagements
-        </div>
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-          {aboutEngagements.map((e, i) => (
-            <li key={i} className="font-body" style={{
-              fontSize: 14, color: c.ink, lineHeight: 1.45,
-              padding: '10px 0',
-              borderBottom: i < aboutEngagements.length - 1 ? `1px solid ${c.line}` : 'none',
-            }}>
-              {e}
-            </li>
-          ))}
-        </ul>
+        <a href="/amanda-richer-cv.pdf" target="_blank" rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            padding: '13px 20px',
+            background: c.indigo, border: `1px solid ${c.indigo}`, borderRadius: 12,
+            textDecoration: 'none', color: c.cream,
+          }}>
+          <Download size={17} color={c.cream} />
+          <span className="font-body" style={{ fontSize: 14 }}>Download CV (PDF)</span>
+        </a>
       </div>
 
       {/* AI Working Standards */}
@@ -847,7 +1058,37 @@ export default function App() {
         <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
           Contact
         </div>
-        <a href="mailto:REPLACE@EMAIL.com"
+        <a href="mailto:richer.amanda@gmail.com"
+          style={{
+            display: 'flex', alignItems: 'center', gap: 10,
+            padding: '14px 16px',
+            background: c.cream,
+            border: `1px solid ${c.line}`,
+            borderRadius: 12,
+            textDecoration: 'none', color: c.ink,
+            marginBottom: 8,
+          }}>
+          <Mail size={18} color={c.indigo} />
+          <span className="font-body" style={{ fontSize: 14 }}>
+            richer.amanda@gmail.com
+          </span>
+        </a>
+        <a href="tel:+12063767859"
+          style={{
+            display: 'flex', alignItems: 'center', gap: 10,
+            padding: '14px 16px',
+            background: c.cream,
+            border: `1px solid ${c.line}`,
+            borderRadius: 12,
+            textDecoration: 'none', color: c.ink,
+            marginBottom: 8,
+          }}>
+          <Phone size={18} color={c.indigo} />
+          <span className="font-body" style={{ fontSize: 14 }}>
+            (206) 376-7859
+          </span>
+        </a>
+        <a href="https://linkedin.com/in/amandaricher" target="_blank" rel="noopener noreferrer"
           style={{
             display: 'flex', alignItems: 'center', gap: 10,
             padding: '14px 16px',
@@ -856,14 +1097,11 @@ export default function App() {
             borderRadius: 12,
             textDecoration: 'none', color: c.ink,
           }}>
-          <Mail size={18} color={c.indigo} />
+          <ExternalLink size={18} color={c.indigo} />
           <span className="font-body" style={{ fontSize: 14 }}>
-            REPLACE@EMAIL.com
+            linkedin.com/in/amandaricher
           </span>
         </a>
-        <div className="font-mono" style={{ fontSize: 9, color: c.coral, marginTop: 8, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-          → Add real email
-        </div>
       </div>
     </div>
   );
@@ -873,35 +1111,104 @@ export default function App() {
   // ─────────────────────────────────────────────
   const renderTab = () => {
     switch (activeTab) {
-      case 'nexus':       return <NexusTab />;
-      case 'consultancy': return <ConsultancyTab />;
-      case 'visual':      return <VisualTab />;
-      case 'prose':       return <ProseTab />;
-      case 'about':       return <AboutTab />;
-      default:            return <NexusTab />;
+      case 'nexus':      return <NexusTab />;
+      case 'governance': return <GovernanceTab />;
+      case 'writing':    return <WritingTab />;
+      case 'art':        return <ArtTab />;
+      case 'courses':    return <CoursesTab />;
+      case 'about':      return <AboutTab />;
+      default:           return <NexusTab />;
     }
   };
 
   return (
-    <div style={{ background: c.cream, minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
+    <div style={{ background: c.sidebarBg, minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
       <style>{fontStack}</style>
       <div className="grain" />
 
-      {/* main scroll area */}
+      {/* desktop layout wrapper */}
       <div style={{
         position: 'relative', zIndex: 2,
-        maxWidth: 480, margin: '0 auto',
+        display: 'flex',
+        minHeight: '100vh',
         opacity: mounted ? 1 : 0,
         transition: 'opacity 0.4s ease',
       }}>
-        {renderTab()}
+        {/* desktop side nav */}
+        <style>{`
+          @media (min-width: 700px) {
+            .mobile-bottom-nav { display: none !important; }
+            .desktop-side-nav { display: flex !important; }
+            .main-content { max-width: none !important; padding-bottom: 60px !important; }
+          }
+          @media (max-width: 699px) {
+            .desktop-side-nav { display: none !important; }
+          }
+        `}</style>
+
+        <div className="desktop-side-nav" style={{
+          display: 'none',
+          flexDirection: 'column',
+          width: 220,
+          flexShrink: 0,
+          position: 'sticky',
+          top: 0,
+          height: '100vh',
+          background: c.sidebarBg,
+          padding: '40px 24px',
+          justifyContent: 'space-between',
+        }}>
+          <div>
+            <div className="font-display" style={{ fontSize: 19, color: 'rgba(244,240,234,0.9)', fontStyle: 'italic', fontWeight: 500, marginBottom: 2 }}>
+              Amanda
+            </div>
+            <div className="font-display" style={{ fontSize: 19, color: c.sidebarActive, fontStyle: 'italic', fontWeight: 500, marginBottom: 36 }}>
+              Richer
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {tabs.map(t => {
+                const active = activeTab === t.id;
+                return (
+                  <button key={t.id}
+                    onClick={() => setActiveTab(t.id)}
+                    style={{
+                      background: active ? 'rgba(199,162,74,0.16)' : 'transparent',
+                      border: 'none', cursor: 'pointer',
+                      textAlign: 'left',
+                      padding: '11px 14px',
+                      borderRadius: 6,
+                      borderLeft: active ? `3px solid ${c.sidebarActive}` : '3px solid transparent',
+                      color: active ? c.sidebarActive : c.sidebarText,
+                      transition: 'all 0.18s ease',
+                    }}>
+                    <span className="font-mono" style={{
+                      fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em',
+                      fontWeight: active ? 600 : 400,
+                    }}>
+                      {t.label}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div className="font-mono" style={{ fontSize: 9, color: 'rgba(244,240,234,0.35)', letterSpacing: '0.14em', lineHeight: 1.8, textTransform: 'uppercase' }}>
+            Seattle, WA<br />
+            She / Her
+          </div>
+        </div>
+
+        {/* main scroll area */}
+        <div className="main-content" style={{ flex: 1, background: c.cream, minHeight: '100vh' }}>
+          {renderTab()}
+        </div>
       </div>
 
       {/* bottom sheet for ecomap */}
       <NodeSheet />
 
-      {/* bottom nav */}
-      <div style={{
+      {/* bottom nav — mobile only */}
+      <div className="mobile-bottom-nav" style={{
         position: 'fixed', bottom: 0, left: 0, right: 0,
         background: `${c.cream}f5`,
         backdropFilter: 'blur(12px)',
@@ -917,7 +1224,7 @@ export default function App() {
             const active = activeTab === t.id;
             return (
               <button key={t.id}
-                onClick={() => { setActiveTab(t.id); setExpandedCard(null); }}
+                onClick={() => setActiveTab(t.id)}
                 style={{
                   background: 'transparent', border: 'none', cursor: 'pointer',
                   display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5,
@@ -931,13 +1238,10 @@ export default function App() {
                   border: active ? 'none' : `1px solid ${c.inkLight}`,
                   transition: 'all 0.2s ease',
                 }} />
-                <span className="font-mono"
-                  style={{
-                    fontSize: 10,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.16em',
-                    fontWeight: active ? 500 : 400,
-                  }}>
+                <span className="font-mono" style={{
+                  fontSize: 10, textTransform: 'uppercase',
+                  letterSpacing: '0.16em', fontWeight: active ? 500 : 400,
+                }}>
                   {t.label}
                 </span>
               </button>
@@ -959,19 +1263,6 @@ function Section({ c, label, body, accent }) {
         {label}
       </div>
       <div className="font-body" style={{ fontSize: 14.5, color: c.ink, lineHeight: 1.55, paddingLeft: 10, borderLeft: `2px solid ${accent}` }}>
-        {body}
-      </div>
-    </div>
-  );
-}
-
-function CardField({ c, label, body }) {
-  return (
-    <div style={{ marginBottom: 10 }}>
-      <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 4 }}>
-        {label}
-      </div>
-      <div className="font-body" style={{ fontSize: 14, color: c.ink, lineHeight: 1.5 }}>
         {body}
       </div>
     </div>

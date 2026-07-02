@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Amanda Richer — Curriculum Vitae</title>
+<title>Amanda J. Richer — Curriculum Vitae</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
@@ -40,8 +40,10 @@
   /* ---- header ---- */
   .name { font-size: 46px; line-height: 1.0; font-weight: 400; margin: 0; letter-spacing: -0.01em; }
   .name em { font-style: italic; color: var(--gold); }
-  .contact { margin-top: 14px; font-size: 10px; color: var(--inkLight); line-height: 1.9; }
-  .contact span { color: var(--inkSoft); }
+  .subtitle { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 18px; color: var(--gold); margin-top: 6px; }
+  .avail { font-size: 12.5px; color: var(--inkSoft); margin-top: 8px; }
+  .contact { margin-top: 10px; font-size: 10px; color: var(--inkLight); line-height: 1.9; }
+  .contact a, .contact span { color: var(--inkSoft); text-decoration: none; }
   .rule { height: 2px; width: 46px; background: var(--gold); margin: 20px 0 4px; }
 
   .profile { font-size: 15px; line-height: 1.6; color: var(--inkSoft); margin-top: 22px; }
@@ -61,6 +63,7 @@
   ul.pts { margin: 6px 0 0; padding: 0; list-style: none; }
   ul.pts li { font-size: 13px; color: var(--inkSoft); line-height: 1.5; display: flex; gap: 10px; margin-bottom: 2px; }
   ul.pts li::before { content: ''; flex: 0 0 5px; height: 5px; border-radius: 50%; background: var(--indigo); margin-top: 8px; }
+  .clients { font-size: 12px; color: var(--inkLight); margin-top: 7px; font-style: italic; }
 
   /* ---- skills ---- */
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -69,37 +72,30 @@
     color: var(--inkSoft); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; background: var(--panel2);
   }
 
-  /* ---- education / dev ---- */
-  .devlist { margin: 0; padding: 0; list-style: none; }
-  .devlist li { padding: 9px 0; border-bottom: 1px solid var(--line); display: flex; gap: 12px; font-size: 13.5px; color: var(--ink); line-height: 1.45; }
-  .devlist li:last-child { border-bottom: none; }
-  .devlist .k { font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); flex: 0 0 128px; padding-top: 3px; }
-
-  .refs { font-size: 13.5px; color: var(--inkSoft); font-style: italic; }
-
-  /* ---- writing ---- */
-  .writing { margin: 0; padding: 0; list-style: none; }
-  .writing li { padding: 9px 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
-  .writing li:last-child { border-bottom: none; }
-  .w-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
-  .w-title { font-family: 'Fraunces', Georgia, serif; font-size: 15px; font-style: italic; color: var(--ink); }
-  .w-kind { font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); white-space: nowrap; }
-  .w-sub { font-size: 12.5px; color: var(--inkSoft); line-height: 1.5; margin: 3px 0 0; }
-
-  /* ---- speaking inline ---- */
+  /* ---- lists (speaking / recognition / dev) ---- */
   .speaking { margin: 0; padding: 0; list-style: none; }
   .speaking li { font-size: 13px; color: var(--ink); line-height: 1.5; padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; gap: 12px; }
   .speaking li:last-child { border-bottom: none; }
   .speaking li::before { content: ''; flex: 0 0 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: 8px; }
 
+  .devlist { margin: 0; padding: 0; list-style: none; }
+  .devlist li { padding: 9px 0; border-bottom: 1px solid var(--line); display: flex; gap: 12px; font-size: 13.5px; color: var(--ink); line-height: 1.45; }
+  .devlist li:last-child { border-bottom: none; }
+  .devlist .k { font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); flex: 0 0 132px; padding-top: 3px; }
+
+  .pub { font-size: 13.5px; color: var(--inkSoft); line-height: 1.55; padding-left: 14px; border-left: 2px solid var(--gold); }
+  .pub strong { color: var(--ink); }
+
+  .refs { font-size: 13.5px; color: var(--inkSoft); font-style: italic; }
+
   @page { size: letter; margin: 0; }
   @media print {
-    .page { max-width: none; padding: 30px 52px; }
+    .page { max-width: none; padding: 34px 52px; }
     .entry { break-inside: avoid; margin-bottom: 12px; }
     .sec-label { break-after: avoid; margin-bottom: 12px; }
-    section { margin-top: 19px; }
+    section { margin-top: 22px; }
     .profile { margin-top: 16px; }
-    .writing li, .speaking li, .devlist li { padding-top: 6.5px; padding-bottom: 6.5px; }
+    .speaking li, .devlist li { padding-top: 6px; padding-bottom: 6px; }
   }
 </style>
 </head>
@@ -107,175 +103,185 @@
 <div class="page">
 
   <!-- HEADER -->
-  <h1 class="name font-display">Amanda <em>Richer</em></h1>
+  <h1 class="name font-display">Amanda J. <em>Richer</em></h1>
+  <div class="subtitle">Displacement Consultant · Human Rights &amp; Community Health</div>
+  <div class="avail font-body">Seattle, WA, USA · Available for remote work worldwide · Open to international relocation</div>
   <div class="contact font-mono" style="letter-spacing:0.14em;">
-    Seattle, WA · She / Her<br />
     <span>richer.amanda@gmail.com</span> · <span>(206) 376-7859</span><br />
-    <a href="https://linkedin.com/in/amandaricher" style="color:inherit;text-decoration:none;">linkedin.com/in/amandaricher</a><br />
-    <a href="https://amanda-richer-portfolio-git.pages.dev" style="color:inherit;text-decoration:none;">amanda-richer-portfolio-git.pages.dev</a>
+    <a href="https://linkedin.com/in/amandaricher">linkedin.com/in/amandaricher</a> · <a href="https://amanda-richer-portfolio-git.pages.dev">amanda-richer-portfolio-git.pages.dev</a>
   </div>
   <div class="rule"></div>
 
   <p class="profile">
-    Displacement consultant, writer, and human-rights advocate working at the intersection of
-    homelessness policy, community health, and the One Health framework, where human, animal, and
-    environmental wellbeing are treated as inseparable. Her direct knowledge of homelessness runs
-    through the work rather than beside it: guiding researchers working with displaced populations,
-    advising public utilities and NGOs, securing resources for unhoused communities, and representing
-    civil society from King County to the United Nations. She advocates for and helps shape policy
-    addressing the root causes of homelessness, and carries it across writing, documentary photography,
-    teaching, and public testimony.
+    Human rights and displacement specialist with roughly a decade of work at the intersection of homelessness,
+    public health, and human rights. Executive Committee member of the UN NGO Working Group to End Homelessness
+    (ECOSOC-accredited) and co-author of peer-reviewed research on integrated care for people experiencing
+    homelessness. Her direct knowledge of homelessness runs through the work rather than beside it — from guiding
+    university research and building resource tools to advising public agencies and carrying civil-society advocacy
+    from King County to the United Nations. Seeking remote international roles advancing the right to housing,
+    health equity, and dignity for displaced people.
   </p>
 
-  <!-- HUMAN RIGHTS & GOVERNANCE LEADERSHIP -->
+  <!-- AREAS OF EXPERTISE -->
   <section>
-    <div class="sec-label font-mono">Human Rights &amp; Governance Leadership</div>
-
-    <div class="entry lead">
-      <div class="entry-top">
-        <div class="role font-mono">Executive Committee · Former Chair, Member State Outreach</div>
-        <div class="years">2022 — Present</div>
-      </div>
-      <div class="org">UN Working Group to End Homelessness</div>
-      <p class="sub">Serve on the Executive Committee and Member State Outreach Committee of the UN civil-society working group; formerly chaired member-state outreach, engaging governments in the group's work to end homelessness.</p>
-    </div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div class="role font-mono">Speaker &amp; Subject Matter Expert</div>
-        <div class="years">Present</div>
-      </div>
-      <div class="org">National Health Care for the Homeless Council</div>
-      <p class="sub">National presenter and subject-matter expert on displacement and health.</p>
-    </div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div class="role font-mono">Chair · formerly Co-Chair</div>
-        <div class="years">Present</div>
-      </div>
-      <div class="org">Seattle Public Utilities — Consumer Review Panel</div>
-      <p class="sub">Chair the panel advising the utility's work and presence within communities.</p>
-    </div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div class="role font-mono">Advisory Board</div>
-        <div class="years">Present</div>
-      </div>
-      <div class="org">Housing Narrative Lab</div>
-      <p class="sub">Advise on narrative strategies to end homelessness.</p>
-    </div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div class="role font-mono">Former Chair, Governance Council</div>
-        <div class="years">2022 — 2023</div>
-      </div>
-      <div class="org">Seattle / King County Health Care for the Homeless Network</div>
+    <div class="sec-label font-mono">Areas of Expertise</div>
+    <div class="chips">
+      <span class="chip">Human Rights Advocacy</span>
+      <span class="chip">Right to Housing</span>
+      <span class="chip">Health Equity &amp; One Health</span>
+      <span class="chip">Displacement &amp; Homelessness Policy</span>
+      <span class="chip">UN / ECOSOC Civil-Society Engagement</span>
+      <span class="chip">Harm Reduction</span>
+      <span class="chip">Coalition Building</span>
+      <span class="chip">Research &amp; Peer-Reviewed Publishing</span>
+      <span class="chip">Public Speaking &amp; Training</span>
+      <span class="chip">AI-Assisted Research &amp; Tools</span>
+      <span class="chip">App Development</span>
+      <span class="chip">Content &amp; Digital Campaigns</span>
     </div>
   </section>
 
-  <!-- CONSULTING & EXPERIENCE -->
+  <!-- SELECTED EXPERIENCE -->
   <section>
-    <div class="sec-label font-mono">Consulting &amp; Experience</div>
+    <div class="sec-label font-mono">Selected Experience</div>
+
+    <div class="entry lead">
+      <div class="entry-top">
+        <div class="role font-mono">Executive Committee Member</div>
+        <div class="years">2022 – Present</div>
+      </div>
+      <div class="org">UN NGO Working Group to End Homelessness · ECOSOC-accredited</div>
+      <ul class="pts">
+        <li>Serve on the Executive, Advocacy, and Voluntary National Review (VNR) sub-committees of a coalition of ~30 civil-society organizations in ECOSOC consultative status with the UN.</li>
+        <li>Authored formal outreach to UN Permanent Missions (including South Africa, China, and Uganda) toward the High-Level Political Forum (HLPF) 2026; former Chair of the Member State Outreach Committee.</li>
+        <li>Collaborate with international NGO partners across the Global South and Europe to advance the right to housing.</li>
+      </ul>
+    </div>
 
     <div class="entry">
       <div class="entry-top">
         <div class="role font-mono">Displacement Consultant</div>
-        <div class="years">Oct 2018 — Present</div>
+        <div class="years">2018 – Present</div>
       </div>
-      <div class="org">Center for One Health Research, University of Washington</div>
+      <div class="org">One Health Research, University of Washington · Seattle / Remote</div>
       <ul class="pts">
-        <li>Guide researchers working with displaced populations.</li>
-        <li>Review and edit materials for unhoused communities.</li>
-        <li>Connect UW with King County service providers.</li>
-        <li>Lead educational panels and serve as subject-matter expert for government, non-profit, and academic organizations.</li>
+        <li>Advise interdisciplinary research and clinical teams on engaging and centering displaced and unhoused populations.</li>
+        <li>Co-author peer-reviewed research evaluating integrated human–animal health care for people experiencing homelessness.</li>
+        <li>Translate lived expertise into program design, communications, and policy recommendations across partner organizations.</li>
+      </ul>
+      <div class="clients">Selected clients &amp; engagements: U.S. Interagency Council on Homelessness · National Alliance to End Homelessness · University of Washington · City of Seattle · Urban Institute.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <div class="role font-mono">Board Member</div>
+        <div class="years">2025 – Present</div>
+      </div>
+      <div class="org">National Health Care for the Homeless Council (NHCHC)</div>
+      <ul class="pts">
+        <li>Co-Chair, Ellen Dailey Advocacy Committee — the Council's national consumer- and lived-experience-led advocacy body.</li>
+        <li>Member, National Consumer Advisory Board (NCAB) Steering Committee; serve on hiring and interview panels.</li>
+        <li>Provide national governance and policy guidance on health care for people experiencing homelessness.</li>
       </ul>
     </div>
 
     <div class="entry">
       <div class="entry-top">
         <div class="role font-mono">Co-Founder</div>
-        <div class="years">May 2018 — Present</div>
+        <div class="years">2018 – Present</div>
       </div>
-      <div class="org">ShelterApp / OutreachApp</div>
+      <div class="org">ShelterApp, Inc.</div>
       <ul class="pts">
-        <li>Co-developed a national website and app that removes barriers to resources (shelterapp.org).</li>
-        <li>Collaborate with national partners to grow reach and validate data.</li>
+        <li>Co-founded a resource-navigation platform connecting people experiencing homelessness to services.</li>
+        <li>Lead resource-database development and regional gap analyses (Washington State, Florida) and digital communications.</li>
       </ul>
     </div>
 
     <div class="entry">
       <div class="entry-top">
         <div class="role font-mono">Community Liaison for Unhoused Communities &amp; NGOs</div>
-        <div class="years">Mar 2018 — May 2024</div>
+        <div class="years">2018 – May 2024</div>
       </div>
-      <div class="org">City of Seattle, Dept. of Neighborhoods · Independent Contractor</div>
+      <div class="org">City of Seattle, Department of Neighborhoods · Independent Contractor</div>
       <ul class="pts">
-        <li>Engaged NGOs and vulnerable communities to gather feedback on City programs.</li>
-        <li>Informed project planning with community-sourced data.</li>
+        <li>Advised the City on reaching displaced communities and mitigating barriers to access.</li>
+        <li>Consulted for other public agencies and nonprofits on human-rights-centered engagement.</li>
       </ul>
     </div>
-  </section>
 
-  <!-- SELECTED WRITING -->
-  <section>
-    <div class="sec-label font-mono">Selected Writing</div>
-    <ul class="writing">
-      <li>
-        <div class="w-head"><span class="w-title">The Architecture of Displacement</span><span class="w-kind">Essay series · Ongoing</span></div>
-        <p class="w-sub">How federal budget and policy changes (OBBBA, FY27) reshape homelessness systems and the people inside them.</p>
-      </li>
-      <li>
-        <div class="w-head"><span class="w-title">The Culling of Americans</span><span class="w-kind">White paper</span></div>
-        <p class="w-sub">Converging federal policy harms — Medicaid, SNAP, caregiver labor — examined as structural violence.</p>
-      </li>
-      <li>
-        <div class="w-head"><span class="w-title">NGO Compliance and Displacement</span><span class="w-kind">Long-form analysis</span></div>
-        <p class="w-sub">How preemptive NGO compliance with HUD Continuum of Care overhauls can become complicity in displacement.</p>
-      </li>
-      <li>
-        <div class="w-head"><span class="w-title">Runta News</span><span class="w-kind">Guest reporting</span></div>
-        <p class="w-sub">Reporting on displacement, community health, and human rights for an outlet serving Somali and Muslim communities.</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- SELECTED SPEAKING -->
-  <section>
-    <div class="sec-label font-mono">Selected Speaking &amp; Testimony</div>
-    <ul class="speaking">
-      <li>CSW70 — UN Commission on the Status of Women (presenter)</li>
-      <li>UNITAR — UN Institute for Training and Research (presenter)</li>
-      <li>National Health Care for the Homeless Council — Annual Conference (presenter)</li>
-      <li>National Alliance to End Homelessness — National Conference (presenter)</li>
-      <li>University of Washington — research presentations</li>
-    </ul>
-  </section>
-
-  <!-- SKILLS -->
-  <section>
-    <div class="sec-label font-mono">Skills</div>
-    <div class="chips">
-      <span class="chip">Policy Advocacy &amp; Analysis</span>
-      <span class="chip">Research</span>
-      <span class="chip">Community Engagement</span>
-      <span class="chip">Outreach &amp; Resource Development</span>
-      <span class="chip">Communication &amp; Education</span>
-      <span class="chip">Leadership &amp; Teamwork</span>
+    <div class="entry">
+      <div class="entry-top">
+        <div class="role font-mono">Advisory &amp; Governance</div>
+        <div class="years">2021 – Present</div>
+      </div>
+      <div class="org">Housing Narrative Lab · Seattle Public Utilities · HCHN</div>
+      <ul class="pts">
+        <li>Advisory Board, Housing Narrative Lab — reframing public narratives about housing and homelessness.</li>
+        <li>Chair (formerly Co-Chair), Seattle Public Utilities Consumer Review Panel.</li>
+        <li>Former Chair, Governance Council, Seattle/King County Health Care for the Homeless Network (2022–2023).</li>
+      </ul>
     </div>
+
+    <div class="sub"><strong style="color:var(--ink);">Earlier service:</strong> Seattle Human Rights Commission (co-authored a policy paper on budget allocation to end homelessness) · National Alliance to End Homelessness — Lived Experience Advisory Committee &amp; Homelessness Research Network (2020–present) · National Coalition for the Homeless.</div>
   </section>
 
-  <!-- EDUCATION & PROFESSIONAL DEVELOPMENT -->
+  <!-- RESEARCH & PUBLICATIONS -->
   <section>
-    <div class="sec-label font-mono">Education &amp; Professional Development</div>
+    <div class="sec-label font-mono">Research &amp; Publications</div>
+    <p class="pub">Rejto N, Ramirez V, <strong>Richer A</strong>, et al. <em>The One Health Clinic: Care for Young Adults and Companion Animals Experiencing Homelessness.</em> Journal of Primary Care &amp; Community Health, 2025;16. doi:10.1177/21501319251345973</p>
+  </section>
+
+  <!-- SELECTED SPEAKING & TRAINING -->
+  <section>
+    <div class="sec-label font-mono">Selected Speaking &amp; Training</div>
+    <ul class="speaking">
+      <li>United Nations — Commission on the Status of Women (CSW70), 2025; UNITAR (UN Institute for Training and Research).</li>
+      <li>U.S. Interagency Council on Homelessness (USICH) — invited panelist, national webinar "19 Strategies to Reduce Encampments" (2024); ~2,000 registrants.</li>
+      <li>The Urban Institute — invited speaker to research teams (2022).</li>
+      <li>National Alliance to End Homelessness (NAEH) — presenter since 2020, on lived-experience advocacy, harm reduction, and systems change.</li>
+      <li>National Health Care for the Homeless Council (NHCHC) — repeat presenter and trainer; Ellen Dailey advocacy sessions (HCH 2026, Orlando).</li>
+      <li>National Coalition for the Homeless (NCH) — presenter.</li>
+      <li>Washington State Department of Ecology — invited presenter.</li>
+      <li>University of Washington — trainings for medical residents on serving displaced patients.</li>
+      <li>Ignite Project Homeless — The Seattle Times / Seattle University, 2018.</li>
+    </ul>
+  </section>
+
+  <!-- PROJECTS -->
+  <section>
+    <div class="sec-label font-mono">Selected Projects</div>
+    <ul class="pts" style="margin-top:0;">
+      <li><strong style="color:var(--ink);">UnityQuest</strong> — a gamified human-rights education platform covering the Universal Declaration of Human Rights, the SDGs, and the UN system.</li>
+      <li><strong style="color:var(--ink);">ShelterApp</strong> — a mobile resource-navigation tool for people experiencing homelessness, with a browser-based resource-audit agent.</li>
+    </ul>
+  </section>
+
+  <!-- TECHNOLOGY & AI -->
+  <section>
+    <div class="sec-label font-mono">Technology &amp; AI</div>
+    <ul class="pts" style="margin-top:0;">
+      <li>Build AI-powered tools and educational platforms, including UnityQuest and ShelterApp's resource database and audit agent.</li>
+      <li>Apply large language models to research synthesis, policy analysis, data work, and content production; authored internal AI working standards for responsible use.</li>
+      <li>Work across no-code / low-code app development, data visualization (Power BI), and digital-campaign tooling.</li>
+    </ul>
+  </section>
+
+  <!-- FELLOWSHIP & RECOGNITION -->
+  <section>
+    <div class="sec-label font-mono">Fellowship &amp; Recognition</div>
+    <ul class="pts" style="margin-top:0;">
+      <li>ACM Friday Briefing Fellow (paid); mentor to incoming fellows.</li>
+      <li>Featured nationally for lived-experience advocacy by Invisible People, The Seattle Times (Project Homeless), and WABI-TV.</li>
+    </ul>
+  </section>
+
+  <!-- CONTINUING EDUCATION & LANGUAGES -->
+  <section>
+    <div class="sec-label font-mono">Continuing Education &amp; Languages</div>
     <ul class="devlist">
-      <li><span class="k">Coursework</span><span>Psychology, Mount Senario College</span></li>
       <li><span class="k">Continuing Ed</span><span>Johns Hopkins &amp; Emory — Psychological First Aid; Infectious Disease Transmission Models for Decision-Makers; Communicating During Global Emergencies; COVID-19 Contact Tracing</span></li>
       <li><span class="k">Certification</span><span>AHA CPR &amp; First Aid (2024)</span></li>
-      <li><span class="k">Research</span><span>Ongoing independent research — displacement, homelessness policy, and One Health</span></li>
-      <li><span class="k">In Development</span><span>A human-rights gaming app for experiential learning</span></li>
+      <li><span class="k">Languages</span><span>English (native)</span></li>
     </ul>
   </section>
 

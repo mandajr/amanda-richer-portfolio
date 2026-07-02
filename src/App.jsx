@@ -87,7 +87,7 @@ export default function App() {
       angle: -90 + (360 / 7), color: c.indigo, tabLink: 'governance', Icon: Landmark,
       what: 'Board, council, and committee leadership shaping policy and program direction across systems serving displaced and unhoused communities.',
       why: 'Governance is where direction gets set. Showing up there with lived expertise is non-negotiable.',
-      where: 'UN Working Group (Executive Committee, former Chair of Member State Outreach) · NHCHC · Chair, SPU Consumer Review Panel · Housing Narrative Lab',
+      where: 'UN NGO Working Group to End Homelessness (Executive Committee; former Chair, Member State Outreach) · NHCHC Board · Chair, SPU Consumer Review Panel · Housing Narrative Lab',
       threads: ['knowledge', 'tbi', 'cosheltering'],
     },
     {
@@ -229,16 +229,16 @@ export default function App() {
 
   const governanceRoles = [
     {
-      org: 'UN Working Group to End Homelessness',
-      role: 'Chair, Member State Outreach Committee',
-      years: '2024 — Present',
-      note: 'Lead member-state outreach for the UN civil-society working group.',
+      org: 'UN NGO Working Group to End Homelessness',
+      role: 'Executive Committee · Former Chair, Member State Outreach',
+      years: '2022 — Present',
+      note: 'Serve on the Executive, Advocacy, and VNR sub-committees of a ~30-org ECOSOC-accredited coalition; authored outreach to UN Permanent Missions toward HLPF 2026.',
     },
     {
       org: 'National Health Care for the Homeless Council',
-      role: 'Speaker & Subject Matter Expert',
-      years: 'Present',
-      note: 'National presenter and subject-matter expert on displacement and health.',
+      role: 'Board Member · Co-Chair, Ellen Dailey Advocacy Committee',
+      years: '2025 — Present',
+      note: 'National board governance; co-chair the consumer- and lived-experience-led advocacy body; NCAB Steering Committee.',
     },
     {
       org: 'Seattle Public Utilities',
@@ -254,9 +254,9 @@ export default function App() {
     },
     {
       org: 'Seattle/King County Health Care for the Homeless Network',
-      role: 'Chair, Governance Council',
+      role: 'Former Chair, Governance Council',
       years: '2022 — 2023',
-      note: 'Past chair of the governance council.',
+      note: 'Chaired the governance council for the regional Health Care for the Homeless network.',
     },
   ];
 

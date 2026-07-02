@@ -49,6 +49,15 @@ export default function App() {
       why: 'Writing makes structural harm visible to people who would never sit through a policy briefing.',
       where: 'Substack · Runta News (guest reporter) · op-eds · white papers',
       threads: ['tbi', 'ai'],
+      proof: [
+        'Essay series "The Architecture of Displacement" on federal policy and homelessness',
+        'White paper "The Culling of Americans"',
+        'Guest reporting for Runta News (Somali & Muslim communities)',
+      ],
+      links: [
+        { label: 'Read on Substack', url: 'https://substack.com/@amandaricher' },
+        { label: 'Runta News', url: 'https://runtanews.com' },
+      ],
     },
     {
       id: 'speaking', short: 'Speaking', full: 'Public Speaking',
@@ -57,6 +66,11 @@ export default function App() {
       why: 'Decisions about displaced people happen in rooms most never enter. I enter them, then bring the framing back.',
       where: 'UN · NHCHC · UNITAR · CSW70 · NAEH',
       threads: ['knowledge'],
+      proof: [
+        'UN Commission on the Status of Women (CSW70), 2025 · UNITAR',
+        'USICH federal webinar "19 Strategies to Reduce Encampments" — ~2,000 registrants',
+        'Featured by Invisible People, The Seattle Times (Project Homeless) & WABI-TV',
+      ],
     },
     {
       id: 'teaching', short: 'Teaching', full: 'Training & Education',
@@ -65,6 +79,11 @@ export default function App() {
       why: 'Knowledge transfer is how this work survives me. Mentorship is how it grows.',
       where: 'Free beginner courses · workshops · NAEH Advocacy Cohort · ShelterApp volunteers',
       threads: ['knowledge', 'ai'],
+      proof: [
+        'Trainings for UW medical residents on serving displaced patients',
+        'UnityQuest — a gamified human-rights learning platform (UDHR, SDGs, UN system)',
+        'Four free beginner courses for advocates',
+      ],
     },
     {
       id: 'tech', short: 'Tech', full: 'Tech for Good',
@@ -73,6 +92,14 @@ export default function App() {
       why: 'Tools built without lived expertise repeat the failures of the systems they try to fix.',
       where: 'ShelterApp / OutreachApp (co-founder) · WA State resource database',
       threads: ['ai', 'knowledge', 'cosheltering'],
+      proof: [
+        'Co-founder, ShelterApp / OutreachApp',
+        'Washington State resource database + browser-based audit agent',
+        'UnityQuest human-rights education app',
+      ],
+      links: [
+        { label: 'Visit ShelterApp', url: 'https://www.shelterapp.org' },
+      ],
     },
     {
       id: 'onehealth', short: 'One Health', full: 'One Health',
@@ -81,6 +108,14 @@ export default function App() {
       why: 'Health is shared. People, their animals, and their environments cannot be separated in policy without causing harm.',
       where: 'UW Center for One Health Research · One Health Clinic · PNW Co-Sheltering Working Group',
       threads: ['cosheltering', 'tbi'],
+      proof: [
+        'Co-author, peer-reviewed study of the One Health Clinic (J. Primary Care & Community Health, 2025)',
+        'Consultant, UW Center for One Health Research',
+        'PNW Co-Sheltering Working Group',
+      ],
+      links: [
+        { label: 'Read the peer-reviewed paper', url: 'https://doi.org/10.1177/21501319251345973' },
+      ],
     },
     {
       id: 'governance', short: 'Governance', full: 'Governance & Leadership',
@@ -89,6 +124,12 @@ export default function App() {
       why: 'Governance is where direction gets set. Showing up there with lived expertise is non-negotiable.',
       where: 'UN NGO Working Group to End Homelessness (Executive Committee; former Chair, Member State Outreach) · NHCHC Board · Chair, SPU Consumer Review Panel · Housing Narrative Lab',
       threads: ['knowledge', 'tbi', 'cosheltering'],
+      proof: [
+        'Executive Committee, UN NGO Working Group to End Homelessness (ECOSOC-accredited)',
+        'Authored outreach to UN Permanent Missions toward the High-Level Political Forum 2026',
+        'Board Member & Co-Chair, Ellen Dailey Advocacy Committee (NHCHC)',
+        'Chair, Seattle Public Utilities Consumer Review Panel',
+      ],
     },
     {
       id: 'art', short: 'Art', full: 'Visual Practice',
@@ -97,6 +138,10 @@ export default function App() {
       why: 'Image makes legible what argument cannot. The visual practice and the policy practice are the same orientation, in different languages.',
       where: 'Documentary photography · paintings · commissions',
       threads: ['knowledge'],
+      proof: [
+        'Documentary photography of people experiencing homelessness and their animals',
+        'Fine-art landscape, macro, and original painting — prints and originals available',
+      ],
     },
   ];
 
@@ -611,6 +656,21 @@ export default function App() {
           <Section c={c} label="Why"  body={n.why}  accent={n.color} />
           <Section c={c} label="Where it lives" body={n.where} accent={n.color} />
 
+          {/* proof */}
+          {n.proof && (
+            <div style={{ marginTop: 18 }}>
+              <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, marginBottom: 8, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+                Proof
+              </div>
+              {n.proof.map((p, i) => (
+                <div key={i} style={{ display: 'flex', gap: 9, marginBottom: 7 }}>
+                  <span style={{ flexShrink: 0, marginTop: 7, width: 5, height: 5, borderRadius: '50%', background: n.color }} />
+                  <span className="font-body" style={{ fontSize: 13.5, color: c.ink, lineHeight: 1.45 }}>{p}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
           {/* threads */}
           <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, marginTop: 18, marginBottom: 8, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
             Connected Threads
@@ -632,6 +692,24 @@ export default function App() {
               );
             })}
           </div>
+
+          {/* find out more — external links */}
+          {n.links && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 20 }}>
+              {n.links.map((l, i) => (
+                <a key={i} href={l.url} target="_blank" rel="noopener noreferrer" className="font-mono"
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                    fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase',
+                    color: n.color, textDecoration: 'none',
+                    border: `1px solid ${n.color}`, borderRadius: 999, padding: '8px 14px',
+                  }}>
+                  {l.label}
+                  <ExternalLink size={12} />
+                </a>
+              ))}
+            </div>
+          )}
 
           {/* deep link */}
           {n.tabLink && (

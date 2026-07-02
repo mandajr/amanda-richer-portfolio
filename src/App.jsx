@@ -630,9 +630,10 @@ export default function App() {
       <p className="font-body" style={{
         marginTop: 12, fontSize: 17, color: c.inkSoft, lineHeight: 1.5, maxWidth: 400,
       }}>
-        Displacement consultant. Published researcher. UN civil society representative.
-        A decade helping NGOs and agencies turn frontline reality into policy that holds
-        — from encampments to the United Nations.
+        Displacement consultant. Writer. UN civil-society representative.
+        I work at the seam between the street and the institutions that shape it —
+        carrying what I know from the frontline into research, policy, and the United
+        Nations, and bringing the framing back.
       </p>
 
       {/* ECOMAP */}
@@ -1023,16 +1024,28 @@ export default function App() {
         <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
           Curriculum Vitae
         </div>
-        <a href="/amanda-richer-cv.pdf" target="_blank" rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10,
-            padding: '13px 20px',
-            background: c.indigo, border: `1px solid ${c.indigo}`, borderRadius: 12,
-            textDecoration: 'none', color: c.cream,
-          }}>
-          <Download size={17} color={c.cream} />
-          <span className="font-body" style={{ fontSize: 14 }}>Download CV (PDF)</span>
-        </a>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+          <a href="/amanda-richer-cv.pdf" target="_blank" rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 10,
+              padding: '13px 20px',
+              background: c.indigo, border: `1px solid ${c.indigo}`, borderRadius: 12,
+              textDecoration: 'none', color: c.cream,
+            }}>
+            <Download size={17} color={c.cream} />
+            <span className="font-body" style={{ fontSize: 14 }}>Download CV (PDF)</span>
+          </a>
+          <a href="/cv.html" target="_blank" rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 10,
+              padding: '13px 20px',
+              background: 'transparent', border: `1px solid ${c.indigo}`, borderRadius: 12,
+              textDecoration: 'none', color: c.indigo,
+            }}>
+            <ExternalLink size={17} color={c.indigo} />
+            <span className="font-body" style={{ fontSize: 14 }}>View online</span>
+          </a>
+        </div>
       </div>
 
       {/* AI Working Standards */}

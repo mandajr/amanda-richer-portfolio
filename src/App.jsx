@@ -7,6 +7,7 @@ import {
 export default function App() {
   const [activeTab, setActiveTab] = useState('nexus');
   const [selectedNode, setSelectedNode] = useState(null);
+  const [selectedThread, setSelectedThread] = useState(null);
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
 
@@ -71,7 +72,7 @@ export default function App() {
       what: 'Co-creating tools and resource systems that reach people who fall outside the reach of conventional services.',
       why: 'Tools built without lived expertise repeat the failures of the systems they try to fix.',
       where: 'ShelterApp / OutreachApp (co-founder) · WA State resource database',
-      threads: ['ai', 'knowledge'],
+      threads: ['ai', 'knowledge', 'cosheltering'],
     },
     {
       id: 'onehealth', short: 'One Health', full: 'One Health',
@@ -86,8 +87,8 @@ export default function App() {
       angle: -90 + (360 / 7), color: c.indigo, tabLink: 'governance', Icon: Landmark,
       what: 'Board, council, and committee leadership shaping policy and program direction across systems serving displaced and unhoused communities.',
       why: 'Governance is where direction gets set. Showing up there with lived expertise is non-negotiable.',
-      where: 'Chair, UN Working Group Member State Outreach · NHCHC · Chair, SPU Consumer Review Panel · Housing Narrative Lab',
-      threads: ['knowledge', 'tbi'],
+      where: 'UN Working Group (Executive Committee, former Chair of Member State Outreach) · NHCHC · Chair, SPU Consumer Review Panel · Housing Narrative Lab',
+      threads: ['knowledge', 'tbi', 'cosheltering'],
     },
     {
       id: 'art', short: 'Art', full: 'Visual Practice',
@@ -99,11 +100,17 @@ export default function App() {
     },
   ];
 
+  // Each thread carries a one-line "throughline" — the argument that these
+  // separate-looking practices are one orientation. Surfaced when a thread is tapped.
   const threads = [
-    { id: 'cosheltering', label: 'Co-Sheltering',               color: c.teal },
-    { id: 'tbi',          label: 'TBI & Brain Injury',          color: c.indigo },
-    { id: 'ai',           label: 'AI as Accommodation',         color: c.magenta },
-    { id: 'knowledge',    label: 'Knowledge Transfer',          color: c.gold },
+    { id: 'cosheltering', label: 'Co-Sheltering',      color: c.teal,
+      line: 'People and their animals are inseparable, so the work is too — from One Health research to the tools and governance that make pet-inclusive shelter real.' },
+    { id: 'tbi',          label: 'TBI & Brain Injury', color: c.indigo,
+      line: 'Brain injury is everywhere in homelessness and almost never designed for. It shapes how I write, how I approach One Health, and how I push governance to accommodate it.' },
+    { id: 'ai',           label: 'AI as Accommodation', color: c.magenta,
+      line: 'Used well, AI is accommodation, not replacement. It runs through my writing, my teaching, and the tools I help build.' },
+    { id: 'knowledge',    label: 'Knowledge Transfer', color: c.gold,
+      line: 'None of this survives if it stays with me. Knowledge transfer is the through-line of the speaking, teaching, tech, governance, and art.' },
   ];
 
   // ─────────────────────────────────────────────
@@ -348,7 +355,10 @@ export default function App() {
     const nodeR = 50;       // node circle radius — sized so nodes never touch
 
     const sel = selectedNode ? nodes.find(n => n.id === selectedNode) : null;
-    const activeThreadIds = sel ? sel.threads : [];
+    const selThread = selectedThread ? threads.find(t => t.id === selectedThread) : null;
+    const idle = !sel && !selThread;
+    const activeThreadIds = selThread ? [selThread.id] : (sel ? sel.threads : []);
+    const nodeOn = (n) => selThread ? n.threads.includes(selThread.id) : (sel ? sel.id === n.id : true);
 
     return (
       <div style={{ position: 'relative', width: '100%' }}>
@@ -377,12 +387,17 @@ export default function App() {
             const rad = (n.angle * Math.PI) / 180;
             const x = cx + r * Math.cos(rad);
             const y = cy + r * Math.sin(rad);
-            const dim = sel && sel.id !== n.id ? 0.18 : 0.32;
+            const on = nodeOn(n);
+            const strokeColor = selThread ? selThread.color : n.color;
+            let op = 0.32, w = 1, dash = '2 4';
+            if (selThread) { op = on ? 0.8 : 0.06; w = on ? 2 : 1; dash = on ? 'none' : '2 4'; }
+            else if (sel) { op = sel.id === n.id ? 0.55 : 0.1; w = sel.id === n.id ? 2 : 1; dash = sel.id === n.id ? 'none' : '2 4'; }
             return (
               <line key={`spoke-${n.id}`}
                 x1={cx} y1={cy} x2={x} y2={y}
-                stroke={n.color} strokeWidth="1" strokeOpacity={dim}
-                strokeDasharray="2 4" />
+                stroke={strokeColor} strokeWidth={w} strokeOpacity={op}
+                strokeDasharray={dash}
+                style={{ transition: 'stroke-opacity 0.35s ease, stroke-width 0.35s ease' }} />
             );
           })}
 
@@ -404,34 +419,45 @@ export default function App() {
             const rad = (n.angle * Math.PI) / 180;
             const x = cx + r * Math.cos(rad);
             const y = cy + r * Math.sin(rad);
+            const on = nodeOn(n);
             const isSelected = sel && sel.id === n.id;
-            const isOther = sel && sel.id !== n.id;
+            const dim = !idle && !on;
+            const op = dim ? 0.2 : 1;
             const NodeIcon = n.Icon;
             const labelSize = n.short.length > 9 ? 11 : 13;
             return (
-              <g key={n.id} onClick={() => setSelectedNode(n.id)} style={{ cursor: 'pointer' }}>
-                <circle cx={x} cy={y} r={nodeR + 16} fill={`url(#halo-${n.id})`} />
-                {!sel && (
+              <g key={n.id}
+                onClick={() => { setSelectedNode(n.id); setSelectedThread(null); }}
+                style={{ cursor: 'pointer' }}>
+                <circle cx={x} cy={y} r={nodeR + 16} fill={`url(#halo-${n.id})`}
+                  opacity={dim ? 0.12 : 1} style={{ transition: 'opacity 0.35s ease' }} />
+                {idle && (
                   <circle cx={x} cy={y} r={nodeR} fill="none" stroke={n.color} strokeWidth="2"
                     style={{ transformOrigin: `${x}px ${y}px`, animation: `ringPulse 2.8s ease-out ${i * 0.3}s infinite`, pointerEvents: 'none' }} />
+                )}
+                {selThread && on && (
+                  <circle cx={x} cy={y} r={nodeR + 7} fill="none"
+                    stroke={selThread.color} strokeWidth="2" strokeOpacity="0.9"
+                    style={{ pointerEvents: 'none' }} />
                 )}
                 <circle cx={x} cy={y} r={nodeR}
                   fill={c.cream}
                   stroke={n.color}
                   strokeWidth={isSelected ? 3 : 2}
-                  opacity={isOther ? 0.55 : 1}
+                  opacity={op}
+                  style={{ transition: 'opacity 0.35s ease' }}
                 />
                 {/* symbol above the label */}
                 <foreignObject x={x - 14} y={y - 30} width={28} height={28}
-                  style={{ overflow: 'visible', pointerEvents: 'none', opacity: isOther ? 0.55 : 1 }}>
+                  style={{ overflow: 'visible', pointerEvents: 'none', opacity: op, transition: 'opacity 0.35s ease' }}>
                   <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <NodeIcon size={22} color={n.color} strokeWidth={1.75} />
                   </div>
                 </foreignObject>
                 <text x={x} y={y + 22} textAnchor="middle"
-                  style={{ fontSize: labelSize, fontFamily: 'Spectral, Georgia, serif', fontStyle: 'italic', fontWeight: 600, pointerEvents: 'none' }}
+                  style={{ fontSize: labelSize, fontFamily: 'Spectral, Georgia, serif', fontStyle: 'italic', fontWeight: 600, pointerEvents: 'none', transition: 'opacity 0.35s ease' }}
                   fill={n.color}
-                  opacity={isOther ? 0.55 : 1}>
+                  opacity={op}>
                   {n.short}
                 </text>
               </g>
@@ -456,26 +482,48 @@ export default function App() {
           {threads.map(t => {
             const active = activeThreadIds.includes(t.id);
             return (
-              <span key={t.id} className="font-mono"
+              <button key={t.id} className="font-mono"
+                onClick={() => { setSelectedThread(selectedThread === t.id ? null : t.id); setSelectedNode(null); }}
                 style={{
                   fontSize: 9,
                   textTransform: 'uppercase',
-                  padding: '4px 9px',
+                  padding: '5px 10px',
                   borderRadius: 999,
-                  background: active ? t.color : c.cream,
-                  color: active ? c.cream : c.inkLight,
+                  cursor: 'pointer',
+                  background: active ? t.color : 'transparent',
+                  color: active ? c.sidebarBg : c.inkLight,
                   border: `1px solid ${active ? t.color : c.line}`,
                   transition: 'all 0.25s ease',
                   letterSpacing: '0.18em',
+                  fontWeight: active ? 600 : 400,
                 }}>
                 {t.label}
-              </span>
+              </button>
             );
           })}
         </div>
 
+        {/* throughline narrative when a thread is selected */}
+        {selThread && (
+          <div style={{
+            marginTop: 14, maxWidth: 440, marginLeft: 'auto', marginRight: 'auto',
+            padding: '12px 16px', background: c.creamDeep, borderRadius: 12,
+            borderLeft: `3px solid ${selThread.color}`,
+          }}>
+            <div className="font-mono" style={{
+              fontSize: 9, color: selThread.color, textTransform: 'uppercase',
+              letterSpacing: '0.2em', marginBottom: 6,
+            }}>
+              {selThread.label} · the through-line
+            </div>
+            <div className="font-body" style={{ fontSize: 14, color: c.ink, lineHeight: 1.5, fontStyle: 'italic' }}>
+              {selThread.line}
+            </div>
+          </div>
+        )}
+
         {/* hint when nothing selected */}
-        {!sel && (
+        {idle && (
           <div style={{ textAlign: 'center', marginTop: 16 }}>
             <span className="font-mono" style={{
               display: 'inline-block',
@@ -483,7 +531,7 @@ export default function App() {
               padding: '7px 15px', borderRadius: 999,
               letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
             }}>
-              Tap any circle to explore
+              Tap a practice — or a thread to trace it
             </span>
           </div>
         )}

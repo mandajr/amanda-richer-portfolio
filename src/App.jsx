@@ -1246,11 +1246,10 @@ export default function App() {
       {/* Bio */}
       <div style={{ marginTop: 22 }}>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
-          Amanda Richer is a displacement consultant, writer, and visual artist. Displacement — the forced loss of
-          home, place, or belonging — is the human-rights frame her work lives in; homelessness is the specific,
-          most visible form she knows deepest. She works at the intersection of homelessness policy, community
-          health, and the <em>One Health</em> framework, which treats human, animal, and environmental wellbeing
-          as fundamentally interconnected.
+          Amanda Richer is a displacement consultant, writer, and visual artist. Displacement is the human-rights
+          frame her work lives in; homelessness is the specific, most visible form she knows deepest. She works at
+          the intersection of homelessness policy, community health, and the <em>One Health</em> framework, which
+          treats human, animal, and environmental wellbeing as fundamentally interconnected.
         </p>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
           Her expertise comes from two kinds of direct knowledge, built over roughly a decade: frontline work —

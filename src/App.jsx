@@ -860,22 +860,6 @@ export default function App() {
         Nations — and bring the framing back.
       </p>
 
-      {/* CREDIBILITY STRIP — flag the headline proof up front */}
-      <div style={{ marginTop: 22, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-        {[
-          'Peer-reviewed co-author',
-          'UN NGO Working Group · Executive Committee',
-        ].map((item, i) => (
-          <div key={i} className="font-mono" style={{
-            fontSize: 9.5, letterSpacing: '0.1em', textTransform: 'uppercase', lineHeight: 1.3,
-            color: c.ink, background: c.creamDeep, border: `1px solid ${c.line}`,
-            borderLeft: `2px solid ${c.gold}`, borderRadius: 8, padding: '9px 12px',
-          }}>
-            {item}
-          </div>
-        ))}
-      </div>
-
       {/* ECOMAP */}
       <div style={{
         marginTop: 48,

@@ -244,6 +244,7 @@ export default function App() {
         'Dramatically increased the team’s capacity to add and verify services',
         'Add + audit across ~6,800 listings with duplicate-safety',
         'Fuzzy entity-matching + geocoding over open data (HRSA, OpenStreetMap)',
+        'Designed the platform’s early empathetic chatbot (2019) — empathy built into the response logic, not just the wording',
       ],
       link: { label: 'Visit ShelterApp', url: 'https://www.shelterapp.org' },
     },

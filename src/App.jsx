@@ -263,27 +263,26 @@ export default function App() {
         'Built end-to-end; preparing to launch',
       ],
     },
-    // ── DRAFTS · need Amanda's details ──────────────────────────────
+    {
+      kind: 'Interactive Simulation',
+      badge: 'Base44',
+      title: 'End Homelessness',
+      blurb: 'A policy-simulation game: players run a city’s housing levers — development permits, budgets, ordinances — and watch the human consequences unfold. The choice it poses: prioritize profit, or dismantle the barriers to housing.',
+      tools: ['Base44'],
+      link: { label: 'Play End Homelessness', url: 'https://shift-structural-systems.base44.app' },
+    },
+    {
+      kind: 'Learning Platform',
+      badge: 'Base44',
+      title: 'Rights World',
+      blurb: 'A gamified platform for mastering the Universal Declaration of Human Rights and the UN Sustainable Development Goals through trivia, simulations, and matching games.',
+      tools: ['Base44'],
+      link: { label: 'Open Rights World', url: 'https://rights-world.base44.app' },
+    },
     {
       kind: 'Interactive Simulation',
       title: 'Kent Harm Reduction Simulation',
-      blurb: 'An interactive simulation supporting harm-reduction education.',
-      draft: true,
-    },
-    {
-      kind: 'Web App',
-      badge: 'Base44 · Do Good Initiative',
-      title: 'Base44 app — Do Good Initiative',
-      blurb: 'Built on Base44 and selected for the Base44 Do Good Initiative.',
-      tools: ['Base44'],
-      draft: true,
-    },
-    {
-      kind: 'Web App',
-      title: 'Base44 app — second project',
-      blurb: 'Built on Base44.',
-      tools: ['Base44'],
-      draft: true,
+      blurb: 'An interactive simulation supporting harm-reduction education, built for the Kent, WA community.',
     },
   ];
 

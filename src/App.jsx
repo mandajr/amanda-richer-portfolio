@@ -1246,15 +1246,18 @@ export default function App() {
       {/* Bio */}
       <div style={{ marginTop: 22 }}>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
-          Amanda Richer is a displacement consultant, writer, and visual artist working at the intersections of
-          homelessness policy, lived experience, and the <em>One Health</em> framework — an approach that treats
-          human, animal, and environmental wellbeing as fundamentally interconnected.
+          Amanda Richer is a displacement consultant, writer, and visual artist. Displacement — the forced loss of
+          home, place, or belonging — is the human-rights frame her work lives in; homelessness is the specific,
+          most visible form she knows deepest. She works at the intersection of homelessness policy, community
+          health, and the <em>One Health</em> framework, which treats human, animal, and environmental wellbeing
+          as fundamentally interconnected.
         </p>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
-          Her career was built over roughly eight years following lived experience of adult street homelessness,
-          which she frames as foundational expertise rather than background detail. Her work moves across
-          journalism, policy writing, governance, embedded consultancy, and visual practice — held together by
-          a single orientation toward universal human rights.
+          Her expertise comes from two kinds of direct knowledge, built over roughly a decade: frontline work —
+          outreach, supply distribution, and harm-reduction among unhoused communities — and her own experience of
+          street homelessness. Both inform the work; neither is a footnote. It moves across journalism, policy
+          writing, governance, embedded consultancy, and visual practice, held together by a single orientation
+          toward universal human rights.
         </p>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
           Her visual work, writing, and policy work are not separate disciplines synthesized into a

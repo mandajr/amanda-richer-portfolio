@@ -204,11 +204,11 @@ export default function App() {
       what: 'Co-founded a national website and app that removes barriers to resources; continue to guide platform strategy and the Washington State resource database.',
     },
     {
-      id: 'pnw',
-      title: 'PNW Co-Sheltering Working Group',
-      role: 'Member · Ecomap Lead',
+      id: 'spu',
+      title: 'Seattle Public Utilities — Consumer Review Panel',
+      role: 'Chair (formerly Co-Chair)',
       years: 'Present',
-      what: 'Co-develop relational mapping, recruitment, and convening structure for a multi-state working group on co-sheltering for people and their animals.',
+      what: 'Chair the panel that advises the utility’s work and its presence within the communities it serves.',
     },
   ];
 
@@ -865,7 +865,6 @@ export default function App() {
         {[
           'Peer-reviewed co-author',
           'UN NGO Working Group · Executive Committee',
-          'Featured — The Seattle Times · Invisible People',
         ].map((item, i) => (
           <div key={i} className="font-mono" style={{
             fontSize: 9.5, letterSpacing: '0.1em', textTransform: 'uppercase', lineHeight: 1.3,
@@ -1534,22 +1533,25 @@ export default function App() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               {tabs.map(t => {
                 const active = activeTab === t.id;
+                const isCourses = t.id === 'courses';
                 return (
                   <button key={t.id}
                     onClick={() => setActiveTab(t.id)}
                     style={{
-                      background: active ? 'rgba(199,162,74,0.16)' : 'transparent',
+                      background: active ? 'rgba(199,162,74,0.16)' : (isCourses ? 'rgba(220,180,92,0.08)' : 'transparent'),
                       border: 'none', cursor: 'pointer',
                       textAlign: 'left',
                       padding: '11px 14px',
                       borderRadius: 6,
-                      borderLeft: active ? `3px solid ${c.sidebarActive}` : '3px solid transparent',
-                      color: active ? c.sidebarActive : c.sidebarText,
+                      borderLeft: active ? `3px solid ${c.sidebarActive}` : (isCourses ? `3px solid ${c.gold}` : '3px solid transparent'),
+                      color: active ? c.sidebarActive : (isCourses ? c.gold : c.sidebarText),
                       transition: 'all 0.18s ease',
+                      display: 'flex', alignItems: 'center', gap: 8,
                     }}>
+                    {isCourses && <GraduationCap size={13} color={c.gold} strokeWidth={2} style={{ flexShrink: 0 }} />}
                     <span className="font-mono" style={{
                       fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em',
-                      fontWeight: active ? 600 : 400,
+                      fontWeight: (active || isCourses) ? 600 : 400,
                     }}>
                       {t.label}
                     </span>

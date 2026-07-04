@@ -50,12 +50,12 @@ export default function App() {
       where: 'Substack · Runta News (guest reporter) · op-eds · white papers',
       threads: ['tbi', 'ai'],
       proof: [
-        'Essay series "The Architecture of Displacement" on federal policy and homelessness',
-        'White paper "The Culling of Americans"',
+        '"Served with a Side of Propaganda" — HUD\'s Housing First reversal',
+        '"Historical Déjà Vu" — recycled mechanisms of oppression',
         'Guest reporting for Runta News (Somali & Muslim communities)',
       ],
       links: [
-        { label: 'Read on Substack', url: 'https://substack.com/@amandaricher' },
+        { label: 'Read on Substack', url: 'https://amandaricher.substack.com' },
         { label: 'Runta News', url: 'https://runtanews.com' },
       ],
     },
@@ -87,7 +87,7 @@ export default function App() {
     },
     {
       id: 'tech', short: 'Tech', full: 'Tech for Good',
-      angle: -90 + 6 * (360 / 7), color: c.teal, tabLink: 'nexus', Icon: Smartphone,
+      angle: -90 + 6 * (360 / 7), color: c.teal, tabLink: 'tech', Icon: Smartphone,
       what: 'Co-creating tools and resource systems that reach people who fall outside the reach of conventional services.',
       why: 'Tools built without lived expertise repeat the failures of the systems they try to fix.',
       where: 'ShelterApp / OutreachApp (co-founder) · WA State resource database',
@@ -167,6 +167,7 @@ export default function App() {
     { id: 'writing',    label: 'Writing',    color: c.magenta },
     { id: 'art',        label: 'Art',        color: c.gold },
     { id: 'courses',    label: 'Courses',    color: c.sage },
+    { id: 'tech',       label: 'Tech',       color: c.coral },
     { id: 'about',      label: 'About',      color: c.hotpink },
   ];
 
@@ -207,6 +208,85 @@ export default function App() {
     },
   ];
 
+  // ─────────────────────────────────────────────
+  // TECH & DIGITAL PRACTICE
+  // Proof of proficiency directing AI tools to ship real software.
+  // ─────────────────────────────────────────────
+  const techTools = [
+    'Claude · Claude Code', 'Base44', 'React + Vite',
+    'Firebase', 'Cloudflare Pages', 'Netlify', 'Stripe', 'Playwright',
+  ];
+
+  // Verified projects come first; the three `draft` entries below need Amanda's
+  // details (exact names, one-line descriptions, links) before publishing.
+  const techProjects = [
+    {
+      kind: 'Web App',
+      title: 'This site — portfolio & interactive ecomap',
+      blurb: 'A React single-page app I directed and shipped end-to-end: the interactive ecomap that argues the through-line of my work, deployed live.',
+      tools: ['Claude Code', 'React + Vite', 'Cloudflare Pages'],
+      proof: [
+        'Designed the interactive "one orientation, seven practices" ecomap',
+        'Built, tested, and deployed live to Cloudflare Pages',
+      ],
+      link: { label: 'You’re looking at it', url: 'https://amanda-richer-portfolio-git.pages.dev' },
+    },
+    {
+      kind: 'Automation Agent',
+      title: 'ShelterApp — WA resource database & audit agent',
+      blurb: 'A browser-automation agent that scans public data, adds missing resources, and audits existing listings across a national homeless-services directory.',
+      tools: ['Claude Code', 'Python', 'Playwright'],
+      proof: [
+        'Automated add + audit across ~6,800 listings with duplicate-safety',
+        'Fuzzy entity-matching + geocoding over open data (HRSA, OpenStreetMap)',
+      ],
+      link: { label: 'Visit ShelterApp', url: 'https://www.shelterapp.org' },
+    },
+    {
+      kind: 'Real-time App',
+      title: 'PNW Co-Sheltering ecomap',
+      blurb: 'A live, multi-user relationship map for a multi-state working group — everyone edits one shared map and changes sync instantly.',
+      tools: ['Claude Code', 'React', 'Firebase'],
+      proof: [
+        'Real-time sync via Firestore with anonymous auth',
+        'Built for the PNW Co-Sheltering Working Group',
+      ],
+      link: { label: 'Open the live map', url: 'https://verdant-empanada-2e484f.netlify.app/' },
+    },
+    {
+      kind: 'Learning Platform',
+      title: 'Rights-Based Practice course platform',
+      blurb: 'A full self-paced course platform — courses with a checkout flow, a bundle, and completion certificates.',
+      tools: ['Claude Code', 'Netlify', 'Stripe'],
+      proof: [
+        'Seven courses with paywall, bundle, and PDF certificates',
+        'Built end-to-end; preparing to launch',
+      ],
+    },
+    // ── DRAFTS · need Amanda's details ──────────────────────────────
+    {
+      kind: 'Interactive Simulation',
+      title: 'Kent Harm Reduction Simulation',
+      blurb: 'An interactive simulation supporting harm-reduction education.',
+      draft: true,
+    },
+    {
+      kind: 'Web App',
+      badge: 'Base44 · Do Good Initiative',
+      title: 'Base44 app — Do Good Initiative',
+      blurb: 'Built on Base44 and selected for the Base44 Do Good Initiative.',
+      tools: ['Base44'],
+      draft: true,
+    },
+    {
+      kind: 'Web App',
+      title: 'Base44 app — second project',
+      blurb: 'Built on Base44.',
+      tools: ['Base44'],
+      draft: true,
+    },
+  ];
+
   // Free beginner courses — hosted in /public/courses/.
   const courseList = [
     { slug: 'being-valued', title: 'Being Valued, Not Just Visible', blurb: 'The difference between being included and being used — and what fair value actually looks like.' },
@@ -223,36 +303,44 @@ export default function App() {
 
   const proseItems = [
     {
-      id: 'aod',
-      title: 'The Architecture of Displacement',
+      id: 'propaganda',
+      title: 'Served with a Side of Propaganda',
+      kind: 'Policy analysis',
+      blurb: 'Reading the rhetoric behind HUD’s $4.04 billion reversal of Housing First.',
+      status: 'Substack',
+      link: 'https://amandaricher.substack.com/p/served-with-a-side-of-propaganda',
+    },
+    {
+      id: 'cruelty',
+      title: 'Celebration of Cruelty',
+      kind: 'Analysis',
+      blurb: 'How the Point-in-Time count’s narrative diverges from the reality of homelessness.',
+      status: 'Substack',
+      link: 'https://amandaricher.substack.com/p/celebration-of-cruelty',
+    },
+    {
+      id: 'dejavu',
+      title: 'Historical Déjà Vu',
       kind: 'Essay series',
-      blurb: 'Educational series on OBBBA and FY27 federal budget impacts on homelessness systems. Includes Aging Out of Options (Parts 1 & 2) on the health-to-homelessness pipeline for older adults, caregivers, and people with disabilities.',
-      status: 'Ongoing',
-      link: 'https://substack.com/@amandaricher',
+      blurb: 'Recycled history, homelessness, and poverty — the refurbished mechanisms of oppression. (Two parts.)',
+      status: 'Parts 1 & 2',
+      link: 'https://amandaricher.substack.com/p/historical-deja-vu',
     },
     {
-      id: 'culling',
-      title: 'The Culling of Americans',
-      kind: 'White paper',
-      blurb: 'Documents converging federal policy harms — Medicaid, SNAP, LIHEAP, caregiver labor — as structural violence.',
-      status: 'Completed',
-      link: 'https://substack.com/@amandaricher',
+      id: 'sharedhealth',
+      title: 'When Health Is Shared',
+      kind: 'Essay',
+      blurb: 'One Health, homelessness, and the animals who come with — the human–animal bond on the street.',
+      status: 'Substack',
+      link: 'https://amandaricher.substack.com/p/when-health-is-shared',
     },
     {
-      id: 'ngo',
-      title: 'NGO Compliance and Displacement',
-      kind: 'Long-form analysis',
-      blurb: 'Argues that NGO preemptive compliance with HUD Continuum of Care overhauls constitutes complicity in displacement.',
-      status: 'Completed',
-      link: 'https://substack.com/@amandaricher',
-    },
-    {
-      id: 'rebuild',
-      title: 'If We\'re Rebuilding Anyway',
-      kind: 'Substack',
-      blurb: 'Reframes current systemic demolition as an opportunity to build toward universal human rights.',
-      status: 'Published',
-      link: 'https://substack.com/@amandaricher',
+      id: 'inbetween',
+      title: 'The In-Between',
+      kind: 'Essay',
+      blurb: 'Reclaiming human worth in the rising age of automation.',
+      status: 'Substack',
+      link: 'https://amandaricher.substack.com/p/the-in-between',
     },
     {
       id: 'runta',
@@ -1183,12 +1271,12 @@ export default function App() {
         borderLeft: `3px solid ${c.magenta}`,
       }}>
         <div className="font-mono" style={{ fontSize: 9, color: c.magenta, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 8 }}>
-          AI Working Standards
+          AI &amp; Technology
         </div>
         <p className="font-body" style={{ fontSize: 14, color: c.ink, lineHeight: 1.55, margin: 0 }}>
-          This site, and a portion of the work it documents, is produced in collaboration with AI tools used as
-          cognitive accommodation. Final judgment, voice, and accountability remain with the author. Disclosure
-          is part of the framework.
+          I build and direct AI-powered tools — resource platforms, a human-rights learning game, and field
+          simulations — and use AI fluently across research, analysis, and communications. Final judgment, voice,
+          and accountability are my own.
         </p>
       </div>
 
@@ -1246,6 +1334,113 @@ export default function App() {
   );
 
   // ─────────────────────────────────────────────
+  // TECH & DIGITAL PRACTICE TAB
+  // ─────────────────────────────────────────────
+  const TechTab = () => (
+    <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
+      <TabHeader c={c} label="Tech & Digital Practice" tagline="Working software I direct, test, and ship using AI tools — deployed tools for the field, not prototypes." color={c.coral} />
+
+      {/* framing */}
+      <p className="font-body" style={{ marginTop: 20, fontSize: 15, color: c.ink, lineHeight: 1.6 }}>
+        I build real applications by directing AI tools — making the design and product
+        calls, testing, debugging, and deploying. The result is a growing set of working
+        tools that serve displaced and unhoused communities and the people who advocate
+        alongside them.
+      </p>
+
+      {/* tools I work with */}
+      <div style={{ marginTop: 20 }}>
+        <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: 8 }}>
+          Tools I work with
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+          {techTools.map((t, i) => (
+            <span key={i} className="font-body" style={{
+              fontSize: 12, color: c.ink, padding: '4px 10px',
+              border: `1px solid ${c.coral}`, borderRadius: 999, background: c.cream,
+            }}>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* projects */}
+      <div style={{ marginTop: 28 }}>
+        {techProjects.map((p, i) => (
+          <div key={i} style={{
+            background: c.cream, border: `1px solid ${c.line}`, borderRadius: 14,
+            padding: '16px', marginBottom: 10,
+            borderLeft: `3px solid ${p.draft ? c.gold : c.coral}`,
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10 }}>
+              <div className="font-mono" style={{ fontSize: 9, color: c.coral, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
+                {p.kind}
+              </div>
+              {p.badge && (
+                <span className="font-mono" style={{
+                  fontSize: 8.5, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.16em',
+                  border: `1px solid ${c.gold}`, borderRadius: 999, padding: '3px 8px', flexShrink: 0,
+                }}>
+                  {p.badge}
+                </span>
+              )}
+            </div>
+            <div className="font-display" style={{ fontSize: 19, color: c.ink, fontWeight: 500, lineHeight: 1.2, marginTop: 6, fontStyle: 'italic' }}>
+              {p.title}
+            </div>
+            <p className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.5, margin: '6px 0 0' }}>
+              {p.blurb}
+            </p>
+
+            {p.proof && (
+              <div style={{ marginTop: 10 }}>
+                {p.proof.map((x, j) => (
+                  <div key={j} style={{ display: 'flex', gap: 9, marginBottom: 6 }}>
+                    <span style={{ flexShrink: 0, marginTop: 7, width: 5, height: 5, borderRadius: '50%', background: c.coral }} />
+                    <span className="font-body" style={{ fontSize: 13, color: c.ink, lineHeight: 1.45 }}>{x}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {p.tools && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 12 }}>
+                {p.tools.map((t, j) => (
+                  <span key={j} className="font-mono" style={{
+                    fontSize: 9, color: c.inkLight, textTransform: 'uppercase', letterSpacing: '0.12em',
+                    border: `1px solid ${c.line}`, borderRadius: 6, padding: '4px 8px',
+                  }}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {p.link && (
+              <a href={p.link.url} target="_blank" rel="noopener noreferrer" className="font-mono" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 6,
+                fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase',
+                color: c.coral, textDecoration: 'none',
+                border: `1px solid ${c.coral}`, borderRadius: 999, padding: '8px 14px', marginTop: 12,
+              }}>
+                {p.link.label}
+                <ExternalLink size={12} />
+              </a>
+            )}
+
+            {p.draft && (
+              <div className="font-mono" style={{ fontSize: 9, color: c.gold, letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: 12 }}>
+                Draft · details to confirm
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  // ─────────────────────────────────────────────
   // RENDER
   // ─────────────────────────────────────────────
   const renderTab = () => {
@@ -1255,6 +1450,7 @@ export default function App() {
       case 'writing':    return <WritingTab />;
       case 'art':        return <ArtTab />;
       case 'courses':    return <CoursesTab />;
+      case 'tech':       return <TechTab />;
       case 'about':      return <AboutTab />;
       default:           return <NexusTab />;
     }
@@ -1355,9 +1551,9 @@ export default function App() {
         zIndex: 40,
       }}>
         <div style={{
-          maxWidth: 480, margin: '0 auto',
+          maxWidth: 560, margin: '0 auto',
           display: 'flex', justifyContent: 'space-around',
-          padding: '10px 8px 16px',
+          padding: '10px 4px 16px',
         }}>
           {tabs.map(t => {
             const active = activeTab === t.id;
@@ -1367,7 +1563,7 @@ export default function App() {
                 style={{
                   background: 'transparent', border: 'none', cursor: 'pointer',
                   display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5,
-                  padding: '4px 6px',
+                  padding: '4px 3px',
                   color: active ? t.color : c.inkLight,
                   transition: 'color 0.2s ease',
                 }}>

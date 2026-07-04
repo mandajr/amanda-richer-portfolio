@@ -94,7 +94,7 @@ export default function App() {
       threads: ['ai', 'animals', 'harmreduction'],
       proof: [
         'Co-founder, ShelterApp / OutreachApp',
-        'Washington State resource database + browser-based audit agent',
+        'Built a local automation program that sharply scaled how many services can be added',
         'Rights World human-rights education app',
       ],
       links: [
@@ -238,10 +238,11 @@ export default function App() {
     {
       kind: 'Automation Agent',
       title: 'ShelterApp — WA resource database & audit agent',
-      blurb: 'A browser-automation agent that scans public data, adds missing resources, and audits existing listings across a national homeless-services directory.',
+      blurb: 'A local automation program I built that scans public data, adds missing resources, and audits existing listings across a national homeless-services directory — sharply increasing how many services the team can add and verify.',
       tools: ['Claude Code', 'Python', 'Playwright'],
       proof: [
-        'Automated add + audit across ~6,800 listings with duplicate-safety',
+        'Dramatically increased the team’s capacity to add and verify services',
+        'Add + audit across ~6,800 listings with duplicate-safety',
         'Fuzzy entity-matching + geocoding over open data (HRSA, OpenStreetMap)',
       ],
       link: { label: 'Visit ShelterApp', url: 'https://www.shelterapp.org' },

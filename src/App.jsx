@@ -280,9 +280,15 @@ export default function App() {
       link: { label: 'Open Rights World', url: 'https://rights-world.base44.app' },
     },
     {
-      kind: 'Interactive Simulation',
-      title: 'Kent Harm Reduction Simulation',
-      blurb: 'An interactive simulation supporting harm-reduction education, built for the Kent, WA community.',
+      kind: 'Policy Modeling Tool',
+      title: 'Kent WA Harm Reduction Ban Simulation',
+      blurb: 'A policy-impact model projecting the public-health, economic, and population effects of a hypothetical 24-month harm-reduction services ban in Kent, WA. Users adjust parameters — naloxone access, treatment expansion, and more — to see effects on overdose deaths, new HIV/HCV cases, and community costs.',
+      tools: ['Claude Code', 'Netlify'],
+      proof: [
+        'Built on King County baseline data + peer-reviewed harm-reduction literature',
+        'Models outcomes for both the drug-using population and broader community (EMS, child welfare, workforce)',
+      ],
+      link: { label: 'Open the simulation', url: 'https://kentharm.netlify.app/' },
     },
   ];
 

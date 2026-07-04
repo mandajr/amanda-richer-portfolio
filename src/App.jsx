@@ -242,7 +242,7 @@ export default function App() {
       tools: ['Claude Code', 'Python', 'Playwright'],
       proof: [
         'Dramatically increased the team’s capacity to add and verify services',
-        'Add + audit across ~6,800 listings with duplicate-safety',
+        'Add + audit across 30,000+ national listings, and growing, with duplicate-safety',
         'Fuzzy entity-matching + geocoding over open data (HRSA, OpenStreetMap)',
         'Designed the platform’s early empathetic chatbot (2019) — empathy built into the response logic, not just the wording',
       ],
@@ -856,9 +856,8 @@ export default function App() {
         marginTop: 12, fontSize: 17, color: c.inkSoft, lineHeight: 1.5, maxWidth: 400,
       }}>
         Displacement consultant. Writer. UN civil-society representative.
-        I work at the seam between the street and the institutions that shape it —
-        carrying what I know from the frontline into research, policy, and the United
-        Nations, and bringing the framing back.
+        I carry what I know from the frontline into research, policy, and the United
+        Nations — and bring the framing back.
       </p>
 
       {/* CREDIBILITY STRIP — flag the headline proof up front */}
@@ -902,26 +901,6 @@ export default function App() {
           <Ecomap />
         </div>
       </div>
-
-      {/* DOCUMENTARY PHOTO — grounds the abstract map in real people */}
-      <figure style={{
-        margin: '34px 0 0', borderRadius: 16, overflow: 'hidden',
-        border: `1px solid ${c.line}`, position: 'relative',
-      }}>
-        <img src="/photos/seeking-kindness.jpg" alt="Documentary photograph from Amanda Richer's street work" loading="lazy"
-          style={{ display: 'block', width: '100%', height: 300, objectFit: 'cover', objectPosition: 'center' }} />
-        <figcaption style={{
-          position: 'absolute', left: 0, right: 0, bottom: 0, padding: '34px 16px 12px',
-          background: 'linear-gradient(to top, rgba(8,12,20,0.9), transparent)',
-        }}>
-          <div className="font-display" style={{ fontSize: 18, color: '#F2EFE9', fontStyle: 'italic', lineHeight: 1.15 }}>
-            The work is about people.
-          </div>
-          <div className="font-mono" style={{ fontSize: 8.5, color: 'rgba(242,239,233,0.82)', textTransform: 'uppercase', letterSpacing: '0.16em', marginTop: 4 }}>
-            From “The Ones Who Stay” · documentary series
-          </div>
-        </figcaption>
-      </figure>
 
       {/* CONSULTANCY — current engagements */}
       <div style={{ marginTop: 40 }}>
@@ -971,29 +950,31 @@ export default function App() {
         </ul>
       </div>
 
-      {/* FREE COURSES HIGHLIGHT */}
+      {/* COURSES & LEARNING HIGHLIGHT */}
       <button
         onClick={() => setActiveTab('courses')}
         style={{
-          display: 'flex', alignItems: 'center', gap: 14, width: '100%',
-          marginTop: 30, textAlign: 'left', cursor: 'pointer',
+          display: 'block', width: '100%', textAlign: 'left', cursor: 'pointer',
+          marginTop: 34,
           background: `linear-gradient(135deg, ${c.creamDeep}, ${c.cream})`,
-          border: `1px solid ${c.gold}`,
-          borderRadius: 16, padding: '18px 20px',
+          border: `1.5px solid ${c.gold}`,
+          borderRadius: 16, padding: '22px 22px',
         }}>
-        <GraduationCap size={26} color={c.gold} strokeWidth={1.75} style={{ flexShrink: 0 }} />
-        <div style={{ flex: 1 }}>
-          <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 3 }}>
-            Free Courses
-          </div>
-          <div className="font-display" style={{ fontSize: 18, color: c.ink, fontWeight: 500, fontStyle: 'italic', lineHeight: 1.15 }}>
-            Beginner courses for advocates
-          </div>
-          <div className="font-body" style={{ fontSize: 13, color: c.inkSoft, marginTop: 2 }}>
-            Four free courses for people new to advocacy.
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+          <GraduationCap size={26} color={c.gold} strokeWidth={1.75} style={{ flexShrink: 0 }} />
+          <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
+            Teaching &amp; Courses
           </div>
         </div>
-        <ChevronDown size={18} color={c.gold} style={{ transform: 'rotate(-90deg)', flexShrink: 0 }} />
+        <div className="font-display" style={{ fontSize: 21, color: c.ink, fontWeight: 500, fontStyle: 'italic', lineHeight: 1.15 }}>
+          Learning built for advocates — free, and beyond.
+        </div>
+        <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, marginTop: 6, lineHeight: 1.5 }}>
+          Four free beginner courses, live now — plus a seven-course Rights-Based Practice platform and Rights World, my gamified human-rights learning app.
+        </div>
+        <div className="font-mono" style={{ fontSize: 10, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}>
+          Explore courses <ChevronDown size={14} style={{ transform: 'rotate(-90deg)' }} />
+        </div>
       </button>
     </div>
   );

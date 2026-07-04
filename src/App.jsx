@@ -48,7 +48,7 @@ export default function App() {
       what: 'Long-form essays, policy analysis, and reported journalism that translate systems-level patterns into public argument.',
       why: 'Writing makes structural harm visible to people who would never sit through a policy briefing.',
       where: 'Substack · Runta News (guest reporter) · op-eds · white papers',
-      threads: ['tbi', 'ai'],
+      threads: ['ai', 'knowledge'],
       proof: [
         '"Served with a Side of Propaganda" — HUD\'s Housing First reversal',
         '"Historical Déjà Vu" — recycled mechanisms of oppression',
@@ -65,7 +65,7 @@ export default function App() {
       what: 'Plenaries, panels, and subject-matter-expert testimony at international, national, and local convenings — bringing lived experience into rooms that often exclude it.',
       why: 'Decisions about displaced people happen in rooms most never enter. I enter them, then bring the framing back.',
       where: 'UN · NHCHC · UNITAR · CSW70 · NAEH',
-      threads: ['knowledge'],
+      threads: ['knowledge', 'climate', 'harmreduction', 'disability'],
       proof: [
         'UN Commission on the Status of Women (CSW70), 2025 · UNITAR',
         'USICH federal webinar "19 Strategies to Reduce Encampments" — ~2,000 registrants',
@@ -78,10 +78,10 @@ export default function App() {
       what: 'Courses, workshops, and one-on-one mentorship for people new to advocacy, NGO staff, students, and researchers.',
       why: 'Knowledge transfer is how this work survives me. Mentorship is how it grows.',
       where: 'Free beginner courses · workshops · NAEH Advocacy Cohort · ShelterApp volunteers',
-      threads: ['knowledge', 'ai'],
+      threads: ['ai', 'knowledge', 'disability'],
       proof: [
         'Trainings for UW medical residents on serving displaced patients',
-        'UnityQuest — a gamified human-rights learning platform (UDHR, SDGs, UN system)',
+        'Rights World — a gamified human-rights learning platform (UDHR, SDGs, UN system)',
         'Four free beginner courses for advocates',
       ],
     },
@@ -91,11 +91,11 @@ export default function App() {
       what: 'Co-creating tools and resource systems that reach people who fall outside the reach of conventional services.',
       why: 'Tools built without lived expertise repeat the failures of the systems they try to fix.',
       where: 'ShelterApp / OutreachApp (co-founder) · WA State resource database',
-      threads: ['ai', 'knowledge', 'cosheltering'],
+      threads: ['ai', 'animals', 'harmreduction'],
       proof: [
         'Co-founder, ShelterApp / OutreachApp',
         'Washington State resource database + browser-based audit agent',
-        'UnityQuest human-rights education app',
+        'Rights World human-rights education app',
       ],
       links: [
         { label: 'Visit ShelterApp', url: 'https://www.shelterapp.org' },
@@ -107,7 +107,7 @@ export default function App() {
       what: 'Consultation and research support at the intersection of human, animal, and environmental health — including co-sheltering for people and their animals.',
       why: 'Health is shared. People, their animals, and their environments cannot be separated in policy without causing harm.',
       where: 'UW Center for One Health Research · One Health Clinic · PNW Co-Sheltering Working Group',
-      threads: ['cosheltering', 'tbi'],
+      threads: ['climate', 'animals', 'harmreduction'],
       proof: [
         'Co-author, peer-reviewed study of the One Health Clinic (J. Primary Care & Community Health, 2025)',
         'Consultant, UW Center for One Health Research',
@@ -123,7 +123,7 @@ export default function App() {
       what: 'Board, council, and committee leadership shaping policy and program direction across systems serving displaced and unhoused communities.',
       why: 'Governance is where direction gets set. Showing up there with lived expertise is non-negotiable.',
       where: 'UN NGO Working Group to End Homelessness (Executive Committee; former Chair, Member State Outreach) · NHCHC Board · Chair, SPU Consumer Review Panel · Housing Narrative Lab',
-      threads: ['knowledge', 'tbi', 'cosheltering'],
+      threads: ['climate', 'animals', 'disability'],
       proof: [
         'Executive Committee, UN NGO Working Group to End Homelessness (ECOSOC-accredited)',
         'Authored outreach to UN Permanent Missions toward the High-Level Political Forum 2026',
@@ -148,14 +148,18 @@ export default function App() {
   // Each thread carries a one-line "throughline" — the argument that these
   // separate-looking practices are one orientation. Surfaced when a thread is tapped.
   const threads = [
-    { id: 'cosheltering', label: 'Co-Sheltering',      color: c.teal,
+    { id: 'ai',            label: 'AI',                             color: c.magenta,
+      line: 'AI is a tool I command across the work — building resource platforms and learning games, and accelerating research, analysis, and content.' },
+    { id: 'knowledge',     label: 'Knowledge Transfer',            color: c.gold,
+      line: 'None of this survives if it stays with me. Knowledge transfer runs through the teaching, speaking, writing, and visual work.' },
+    { id: 'climate',       label: 'Climate & Environment',         color: c.sage,
+      line: 'Displacement, health, and the environment are one system — climate, contaminants, and disasters shape who ends up unhoused and who recovers.' },
+    { id: 'animals',       label: 'Animals & Co-Sheltering',       color: c.teal,
       line: 'People and their animals are inseparable, so the work is too — from One Health research to the tools and governance that make pet-inclusive shelter real.' },
-    { id: 'tbi',          label: 'TBI & Brain Injury', color: c.indigo,
-      line: 'Brain injury is everywhere in homelessness and almost never designed for. It shapes how I write, how I approach One Health, and how I push governance to accommodate it.' },
-    { id: 'ai',           label: 'AI as Accommodation', color: c.magenta,
-      line: 'Used well, AI is accommodation, not replacement. It runs through my writing, my teaching, and the tools I help build.' },
-    { id: 'knowledge',    label: 'Knowledge Transfer', color: c.gold,
-      line: 'None of this survives if it stays with me. Knowledge transfer is the through-line of the speaking, teaching, tech, governance, and art.' },
+    { id: 'harmreduction', label: 'Harm Reduction',                color: c.hotpink,
+      line: 'Meeting people where they are, without conditions — harm reduction runs through the health work, the policy, and the tools I build.' },
+    { id: 'disability',    label: 'Disability Advocacy & Education', color: c.indigo,
+      line: 'Disability — including brain injury — is everywhere in homelessness and rarely designed for. I teach it, speak it, and push governance to accommodate it.' },
   ];
 
   // ─────────────────────────────────────────────
@@ -273,9 +277,9 @@ export default function App() {
     },
     {
       kind: 'Learning Platform',
-      badge: 'Base44',
+      badge: 'Base44 · Do Good Initiative',
       title: 'Rights World',
-      blurb: 'A gamified platform for mastering the Universal Declaration of Human Rights and the UN Sustainable Development Goals through trivia, simulations, and matching games.',
+      blurb: 'A gamified platform for mastering the Universal Declaration of Human Rights and the UN Sustainable Development Goals through trivia, simulations, and matching games. Selected for the Base44 Do Good Initiative.',
       tools: ['Base44'],
       link: { label: 'Open Rights World', url: 'https://rights-world.base44.app' },
     },
@@ -609,7 +613,7 @@ export default function App() {
           letterSpacing: '0.22em', textTransform: 'uppercase',
           margin: '2px 0 14px',
         }}>
-          Foundation · Lived Experience
+          Foundation · Frontline Expertise
         </div>
 
         {/* threads chips */}
@@ -855,6 +859,23 @@ export default function App() {
         Nations, and bringing the framing back.
       </p>
 
+      {/* CREDIBILITY STRIP — flag the headline proof up front */}
+      <div style={{ marginTop: 22, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+        {[
+          'Peer-reviewed co-author',
+          'UN NGO Working Group · Executive Committee',
+          'Featured — The Seattle Times · Invisible People',
+        ].map((item, i) => (
+          <div key={i} className="font-mono" style={{
+            fontSize: 9.5, letterSpacing: '0.1em', textTransform: 'uppercase', lineHeight: 1.3,
+            color: c.ink, background: c.creamDeep, border: `1px solid ${c.line}`,
+            borderLeft: `2px solid ${c.gold}`, borderRadius: 8, padding: '9px 12px',
+          }}>
+            {item}
+          </div>
+        ))}
+      </div>
+
       {/* ECOMAP */}
       <div style={{
         marginTop: 48,
@@ -879,6 +900,26 @@ export default function App() {
           <Ecomap />
         </div>
       </div>
+
+      {/* DOCUMENTARY PHOTO — grounds the abstract map in real people */}
+      <figure style={{
+        margin: '34px 0 0', borderRadius: 16, overflow: 'hidden',
+        border: `1px solid ${c.line}`, position: 'relative',
+      }}>
+        <img src="/photos/seeking-kindness.jpg" alt="Documentary photograph from Amanda Richer's street work" loading="lazy"
+          style={{ display: 'block', width: '100%', height: 300, objectFit: 'cover', objectPosition: 'center' }} />
+        <figcaption style={{
+          position: 'absolute', left: 0, right: 0, bottom: 0, padding: '34px 16px 12px',
+          background: 'linear-gradient(to top, rgba(8,12,20,0.9), transparent)',
+        }}>
+          <div className="font-display" style={{ fontSize: 18, color: '#F2EFE9', fontStyle: 'italic', lineHeight: 1.15 }}>
+            The work is about people.
+          </div>
+          <div className="font-mono" style={{ fontSize: 8.5, color: 'rgba(242,239,233,0.82)', textTransform: 'uppercase', letterSpacing: '0.16em', marginTop: 4 }}>
+            From “The Ones Who Stay” · documentary series
+          </div>
+        </figcaption>
+      </figure>
 
       {/* CONSULTANCY — current engagements */}
       <div style={{ marginTop: 40 }}>

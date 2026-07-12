@@ -933,12 +933,13 @@ export default function App() {
         </ul>
       </div>
 
-      {/* COURSES & LEARNING HIGHLIGHT */}
-      <button
-        onClick={() => setActiveTab('courses')}
+      {/* COURSES & LEARNING HIGHLIGHT — links to the standalone course platform */}
+      <a
+        href="https://amanda-richer-courses.netlify.app"
+        target="_blank" rel="noopener noreferrer"
         style={{
           display: 'block', width: '100%', textAlign: 'left', cursor: 'pointer',
-          marginTop: 34,
+          marginTop: 34, textDecoration: 'none',
           background: `linear-gradient(135deg, ${c.creamDeep}, ${c.cream})`,
           border: `1.5px solid ${c.gold}`,
           borderRadius: 16, padding: '22px 22px',
@@ -956,9 +957,9 @@ export default function App() {
           Four free beginner courses, live now — plus a seven-course Rights-Based Practice platform and Rights World, my gamified human-rights learning app.
         </div>
         <div className="font-mono" style={{ fontSize: 10, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}>
-          Explore courses <ChevronDown size={14} style={{ transform: 'rotate(-90deg)' }} />
+          Visit the course platform <ExternalLink size={13} />
         </div>
-      </button>
+      </a>
     </div>
   );
 
@@ -1022,7 +1023,27 @@ export default function App() {
     <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
       <TabHeader c={c} label="Courses & Resources" tagline="Free beginner courses for people new to advocacy — and the people who walk alongside them." color={c.sage} />
 
-      <div style={{ marginTop: 16, marginBottom: 8 }}>
+      {/* Link out to the standalone, shareable course platform */}
+      <a href="https://amanda-richer-courses.netlify.app" target="_blank" rel="noopener noreferrer"
+        style={{
+          display: 'flex', alignItems: 'center', gap: 12, marginTop: 20,
+          background: `linear-gradient(135deg, ${c.creamDeep}, ${c.cream})`,
+          border: `1.5px solid ${c.gold}`, borderRadius: 14, padding: '16px 18px',
+          textDecoration: 'none',
+        }}>
+        <GraduationCap size={24} color={c.gold} strokeWidth={1.75} style={{ flexShrink: 0 }} />
+        <div style={{ flex: 1 }}>
+          <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500, fontStyle: 'italic', lineHeight: 1.15 }}>
+            Rights-Based Practice — the full course platform
+          </div>
+          <div className="font-body" style={{ fontSize: 13, color: c.inkSoft, marginTop: 2 }}>
+            All courses on their own site — open or share it directly.
+          </div>
+        </div>
+        <ExternalLink size={16} color={c.gold} style={{ flexShrink: 0 }} />
+      </a>
+
+      <div style={{ marginTop: 24, marginBottom: 8 }}>
         <span className="font-mono" style={{
           fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.2em',
           border: `1px solid ${c.sage}`, borderRadius: 999, padding: '4px 10px',
@@ -1540,22 +1561,24 @@ export default function App() {
                 );
               })}
             </div>
-            {/* Courses — set apart below the other tabs, highlighted */}
-            <button
-              onClick={() => setActiveTab('courses')}
+            {/* Courses — set apart below the other tabs, links to the course platform */}
+            <a
+              href="https://amanda-richer-courses.netlify.app"
+              target="_blank" rel="noopener noreferrer"
               style={{
                 marginTop: 16, width: '100%',
-                background: activeTab === 'courses' ? 'rgba(199,162,74,0.16)' : 'rgba(220,180,92,0.08)',
+                background: 'rgba(220,180,92,0.08)',
                 border: `1px solid ${c.gold}`, cursor: 'pointer',
                 textAlign: 'left', padding: '11px 14px', borderRadius: 8,
-                color: c.gold, transition: 'all 0.18s ease',
+                color: c.gold, transition: 'all 0.18s ease', textDecoration: 'none',
                 display: 'flex', alignItems: 'center', gap: 8,
               }}>
               <GraduationCap size={14} color={c.gold} strokeWidth={2} style={{ flexShrink: 0 }} />
-              <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 600 }}>
+              <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 600, flex: 1 }}>
                 Courses
               </span>
-            </button>
+              <ExternalLink size={12} color={c.gold} style={{ flexShrink: 0 }} />
+            </a>
           </div>
           <div className="font-mono" style={{ fontSize: 9, color: 'rgba(244,240,234,0.35)', letterSpacing: '0.14em', lineHeight: 1.8, textTransform: 'uppercase' }}>
             Seattle, WA<br />

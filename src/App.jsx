@@ -257,16 +257,16 @@ export default function App() {
         'Real-time sync via Firestore with anonymous auth',
         'Built for the PNW Co-Sheltering Working Group',
       ],
-      link: { label: 'Open the live map', url: 'https://verdant-empanada-2e484f.netlify.app/' },
+      link: { label: 'Open the live map', url: 'https://pnw-co-sheltering.netlify.app/' },
     },
     {
       kind: 'Learning Platform',
       title: 'Rights-Based Practice course platform',
-      blurb: 'A full self-paced course platform — courses with a checkout flow, a bundle, and completion certificates.',
-      tools: ['Claude Code', 'Netlify', 'Stripe'],
+      blurb: 'A full self-paced course platform: eleven rights-based courses, all free, each with check-in quizzes and a downloadable completion certificate.',
+      tools: ['Claude Code', 'Netlify'],
       proof: [
-        'Seven courses with paywall, bundle, and PDF certificates',
-        'Built end-to-end; preparing to launch',
+        'Eleven courses across three tiers, all free to take',
+        'Built and deployed end-to-end, live on Netlify',
       ],
     },
     {

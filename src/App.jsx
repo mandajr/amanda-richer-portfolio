@@ -69,7 +69,6 @@ export default function App() {
       proof: [
         'UN Commission on the Status of Women (CSW70), 2025 · UNITAR',
         'USICH federal webinar "19 Strategies to Reduce Encampments" — ~2,000 registrants',
-        'Featured by Invisible People, The Seattle Times (Project Homeless) & WABI-TV',
       ],
     },
     {
@@ -127,7 +126,7 @@ export default function App() {
       proof: [
         'Executive Committee, UN NGO Working Group to End Homelessness (ECOSOC-accredited)',
         'Authored outreach to UN Permanent Missions toward the High-Level Political Forum 2026',
-        'Board Member & Co-Chair, Ellen Dailey Advocacy Committee (NHCHC)',
+        'Board Member, National Health Care for the Homeless Council (NHCHC)',
         'Chair, Seattle Public Utilities Consumer Review Panel',
       ],
     },
@@ -380,9 +379,9 @@ export default function App() {
     },
     {
       org: 'National Health Care for the Homeless Council',
-      role: 'Board Member · Co-Chair, Ellen Dailey Advocacy Committee',
+      role: 'Board Member · NCAB Steering Committee',
       years: '2025 — Present',
-      note: 'National board governance; co-chair the consumer- and lived-experience-led advocacy body; NCAB Steering Committee.',
+      note: 'National board governance and policy guidance on health care for people experiencing homelessness.',
     },
     {
       org: 'Seattle Public Utilities',

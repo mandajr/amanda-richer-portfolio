@@ -958,6 +958,9 @@ export default function App() {
           also bright on its own. Research, governance, writing, teaching, tools, and art are the facets.{' '}
           <span style={{ color: c.ink, fontStyle: 'italic' }}>Universal human rights is the jewel.</span>
         </p>
+        <p className="font-body" style={{ margin: '10px 0 0', fontSize: 16, lineHeight: 1.6, color: c.inkSoft }}>
+          It's the same way One Health sees the world: nothing stands alone.
+        </p>
       </div>
       <button onClick={() => { setActiveTab('work'); window.scrollTo(0, 0); }}
         className="font-mono"

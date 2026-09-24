@@ -938,12 +938,24 @@ export default function App() {
         <span style={{ fontStyle: 'italic', color: c.gold }}>Richer</span>
       </h1>
       <p className="font-body" style={{
-        marginTop: 12, fontSize: 17, color: c.inkSoft, lineHeight: 1.5, maxWidth: 400,
+        marginTop: 12, fontSize: 17, color: c.inkSoft, lineHeight: 1.5, maxWidth: 520,
       }}>
-        Displacement consultant. Writer. UN civil-society representative.
-        I carry what I know from the frontline into research, policy, and the United
-        Nations — and bring the framing back.
+        Displacement consultant. Writer. Civil‑society advocate at the UN.
       </p>
+
+      {/* WHAT I DO — the answer to "so what do you do?", in place of an elevator pitch */}
+      <div style={{ marginTop: 26, paddingLeft: 16, borderLeft: `2px solid ${c.gold}`, maxWidth: 520 }}>
+        <div className="font-mono" style={{ fontSize: 10, color: c.gold, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 8 }}>
+          What I do
+        </div>
+        <p className="font-display" style={{ margin: 0, fontSize: 23, lineHeight: 1.3, color: c.ink, fontWeight: 400 }}>
+          I move knowledge between the street and the rooms where decisions get made, in both directions.
+        </p>
+        <p className="font-body" style={{ margin: '12px 0 0', fontSize: 16, lineHeight: 1.6, color: c.inkSoft }}>
+          Research, governance, and UN civil‑society spaces on one side. Writing, teaching, tools, and art
+          on the other. Seven practices, one purpose: <span style={{ color: c.ink, fontStyle: 'italic' }}>universal human rights.</span>
+        </p>
+      </div>
       <button onClick={() => { setActiveTab('work'); window.scrollTo(0, 0); }}
         className="font-mono"
         style={{

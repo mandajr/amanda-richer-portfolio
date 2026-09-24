@@ -32,7 +32,7 @@ $g.DrawLine($goldPen, 74, 182, 136, 182)
 
 # name (stacked, italic serif) — Amanda / Richer, Richer in gold
 $nameFont = New-Object System.Drawing.Font('Georgia', 92, [System.Drawing.FontStyle]::Italic, [System.Drawing.GraphicsUnit]::Pixel)
-$g.DrawString('Amanda', $nameFont, $creamBrush, 66, 205)
+$g.DrawString('Amanda J.', $nameFont, $creamBrush, 66, 205)
 $g.DrawString('Richer', $nameFont, $goldBrush, 66, 300)
 
 # subtitle

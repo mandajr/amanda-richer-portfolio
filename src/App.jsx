@@ -949,11 +949,12 @@ export default function App() {
           What I do
         </div>
         <p className="font-display" style={{ margin: 0, fontSize: 23, lineHeight: 1.3, color: c.ink, fontWeight: 400 }}>
-          I move knowledge between the street and the rooms where decisions get made, in both directions.
+          I see everything as interconnected, whatever the organization or subject.
         </p>
         <p className="font-body" style={{ margin: '12px 0 0', fontSize: 16, lineHeight: 1.6, color: c.inkSoft }}>
-          Research, governance, and UN civil‑society spaces on one side. Writing, teaching, tools, and art
-          on the other. Seven practices, one purpose: <span style={{ color: c.ink, fontStyle: 'italic' }}>universal human rights.</span>
+          Each part of my work is like light coming off the facet of a jewel: all part of the whole, but
+          also bright on its own. Research, governance, writing, teaching, tools, and art are the facets.{' '}
+          <span style={{ color: c.ink, fontStyle: 'italic' }}>Universal human rights is the jewel.</span>
         </p>
       </div>
       <button onClick={() => { setActiveTab('work'); window.scrollTo(0, 0); }}

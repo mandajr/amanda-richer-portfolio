@@ -937,14 +937,8 @@ export default function App() {
         Amanda<br />
         <span style={{ fontStyle: 'italic', color: c.gold }}>Richer</span>
       </h1>
-      <p className="font-body" style={{
-        marginTop: 12, fontSize: 17, color: c.inkSoft, lineHeight: 1.5, maxWidth: 520,
-      }}>
-        Displacement consultant. Writer. Civil‑society advocate at the UN.
-      </p>
-
       {/* WHAT I DO — the answer to "so what do you do?", in place of an elevator pitch */}
-      <div style={{ marginTop: 26, paddingLeft: 16, borderLeft: `2px solid ${c.gold}`, maxWidth: 520 }}>
+      <div style={{ marginTop: 22, paddingLeft: 16, borderLeft: `2px solid ${c.gold}`, maxWidth: 520 }}>
         <div className="font-mono" style={{ fontSize: 10, color: c.gold, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 8 }}>
           What I do
         </div>

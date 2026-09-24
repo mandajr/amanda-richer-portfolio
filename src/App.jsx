@@ -6,7 +6,26 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('nexus');
+  // Each tab has its own shareable address (e.g. /#work), so a post can link
+  // straight to a page. The hash is read on load and kept in sync after that.
+  const tabIds = ['nexus', 'governance', 'writing', 'art', 'courses', 'tech', 'about', 'work'];
+  const tabFromHash = () => {
+    const h = window.location.hash.slice(1).toLowerCase();
+    return tabIds.includes(h) ? h : 'nexus';
+  };
+  const [activeTab, setActiveTab] = useState(tabFromHash);
+  useEffect(() => {
+    if (activeTab === 'nexus') {
+      if (window.location.hash) window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    } else if (window.location.hash !== `#${activeTab}`) {
+      window.history.replaceState(null, '', `#${activeTab}`);
+    }
+  }, [activeTab]);
+  useEffect(() => {
+    const onHash = () => setActiveTab(tabFromHash());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
   const [selectedNode, setSelectedNode] = useState(null);
   const [selectedThread, setSelectedThread] = useState(null);
   const [mounted, setMounted] = useState(false);
@@ -68,7 +87,7 @@ export default function App() {
       where: 'UN · NHCHC · UNITAR · CSW70 · NAEH',
       threads: ['knowledge', 'climate', 'harmreduction', 'disability'],
       proof: [
-        'UN Commission on the Status of Women (CSW70), 2025 · UNITAR',
+        'UN Commission on the Status of Women (CSW70), 2026 · UNITAR',
         'USICH federal webinar "19 Strategies to Reduce Encampments" — ~2,000 registrants',
       ],
     },
@@ -77,12 +96,12 @@ export default function App() {
       angle: -90 + 5 * (360 / 7), color: c.magenta, tabLink: 'courses', Icon: GraduationCap,
       what: 'Courses, workshops, and one-on-one mentorship for people new to advocacy, NGO staff, students, and researchers.',
       why: 'Knowledge transfer is how this work survives me. Mentorship is how it grows.',
-      where: 'Free beginner courses · workshops · NAEH Advocacy Cohort · ShelterApp volunteers',
+      where: 'Free Rights-Based Practice courses · workshops · NAEH Advocacy Cohort · ShelterApp volunteers',
       threads: ['ai', 'knowledge', 'disability'],
       proof: [
         'Trainings for UW medical residents on serving displaced patients',
         'Rights World — a gamified human-rights learning platform (UDHR, SDGs, UN system)',
-        'Four free beginner courses for advocates',
+        'Eleven free, self-paced Rights-Based Practice courses for advocates, practitioners, and systems leaders',
       ],
     },
     {
@@ -1029,7 +1048,7 @@ export default function App() {
           Learning built for advocates — free, and beyond.
         </div>
         <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, marginTop: 6, lineHeight: 1.5 }}>
-          Four free beginner courses, live now — plus a seven-course Rights-Based Practice platform and Rights World, my gamified human-rights learning app.
+          Eleven free, self-paced Rights-Based Practice courses across three levels, each with quizzes and a certificate, plus Rights World, my gamified human-rights learning app.
         </div>
         <div className="font-mono" style={{ fontSize: 10, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}>
           Visit the course platform <ExternalLink size={13} />

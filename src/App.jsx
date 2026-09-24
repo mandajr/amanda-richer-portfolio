@@ -193,7 +193,7 @@ export default function App() {
   // ─────────────────────────────────────────────
   // Paste the Google Calendar appointment-page link here to turn on the
   // "Book a call" button. Empty = the button emails instead.
-  const bookingUrl = '';
+  const bookingUrl = 'https://calendar.app.google/GA5DcrqpTW5ybU5w5';
 
   const mailto = (subject, prompts) =>
     `mailto:richer.amanda@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(prompts.map(q => `${q}: `).join('\n') + '\n\n')}`;

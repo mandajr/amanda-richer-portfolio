@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import {
   X, ExternalLink, ChevronDown, Mail, Phone, Download,
   PenTool, Mic, GraduationCap, Smartphone, HeartPulse, Landmark, Palette,
+  Handshake, Camera, CalendarDays, ArrowRight,
 } from 'lucide-react';
 
 export default function App() {
@@ -183,6 +184,72 @@ export default function App() {
     'PNW Co-Sheltering Working Group — ecomap + recruitment',
     'TBI & Homelessness research package — governance-ready deliverables',
     'Long-form article on cognitive prosthetics and AI as accessibility',
+  ];
+
+  // ─────────────────────────────────────────────
+  // WORK WITH ME
+  // Four clear offers, one action each. Each button opens an email with the
+  // subject and a few prompts pre-filled, so nobody has to guess what to write.
+  // ─────────────────────────────────────────────
+  // Paste the Google Calendar appointment-page link here to turn on the
+  // "Book a call" button. Empty = the button emails instead.
+  const bookingUrl = '';
+
+  const mailto = (subject, prompts) =>
+    `mailto:richer.amanda@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(prompts.map(q => `${q}: `).join('\n') + '\n\n')}`;
+
+  const offerings = [
+    {
+      id: 'speaking', Icon: Mic, color: c.hotpink,
+      title: 'Speaking & Testimony',
+      bestFor: 'Conferences, UN and government convenings, webinars, and panels.',
+      includes: [
+        'Keynotes, plenaries, and panel discussions',
+        'Subject-matter-expert testimony',
+        'Virtual or in person',
+      ],
+      proof: 'CSW70 · UNITAR · NAEH · a USICH federal webinar with about 2,000 registrants',
+      cta: 'Invite me to speak',
+      href: mailto('Speaking invitation', ['Organization', 'Event and date(s)', 'Audience', 'In person or virtual']),
+    },
+    {
+      id: 'consulting', Icon: Handshake, color: c.gold,
+      title: 'Consulting & Research',
+      bestFor: 'Research teams, agencies, NGOs, and people building tools for the field.',
+      includes: [
+        'Research design and review of materials for displaced populations',
+        'Policy and program advising',
+        'Reviewing apps and services meant for people experiencing homelessness',
+      ],
+      proof: 'UW Center for One Health Research since 2018 · USICH · NAEH · Urban Institute · City of Seattle',
+      cta: 'Start a consulting inquiry',
+      href: mailto('Consulting inquiry', ['Organization', 'What you are working on', 'Timeline']),
+    },
+    {
+      id: 'training', Icon: GraduationCap, color: c.sage,
+      title: 'Training & Workshops',
+      bestFor: 'Health care teams, NGO staff, students, and volunteers.',
+      includes: [
+        'Trauma-informed care and rights-based practice',
+        'One Health and co-sheltering people with their animals',
+        'Serving displaced patients and clients well',
+      ],
+      proof: 'Trainings for UW medical residents · NHCHC and NAEH conference sessions',
+      cta: 'Request a training',
+      href: mailto('Training request', ['Organization', 'Who the training is for', 'Topic', 'Preferred date(s)']),
+    },
+    {
+      id: 'photography', Icon: Camera, color: c.teal,
+      title: 'Photography',
+      bestFor: 'Collectors, organizations, and people with their animals.',
+      includes: [
+        'Prints and select original paintings',
+        'Short portrait and pet sessions',
+      ],
+      proof: 'See the Art page for the work',
+      cta: 'Ask about photography',
+      href: mailto('Photography inquiry', ['Print, original, or session', 'Details']),
+    },
   ];
 
   // Consultant positions — surfaced in the Nexus intro (all of Amanda's
@@ -858,6 +925,15 @@ export default function App() {
         I carry what I know from the frontline into research, policy, and the United
         Nations — and bring the framing back.
       </p>
+      <button onClick={() => { setActiveTab('work'); window.scrollTo(0, 0); }}
+        className="font-mono"
+        style={{
+          marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer',
+          fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
+          color: c.sidebarBg, background: c.gold, border: 'none', padding: '13px 20px', borderRadius: 999,
+        }}>
+        Work With Me <ArrowRight size={14} />
+      </button>
 
       {/* ECOMAP */}
       <div style={{
@@ -959,6 +1035,121 @@ export default function App() {
           Visit the course platform <ExternalLink size={13} />
         </div>
       </a>
+    </div>
+  );
+
+  // ─────────────────────────────────────────────
+  // WORK WITH ME TAB
+  // Built to be easy to take in: three steps, four choices, one button each.
+  // ─────────────────────────────────────────────
+  const WorkTab = () => (
+    <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
+      <TabHeader c={c} label="Work With Me" tagline="Four ways to work together. Pick the one that fits, and send a short note." color={c.gold} />
+
+      {/* how it works */}
+      <ol style={{
+        listStyle: 'none', padding: 0, margin: '24px 0 0',
+        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 10,
+      }}>
+        {[
+          ['Choose', 'Pick what you need below.'],
+          ['Send a note', 'The button opens an email with a few questions filled in.'],
+          ['I reply', 'I answer personally to talk through details.'],
+        ].map(([head, text], i) => (
+          <li key={head} style={{
+            background: c.creamDeep, border: `1px solid ${c.line}`, borderRadius: 12,
+            padding: '14px 16px', display: 'flex', gap: 12, alignItems: 'flex-start',
+          }}>
+            <span className="font-display" style={{
+              width: 28, height: 28, borderRadius: '50%', flexShrink: 0,
+              background: c.gold, color: c.sidebarBg,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 15, fontWeight: 600,
+            }}>{i + 1}</span>
+            <span>
+              <span className="font-body" style={{ display: 'block', fontSize: 15, color: c.ink, fontWeight: 600 }}>{head}</span>
+              <span className="font-body" style={{ display: 'block', fontSize: 13.5, color: c.inkSoft, lineHeight: 1.45, marginTop: 2 }}>{text}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      {/* offerings */}
+      <div style={{ marginTop: 28, display: 'grid', gap: 14 }}>
+        {offerings.map(o => (
+          <section key={o.id} aria-labelledby={`offer-${o.id}`} style={{
+            background: c.cream, border: `1px solid ${c.line}`, borderTop: `3px solid ${o.color}`,
+            borderRadius: 14, padding: '20px 20px 18px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <span style={{
+                width: 40, height: 40, borderRadius: 10, flexShrink: 0,
+                background: `${o.color}22`, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <o.Icon size={21} color={o.color} strokeWidth={1.75} />
+              </span>
+              <h2 id={`offer-${o.id}`} className="font-display" style={{ margin: 0, fontSize: 21, color: c.ink, fontWeight: 500, lineHeight: 1.2 }}>
+                {o.title}
+              </h2>
+            </div>
+
+            <p className="font-body" style={{ fontSize: 14.5, color: c.ink, lineHeight: 1.5, margin: '14px 0 0' }}>
+              <span className="font-mono" style={{ fontSize: 9, color: o.color, textTransform: 'uppercase', letterSpacing: '0.2em', marginRight: 8 }}>Best for</span>
+              {o.bestFor}
+            </p>
+
+            <ul style={{ listStyle: 'none', padding: 0, margin: '12px 0 0' }}>
+              {o.includes.map(item => (
+                <li key={item} className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.45, padding: '4px 0', display: 'flex', gap: 10 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: o.color, marginTop: 8, flexShrink: 0 }} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="font-body" style={{ fontSize: 13, color: c.inkLight, lineHeight: 1.45, marginTop: 10, fontStyle: 'italic' }}>
+              {o.proof}
+            </div>
+
+            <a href={o.href} className="font-mono" style={{
+              marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 8,
+              fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
+              color: c.sidebarBg, background: o.color, padding: '12px 18px', borderRadius: 999,
+              textDecoration: 'none',
+            }}>
+              {o.cta} <ArrowRight size={14} />
+            </a>
+          </section>
+        ))}
+      </div>
+
+      {/* intro call */}
+      <div style={{
+        marginTop: 22, padding: '20px 22px', borderRadius: 16,
+        background: `linear-gradient(135deg, ${c.creamDeep}, ${c.cream})`,
+        border: `1.5px solid ${c.gold}`,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap',
+      }}>
+        <div style={{ flex: '1 1 260px', display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+          <CalendarDays size={24} color={c.gold} strokeWidth={1.75} style={{ flexShrink: 0, marginTop: 2 }} />
+          <div>
+            <div className="font-display" style={{ fontSize: 19, color: c.ink, fontStyle: 'italic', lineHeight: 1.2 }}>
+              Not sure which fits?
+            </div>
+            <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.5, marginTop: 4 }}>
+              {bookingUrl ? 'Book a free 20-minute intro call and we can figure it out together.' : 'Send a quick note and we can set up a free 20-minute intro call.'}
+            </div>
+          </div>
+        </div>
+        <a href={bookingUrl || mailto('Intro call', ['Your name and organization', 'What you would like to talk about', 'A few times that work for you'])}
+          {...(bookingUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          className="font-mono" style={{
+            flexShrink: 0, fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
+            color: c.sidebarBg, background: c.gold, padding: '12px 18px', borderRadius: 999, textDecoration: 'none',
+          }}>
+          {bookingUrl ? 'Book a call' : 'Request a call'}
+        </a>
+      </div>
     </div>
   );
 
@@ -1486,6 +1677,7 @@ export default function App() {
       case 'courses':    return <CoursesTab />;
       case 'tech':       return <TechTab />;
       case 'about':      return <AboutTab />;
+      case 'work':       return <WorkTab />;
       default:           return <NexusTab />;
     }
   };
@@ -1560,12 +1752,26 @@ export default function App() {
                 );
               })}
             </div>
+            {/* Work With Me — the one solid-gold item, so it reads as the primary action */}
+            <button onClick={() => setActiveTab('work')}
+              style={{
+                marginTop: 20, width: '100%', cursor: 'pointer',
+                background: c.gold, border: `1px solid ${c.gold}`,
+                textAlign: 'left', padding: '11px 14px', borderRadius: 8,
+                color: c.sidebarBg, display: 'flex', alignItems: 'center', gap: 8,
+                boxShadow: activeTab === 'work' ? `0 0 0 2px ${c.sidebarBg}, 0 0 0 4px ${c.gold}` : 'none',
+              }}>
+              <Handshake size={14} color={c.sidebarBg} strokeWidth={2} style={{ flexShrink: 0 }} />
+              <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 700, flex: 1 }}>
+                Work With Me
+              </span>
+            </button>
             {/* Courses — set apart below the other tabs, links to the course platform */}
             <a
               href="https://amanda-richer-courses.netlify.app"
               target="_blank" rel="noopener noreferrer"
               style={{
-                marginTop: 16, width: '100%',
+                marginTop: 10, width: '100%',
                 background: 'rgba(220,180,92,0.08)',
                 border: `1px solid ${c.gold}`, cursor: 'pointer',
                 textAlign: 'left', padding: '11px 14px', borderRadius: 8,

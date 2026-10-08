@@ -318,7 +318,7 @@ export default function App() {
         'Designed the interactive "one orientation, seven practices" ecomap',
         'Built, tested, and deployed live to Cloudflare Pages',
       ],
-      link: { label: 'You’re looking at it', url: 'https://amanda-richer-portfolio-git.pages.dev' },
+      link: { label: 'You’re looking at it', url: 'https://amandaricher.com' },
     },
     {
       kind: 'Automation Agent',

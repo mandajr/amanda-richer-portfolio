@@ -42,7 +42,7 @@ $g.DrawString("Displacement Consultant $dot Human Rights & Community Health", $s
 
 # url
 $urlFont = New-Object System.Drawing.Font('Consolas', 19, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Pixel)
-$g.DrawString('amanda-richer-portfolio-git.pages.dev', $urlFont, $goldBrush, 74, 545)
+$g.DrawString('amandaricher.com', $urlFont, $goldBrush, 74, 545)
 
 # save JPEG q90
 $codec = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object { $_.MimeType -eq 'image/jpeg' }

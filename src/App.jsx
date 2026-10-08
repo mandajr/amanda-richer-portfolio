@@ -512,6 +512,9 @@ export default function App() {
   // original paintings. Files live in public/photos/.
   const heroPhoto = { src: '/photos/son-cat.jpg', title: 'Companion', meta: 'Street portrait · Seattle', pos: 'center 20%' };
 
+  // The Rage and Positivity store. Empty shows "Coming soon"; add the address once it's live.
+  const rageAndPositivityUrl = '';
+
   const artSections = [
     {
       id: 'series',
@@ -1416,6 +1419,34 @@ export default function App() {
           </div>
         </div>
       ))}
+
+      {/* Clothing: Rage and Positivity. Set rageAndPositivityUrl once the store is live. */}
+      <div style={{ marginTop: 34 }}>
+        <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.24em', marginBottom: 6 }}>
+          Clothing
+        </div>
+        <div className="font-display" style={{ fontSize: 23, color: c.ink, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.12 }}>
+          Rage and Positivity
+        </div>
+        <p className="font-body" style={{ fontSize: 13.5, color: c.inkSoft, lineHeight: 1.55, margin: '8px 0 0', maxWidth: 520 }}>
+          Rage at the system, paired with the positivity that we can do better. A clothing line for anyone
+          exhausted and still going.
+        </p>
+        {rageAndPositivityUrl ? (
+          <a href={rageAndPositivityUrl} target="_blank" rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 14, padding: '12px 18px',
+              border: `1px solid ${c.gold}`, borderRadius: 12, textDecoration: 'none', color: c.gold,
+            }}>
+            <span className="font-body" style={{ fontSize: 14 }}>Visit the shop</span>
+            <ExternalLink size={15} color={c.gold} />
+          </a>
+        ) : (
+          <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.2em', textTransform: 'uppercase', marginTop: 12 }}>
+            Coming soon
+          </div>
+        )}
+      </div>
       {/* portfolio + inquiry */}
       <div style={{
         marginTop: 36, padding: '18px 20px',

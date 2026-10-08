@@ -1074,7 +1074,7 @@ export default function App() {
 
       {/* COURSES & LEARNING HIGHLIGHT — links to the standalone course platform */}
       <a
-        href="https://amanda-richer-courses.netlify.app"
+        href="https://courses.amandaricher.com"
         target="_blank" rel="noopener noreferrer"
         style={{
           display: 'block', width: '100%', textAlign: 'left', cursor: 'pointer',
@@ -1278,7 +1278,7 @@ export default function App() {
       <TabHeader c={c} label="Courses & Resources" tagline="Free beginner courses for people new to advocacy, and the people who walk alongside them." color={c.sage} />
 
       {/* Link out to the standalone, shareable course platform */}
-      <a href="https://amanda-richer-courses.netlify.app" target="_blank" rel="noopener noreferrer"
+      <a href="https://courses.amandaricher.com" target="_blank" rel="noopener noreferrer"
         style={{
           display: 'flex', alignItems: 'center', gap: 12, marginTop: 20,
           background: `linear-gradient(135deg, ${c.creamDeep}, ${c.cream})`,
@@ -1939,7 +1939,7 @@ export default function App() {
             </button>
             {/* Courses — set apart below the other tabs, links to the course platform */}
             <a
-              href="https://amanda-richer-courses.netlify.app"
+              href="https://courses.amandaricher.com"
               target="_blank" rel="noopener noreferrer"
               style={{
                 marginTop: 10, width: '100%',

@@ -31,6 +31,16 @@ export default function App() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
 
+  // Newest Substack posts, read through /api/substack (functions/api/substack.js),
+  // so the Writing tab stays current without editing the site.
+  const [latestPosts, setLatestPosts] = useState([]);
+  useEffect(() => {
+    fetch('/api/substack')
+      .then(r => (r.ok ? r.json() : { posts: [] }))
+      .then(d => setLatestPosts(Array.isArray(d.posts) ? d.posts : []))
+      .catch(() => setLatestPosts([]));
+  }, []);
+
   // ─────────────────────────────────────────────
   // PALETTE  ·  watercolor + cream
   // ─────────────────────────────────────────────
@@ -398,6 +408,14 @@ export default function App() {
   ];
 
   const proseItems = [
+    {
+      id: 'wildfire',
+      title: 'The Burning Distraction',
+      kind: 'Essay series',
+      blurb: 'Washington’s wildfires, in two parts: the policy decisions behind the burning, then fire on the Colville Reservation in "Scorched Earth and Silence."',
+      status: 'Parts 1 & 2',
+      link: 'https://amandaricher.substack.com/p/the-burning-distraction',
+    },
     {
       id: 'propaganda',
       title: 'Served with a Side of Propaganda',
@@ -1434,7 +1452,57 @@ export default function App() {
     <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
       <TabHeader c={c} label="Writing" tagline="Long-form essays, white papers, and reported journalism." color={c.magenta} />
 
-      <div style={{ marginTop: 24 }}>
+      {/* Everything, one tap away */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 22 }}>
+        <a href="https://amandaricher.substack.com/archive" target="_blank" rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10, padding: '13px 20px',
+            background: c.magenta, border: `1px solid ${c.magenta}`, borderRadius: 12,
+            textDecoration: 'none', color: c.cream,
+          }}>
+          <PenTool size={17} color={c.cream} />
+          <span className="font-body" style={{ fontSize: 14 }}>Read all my writing</span>
+        </a>
+        <a href="https://amandaricher.substack.com/subscribe" target="_blank" rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10, padding: '13px 20px',
+            background: 'transparent', border: `1px solid ${c.magenta}`, borderRadius: 12,
+            textDecoration: 'none', color: c.magenta,
+          }}>
+          <Mail size={17} color={c.magenta} />
+          <span className="font-body" style={{ fontSize: 14 }}>Subscribe free</span>
+        </a>
+      </div>
+
+      {/* Latest: filled automatically from Substack */}
+      {latestPosts.length > 0 && (
+        <div style={{ marginTop: 28 }}>
+          <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
+            Latest on Substack
+          </div>
+          {latestPosts.map(p => (
+            <a key={p.link} href={p.link} target="_blank" rel="noopener noreferrer"
+              style={{
+                display: 'block', padding: '12px 2px', borderBottom: `1px solid ${c.line}`, textDecoration: 'none',
+              }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12 }}>
+                <span className="font-display" style={{ fontSize: 18, color: c.ink, fontStyle: 'italic', lineHeight: 1.25 }}>{p.title}</span>
+                <span className="font-mono" style={{ fontSize: 10, color: c.inkLight, whiteSpace: 'nowrap' }}>
+                  {new Date(p.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
+              </div>
+              {p.subtitle && (
+                <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, marginTop: 3, lineHeight: 1.45 }}>{p.subtitle}</div>
+              )}
+            </a>
+          ))}
+        </div>
+      )}
+
+      <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginTop: 30 }}>
+        Selected essays and reporting
+      </div>
+      <div style={{ marginTop: 12 }}>
         {proseItems.map((p, i) => (
           <a key={p.id}
             href={p.link}

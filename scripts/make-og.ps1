@@ -38,7 +38,7 @@ $g.DrawString('Richer', $nameFont, $goldBrush, 66, 300)
 # subtitle
 $subFont = New-Object System.Drawing.Font('Georgia', 29, [System.Drawing.FontStyle]::Italic, [System.Drawing.GraphicsUnit]::Pixel)
 $dot = [char]0x00B7
-$g.DrawString("Displacement Consultant $dot Human Rights & Community Health", $subFont, $softBrush, 72, 430)
+$g.DrawString("Displacement Consultant $dot Human Rights Advocate $dot Artist", $subFont, $softBrush, 72, 430)
 
 # url
 $urlFont = New-Object System.Drawing.Font('Consolas', 19, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Pixel)

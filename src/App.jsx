@@ -407,6 +407,12 @@ export default function App() {
     { kind: 'Mentorship', text: 'One-on-one mentorship for ShelterApp volunteers, NAEH Advocacy Cohort members, and people new to advocacy grounded in frontline expertise.' },
   ];
 
+  // Full Circle Leadership newsletter, newest first. Add each new issue's public Canva
+  // view link at the top; the newest one is shown on the Writing page.
+  const newsletterIssues = [
+    { label: 'Issue 1', url: 'https://www.canva.com/design/DAHWF05yDFE/yx431DL9u72oEg3CvFqP8Q/view' },
+  ];
+
   const proseItems = [
     {
       id: 'wildfire',
@@ -1529,6 +1535,35 @@ export default function App() {
           ))}
         </div>
       )}
+
+      {/* Monthly newsletter: newest issue readable here, earlier issues listed below it */}
+      <div style={{ marginTop: 30 }}>
+        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 6 }}>
+          Monthly newsletter
+        </div>
+        <div className="font-display" style={{ fontSize: 22, color: c.ink, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.15 }}>
+          Full Circle Leadership: Leading With Purpose
+        </div>
+        <p className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.5, margin: '6px 0 12px' }}>
+          Changing the world after survival, told by the people doing it. {newsletterIssues[0].label}.
+        </p>
+        <div style={{ position: 'relative', width: '100%', paddingTop: '129.5%', borderRadius: 12, overflow: 'hidden', border: `1px solid ${c.line}`, background: c.creamDeep }}>
+          <iframe
+            title={`Full Circle Leadership, ${newsletterIssues[0].label}`}
+            src={`${newsletterIssues[0].url}?embed`}
+            loading="lazy"
+            allowFullScreen
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }} />
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginTop: 10 }}>
+          {newsletterIssues.map((n, i) => (
+            <a key={n.url} href={n.url} target="_blank" rel="noopener noreferrer"
+              className="font-body" style={{ fontSize: 14, color: c.magenta, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+              {i === 0 ? 'Open full size' : n.label} <ExternalLink size={13} color={c.magenta} />
+            </a>
+          ))}
+        </div>
+      </div>
 
       <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginTop: 30 }}>
         Selected essays and reporting

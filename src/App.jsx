@@ -518,8 +518,10 @@ export default function App() {
   // original paintings. Files live in public/photos/.
   const heroPhoto = { src: '/photos/son-cat.jpg', title: 'Companion', meta: 'Street portrait · Seattle', pos: 'center 20%' };
 
-  // The Rage and Positivity store. Empty shows "Coming soon"; add the address once it's live.
-  const rageAndPositivityUrl = '';
+  // The Rage and Positivity site. Set rageAndPositivityShopOpen to true when the store opens,
+  // so the button reads "Visit the shop" instead of "Visit the site".
+  const rageAndPositivityUrl = 'https://rageandpositivity.com';
+  const rageAndPositivityShopOpen = false;
 
   const artSections = [
     {
@@ -1426,7 +1428,7 @@ export default function App() {
         </div>
       ))}
 
-      {/* Clothing: Rage and Positivity. Set rageAndPositivityUrl once the store is live. */}
+      {/* Clothing: Rage and Positivity */}
       <div style={{ marginTop: 34 }}>
         <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.24em', marginBottom: 6 }}>
           Clothing
@@ -1444,7 +1446,7 @@ export default function App() {
               display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 14, padding: '12px 18px',
               border: `1px solid ${c.gold}`, borderRadius: 12, textDecoration: 'none', color: c.gold,
             }}>
-            <span className="font-body" style={{ fontSize: 14 }}>Visit the shop</span>
+            <span className="font-body" style={{ fontSize: 14 }}>{rageAndPositivityShopOpen ? 'Visit the shop' : 'Visit the site (shop coming soon)'}</span>
             <ExternalLink size={15} color={c.gold} />
           </a>
         ) : (

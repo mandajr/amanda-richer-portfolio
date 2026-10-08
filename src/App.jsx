@@ -80,8 +80,8 @@ export default function App() {
       where: 'Substack · Runta News (guest reporter) · op-eds · white papers',
       threads: ['ai', 'knowledge'],
       proof: [
-        '"Served with a Side of Propaganda" — HUD\'s Housing First reversal',
-        '"Historical Déjà Vu" — recycled mechanisms of oppression',
+        '"Served with a Side of Propaganda": HUD\'s Housing First reversal',
+        '"Historical Déjà Vu": recycled mechanisms of oppression',
         'Guest reporting for Runta News (Somali & Muslim communities)',
       ],
       links: [
@@ -92,13 +92,13 @@ export default function App() {
     {
       id: 'speaking', short: 'Speaking', full: 'Public Speaking',
       angle: -90 + 3 * (360 / 7), color: c.hotpink, tabLink: 'governance', Icon: Mic,
-      what: 'Plenaries, panels, and subject-matter-expert testimony at international, national, and local convenings — bringing lived experience into rooms that often exclude it.',
+      what: 'Plenaries, panels, and subject-matter-expert testimony at international, national, and local convenings, bringing frontline expertise into rooms that often exclude it.',
       why: 'Decisions about displaced people happen in rooms most never enter. I enter them, then bring the framing back.',
       where: 'UN · NHCHC · UNITAR · CSW70 · NAEH',
       threads: ['knowledge', 'climate', 'harmreduction', 'disability'],
       proof: [
         'UN Commission on the Status of Women (CSW70), 2026 · UNITAR',
-        'USICH federal webinar "19 Strategies to Reduce Encampments" — ~2,000 registrants',
+        'USICH federal webinar "19 Strategies to Reduce Encampments": about 2,000 registrants',
       ],
     },
     {
@@ -110,7 +110,7 @@ export default function App() {
       threads: ['ai', 'knowledge', 'disability'],
       proof: [
         'Trainings for UW medical residents on serving displaced patients',
-        'Rights World — a gamified human-rights learning platform (UDHR, SDGs, UN system)',
+        'Rights World: a gamified human-rights learning platform (UDHR, SDGs, UN system)',
         'Eleven free, self-paced Rights-Based Practice courses for advocates, practitioners, and systems leaders',
       ],
     },
@@ -118,7 +118,7 @@ export default function App() {
       id: 'tech', short: 'Tech', full: 'Tech for Good',
       angle: -90 + 6 * (360 / 7), color: c.teal, tabLink: 'tech', Icon: Smartphone,
       what: 'Co-creating tools and resource systems that reach people who fall outside the reach of conventional services.',
-      why: 'Tools built without lived expertise repeat the failures of the systems they try to fix.',
+      why: 'Tools built without frontline expertise repeat the failures of the systems they try to fix.',
       where: 'ShelterApp / OutreachApp (co-founder) · WA State resource database',
       threads: ['ai', 'animals', 'harmreduction'],
       proof: [
@@ -133,7 +133,7 @@ export default function App() {
     {
       id: 'onehealth', short: 'One Health', full: 'One Health',
       angle: -90, color: c.sage, tabLink: 'nexus', Icon: HeartPulse,
-      what: 'Consultation and research support at the intersection of human, animal, and environmental health — including co-sheltering for people and their animals.',
+      what: 'Consultation and research support at the intersection of human, animal, and environmental health, including co-sheltering for people and their animals.',
       why: 'Health is shared. People, their animals, and their environments cannot be separated in policy without causing harm.',
       where: 'UW Center for One Health Research · One Health Clinic · PNW Co-Sheltering Working Group',
       threads: ['climate', 'animals', 'harmreduction'],
@@ -150,7 +150,7 @@ export default function App() {
       id: 'governance', short: 'Governance', full: 'Governance & Leadership',
       angle: -90 + (360 / 7), color: c.indigo, tabLink: 'governance', Icon: Landmark,
       what: 'Board, council, and committee leadership shaping policy and program direction across systems serving displaced and unhoused communities.',
-      why: 'Governance is where direction gets set. Showing up there with lived expertise is non-negotiable.',
+      why: 'Governance is where direction gets set. Showing up there with frontline expertise is non-negotiable.',
       where: 'UN NGO Working Group to End Homelessness (Executive Committee; former Chair, Member State Outreach) · NHCHC Board · Chair, SPU Consumer Review Panel · Housing Narrative Lab',
       threads: ['climate', 'animals', 'disability'],
       proof: [
@@ -163,13 +163,13 @@ export default function App() {
     {
       id: 'art', short: 'Art', full: 'Visual Practice',
       angle: -90 + 4 * (360 / 7), color: c.gold, tabLink: 'art', Icon: Palette,
-      what: 'Photography and painting — documentary street work alongside fine-art landscape and wildlife.',
+      what: 'Photography and painting: documentary street work alongside fine-art landscape and wildlife.',
       why: 'Image makes legible what argument cannot. The visual practice and the policy practice are the same orientation, in different languages.',
       where: 'Documentary photography · paintings · commissions',
       threads: ['knowledge'],
       proof: [
         'Documentary photography of people experiencing homelessness and their animals',
-        'Fine-art landscape, macro, and original painting — prints and originals available',
+        'Fine-art landscape, macro, and original painting, with prints and originals available',
       ],
     },
   ];
@@ -178,17 +178,17 @@ export default function App() {
   // separate-looking practices are one orientation. Surfaced when a thread is tapped.
   const threads = [
     { id: 'ai',            label: 'AI',                             color: c.magenta,
-      line: 'AI is a tool I command across the work — building resource platforms and learning games, and accelerating research, analysis, and content.' },
+      line: 'AI is a tool I command across the work: building resource platforms and learning games, and accelerating research, analysis, and content.' },
     { id: 'knowledge',     label: 'Knowledge Transfer',            color: c.gold,
       line: 'None of this survives if it stays with me. Knowledge transfer runs through the teaching, speaking, writing, and visual work.' },
     { id: 'climate',       label: 'Climate & Environment',         color: c.sage,
-      line: 'Displacement, health, and the environment are one system — climate, contaminants, and disasters shape who ends up unhoused and who recovers.' },
+      line: 'Displacement, health, and the environment are one system. Climate, contaminants, and disasters shape who ends up unhoused and who recovers.' },
     { id: 'animals',       label: 'Animals & Co-Sheltering',       color: c.teal,
-      line: 'People and their animals are inseparable, so the work is too — from One Health research to the tools and governance that make pet-inclusive shelter real.' },
+      line: 'People and their animals are inseparable, so the work is too, from One Health research to the tools and governance that make pet-inclusive shelter real.' },
     { id: 'harmreduction', label: 'Harm Reduction',                color: c.hotpink,
-      line: 'Meeting people where they are, without conditions — harm reduction runs through the health work, the policy, and the tools I build.' },
+      line: 'Meeting people where they are, without conditions. Harm reduction runs through the health work, the policy, and the tools I build.' },
     { id: 'disability',    label: 'Disability Advocacy & Education', color: c.indigo,
-      line: 'Disability — including brain injury — is everywhere in homelessness and rarely designed for. I teach it, speak it, and push governance to accommodate it.' },
+      line: 'Disability, including brain injury, is everywhere in homelessness and rarely designed for. I teach it, speak it, and push governance to accommodate it.' },
   ];
 
   // ─────────────────────────────────────────────
@@ -208,10 +208,10 @@ export default function App() {
   // CONTENT DATA
   // ─────────────────────────────────────────────
   const currentlyItems = [
-    'Architecture of Displacement series — federal policy impacts on displaced populations',
+    'Architecture of Displacement series: federal policy impacts on displaced populations',
     'ShelterApp Washington State resource database build-out',
-    'PNW Co-Sheltering Working Group — ecomap + recruitment',
-    'TBI & Homelessness research package — governance-ready deliverables',
+    'PNW Co-Sheltering Working Group: ecomap and recruitment',
+    'TBI & Homelessness research package: governance-ready deliverables',
     'Long-form article on cognitive prosthetics and AI as accessibility',
   ];
 
@@ -288,19 +288,19 @@ export default function App() {
       id: 'uw',
       title: 'UW Center for One Health Research',
       role: 'Displacement Consultant',
-      years: '2018 — Present',
+      years: '2018 to Present',
       what: 'Guide researchers working with displaced populations, review materials designed for unhoused communities, and build pathways between UW and King County service providers.',
     },
     {
       id: 'shelterapp',
       title: 'ShelterApp / OutreachApp',
       role: 'Co-Founder',
-      years: '2018 — Present',
+      years: '2018 to Present',
       what: 'Co-founded a national website and app that removes barriers to resources; continue to guide platform strategy and the Washington State resource database.',
     },
     {
       id: 'spu',
-      title: 'Seattle Public Utilities — Consumer Review Panel',
+      title: 'Seattle Public Utilities: Consumer Review Panel',
       role: 'Chair (formerly Co-Chair)',
       years: 'Present',
       what: 'Chair the panel that advises the utility’s work and its presence within the communities it serves.',
@@ -321,7 +321,7 @@ export default function App() {
   const techProjects = [
     {
       kind: 'Web App',
-      title: 'This site — portfolio & interactive ecomap',
+      title: 'This site: portfolio & interactive ecomap',
       blurb: 'A React single-page app I directed and shipped end-to-end: the interactive ecomap that argues the through-line of my work, deployed live.',
       tools: ['Claude Code', 'React + Vite', 'Cloudflare Pages'],
       proof: [
@@ -332,21 +332,21 @@ export default function App() {
     },
     {
       kind: 'Automation Agent',
-      title: 'ShelterApp — WA resource database & audit agent',
-      blurb: 'A local automation program I built that scans public data, adds missing resources, and audits existing listings across a national homeless-services directory — sharply increasing how many services the team can add and verify.',
+      title: 'ShelterApp: WA resource database & audit agent',
+      blurb: 'A local automation program I built that scans public data, adds missing resources, and audits existing listings across a national homeless-services directory, sharply increasing how many services the team can add and verify.',
       tools: ['Claude Code', 'Python', 'Playwright'],
       proof: [
         'Dramatically increased the team’s capacity to add and verify services',
         'Add + audit across 30,000+ national listings, and growing, with duplicate-safety',
         'Fuzzy entity-matching + geocoding over open data (HRSA, OpenStreetMap)',
-        'Designed the platform’s early empathetic chatbot (2019) — empathy built into the response logic, not just the wording',
+        'Designed the platform’s early empathetic chatbot (2019), with empathy built into the response logic, not just the wording',
       ],
       link: { label: 'Visit ShelterApp', url: 'https://www.shelterapp.org' },
     },
     {
       kind: 'Real-time App',
       title: 'PNW Co-Sheltering ecomap',
-      blurb: 'A live, multi-user relationship map for a multi-state working group — everyone edits one shared map and changes sync instantly.',
+      blurb: 'A live, multi-user relationship map for a multi-state working group: everyone edits one shared map and changes sync instantly.',
       tools: ['Claude Code', 'React', 'Firebase'],
       proof: [
         'Real-time sync via Firestore with anonymous auth',
@@ -368,7 +368,7 @@ export default function App() {
       kind: 'Interactive Simulation',
       badge: 'Base44',
       title: 'End Homelessness',
-      blurb: 'A policy-simulation game: players run a city’s housing levers — development permits, budgets, ordinances — and watch the human consequences unfold. The choice it poses: prioritize profit, or dismantle the barriers to housing.',
+      blurb: 'A policy-simulation game: players run a city’s housing levers (development permits, budgets, ordinances) and watch the human consequences unfold. The choice it poses: prioritize profit, or dismantle the barriers to housing.',
       tools: ['Base44'],
       link: { label: 'Play End Homelessness', url: 'https://shift-structural-systems.base44.app' },
     },
@@ -383,7 +383,7 @@ export default function App() {
     {
       kind: 'Policy Modeling Tool',
       title: 'Kent WA Harm Reduction Ban Simulation',
-      blurb: 'A policy-impact model projecting the public-health, economic, and population effects of a hypothetical 24-month harm-reduction services ban in Kent, WA. Users adjust parameters — naloxone access, treatment expansion, and more — to see effects on overdose deaths, new HIV/HCV cases, and community costs.',
+      blurb: 'A policy-impact model projecting the public-health, economic, and population effects of a hypothetical 24-month harm-reduction services ban in Kent, WA. Users adjust parameters (naloxone access, treatment expansion, and more) to see effects on overdose deaths, new HIV/HCV cases, and community costs.',
       tools: ['Claude Code', 'Netlify'],
       proof: [
         'Built on King County baseline data + peer-reviewed harm-reduction literature',
@@ -395,16 +395,16 @@ export default function App() {
 
   // Free beginner courses — hosted in /public/courses/.
   const courseList = [
-    { slug: 'being-valued', title: 'Being Valued, Not Just Visible', blurb: 'The difference between being included and being used — and what fair value actually looks like.' },
-    { slug: 'trauma-informed-care', title: 'Trauma-Informed Care, In Everyday Life', blurb: 'What trauma actually does, and how to treat people — including yourself — with that in mind.' },
-    { slug: 'lived-experience-to-advocacy', title: 'Lived Experience to Effective Advocacy', blurb: 'Housing is a right, not a report card — turning what you already know into change.' },
+    { slug: 'being-valued', title: 'Being Valued, Not Just Visible', blurb: 'The difference between being included and being used, and what fair value actually looks like.' },
+    { slug: 'trauma-informed-care', title: 'Trauma-Informed Care, In Everyday Life', blurb: 'What trauma actually does, and how to treat people, including yourself, with that in mind.' },
+    { slug: 'lived-experience-to-advocacy', title: 'Lived Experience to Effective Advocacy', blurb: 'Housing is a right, not a report card. Turning what you already know into change.' },
     { slug: 'speaking-up-for-yourself', title: 'Speaking Up for Yourself, Without Fighting Your Own Body', blurb: 'Self-advocacy that works with your nervous system, not against it.' },
   ];
 
   const educationItems = [
-    { kind: 'Resources', text: 'Plain-language explainers on federal policy (OBBBA, FY27 budget, Medicaid changes) accessible to mixed audiences — advocates, frontline workers, and directly impacted people.' },
-    { kind: 'Trainings', text: 'Workshops and presentations at UW, NHCHC and NAEH conferences, UNITAR. Topics include displacement systems, One Health framing, and lived-experience-led research.' },
-    { kind: 'Mentorship', text: 'One-on-one mentorship for ShelterApp volunteers, NAEH Advocacy Cohort members, and people new to lived-experience advocacy.' },
+    { kind: 'Resources', text: 'Plain-language explainers on federal policy (OBBBA, FY27 budget, Medicaid changes) accessible to mixed audiences: advocates, frontline workers, and directly impacted people.' },
+    { kind: 'Trainings', text: 'Workshops and presentations at UW, NHCHC and NAEH conferences, UNITAR. Topics include displacement systems, One Health framing, and research led by people with frontline expertise.' },
+    { kind: 'Mentorship', text: 'One-on-one mentorship for ShelterApp volunteers, NAEH Advocacy Cohort members, and people new to advocacy grounded in frontline expertise.' },
   ];
 
   const proseItems = [
@@ -436,7 +436,7 @@ export default function App() {
       id: 'dejavu',
       title: 'Historical Déjà Vu',
       kind: 'Essay series',
-      blurb: 'Recycled history, homelessness, and poverty — the refurbished mechanisms of oppression. (Two parts.)',
+      blurb: 'Recycled history, homelessness, and poverty: the refurbished mechanisms of oppression. (Two parts.)',
       status: 'Parts 1 & 2',
       link: 'https://amandaricher.substack.com/p/historical-deja-vu',
     },
@@ -444,7 +444,7 @@ export default function App() {
       id: 'sharedhealth',
       title: 'When Health Is Shared',
       kind: 'Essay',
-      blurb: 'One Health, homelessness, and the animals who come with — the human–animal bond on the street.',
+      blurb: 'One Health, homelessness, and the animals who come with: the human-animal bond on the street.',
       status: 'Substack',
       link: 'https://amandaricher.substack.com/p/when-health-is-shared',
     },
@@ -467,8 +467,8 @@ export default function App() {
   ];
 
   const aboutEngagements = [
-    'CSW70 — UN Commission on the Status of Women (presenter)',
-    'UNITAR — United Nations Institute for Training and Research (presenter)',
+    'CSW70: UN Commission on the Status of Women (presenter)',
+    'UNITAR: United Nations Institute for Training and Research (presenter)',
     'NHCHC Annual Conference (presenter)',
     'NAEH National Conference on Ending Homelessness (presenter)',
     'University of Washington research presentations',
@@ -478,13 +478,13 @@ export default function App() {
     {
       org: 'UN NGO Working Group to End Homelessness',
       role: 'Executive Committee · Former Chair, Member State Outreach',
-      years: '2022 — Present',
+      years: '2022 to Present',
       note: 'Serve on the Executive, Advocacy, and VNR sub-committees of a ~30-org ECOSOC-accredited coalition; authored outreach to UN Permanent Missions toward HLPF 2026.',
     },
     {
       org: 'National Health Care for the Homeless Council',
       role: 'Board Member · NCAB Steering Committee',
-      years: '2025 — Present',
+      years: '2025 to Present',
       note: 'National board governance and policy guidance on health care for people experiencing homelessness.',
     },
     {
@@ -502,7 +502,7 @@ export default function App() {
     {
       org: 'Seattle/King County Health Care for the Homeless Network',
       role: 'Former Chair, Governance Council',
-      years: '2022 — 2023',
+      years: '2022 to 2023',
       note: 'Chaired the governance council for the regional Health Care for the Homeless network.',
     },
   ];
@@ -517,7 +517,7 @@ export default function App() {
       id: 'series',
       eyebrow: 'Documentary Series',
       title: 'The Ones Who Stay',
-      statement: 'An ongoing series on the people I work among and the animals who stay beside them through homelessness — the same refusal to look away that drives the policy work. Not for sale.',
+      statement: 'An ongoing series on the people I work among and the animals who stay beside them through homelessness, with the same refusal to look away that drives the policy work. Not for sale.',
       photos: [
         { src: '/photos/seeking-kindness.jpg', title: 'Seeking Kindness', meta: 'Seattle' },
         { src: '/photos/woman-dog.jpg',        title: 'Shared Bowl',      meta: 'Seattle' },
@@ -528,7 +528,7 @@ export default function App() {
       id: 'prints',
       eyebrow: 'Prints Available',
       title: 'Landscape & Nature',
-      statement: 'Macro, landscape, and wildlife — available as prints.',
+      statement: 'Macro, landscape, and wildlife, available as prints.',
       photos: [
         { src: '/photos/lavender.jpg',    title: 'Lavender & Bee', meta: 'Macro' },
         { src: '/photos/arizona.jpg',     title: 'Desert Bloom', meta: 'Arizona' },
@@ -778,7 +778,7 @@ export default function App() {
               padding: '7px 15px', borderRadius: 999,
               letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
             }}>
-              Tap a practice — or a thread to trace it
+              Tap a practice, or a thread to trace it
             </span>
           </div>
         )}
@@ -1081,7 +1081,7 @@ export default function App() {
           </div>
         </div>
         <div className="font-display" style={{ fontSize: 21, color: c.ink, fontWeight: 500, fontStyle: 'italic', lineHeight: 1.15 }}>
-          Learning built for advocates — free, and beyond.
+          Learning built for advocates: free, and beyond.
         </div>
         <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, marginTop: 6, lineHeight: 1.5 }}>
           Eleven free, self-paced Rights-Based Practice courses across three levels, each with quizzes and a certificate, plus Rights World, my gamified human-rights learning app.
@@ -1266,7 +1266,7 @@ export default function App() {
   // ─────────────────────────────────────────────
   const CoursesTab = () => (
     <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
-      <TabHeader c={c} label="Courses & Resources" tagline="Free beginner courses for people new to advocacy — and the people who walk alongside them." color={c.sage} />
+      <TabHeader c={c} label="Courses & Resources" tagline="Free beginner courses for people new to advocacy, and the people who walk alongside them." color={c.sage} />
 
       {/* Link out to the standalone, shareable course platform */}
       <a href="https://amanda-richer-courses.netlify.app" target="_blank" rel="noopener noreferrer"
@@ -1279,10 +1279,10 @@ export default function App() {
         <GraduationCap size={24} color={c.gold} strokeWidth={1.75} style={{ flexShrink: 0 }} />
         <div style={{ flex: 1 }}>
           <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500, fontStyle: 'italic', lineHeight: 1.15 }}>
-            Rights-Based Practice — the full course platform
+            Rights-Based Practice: the full course platform
           </div>
           <div className="font-body" style={{ fontSize: 13, color: c.inkSoft, marginTop: 2 }}>
-            All courses on their own site — open or share it directly.
+            All courses on their own site. Open or share it directly.
           </div>
         </div>
         <ExternalLink size={16} color={c.gold} style={{ flexShrink: 0 }} />
@@ -1355,7 +1355,7 @@ export default function App() {
       <p className="font-body" style={{
         fontSize: 15, color: c.inkSoft, lineHeight: 1.55, marginTop: 18,
       }}>
-        Documentary work alongside fine-art landscape, macro, and original painting — the same
+        Documentary work alongside fine-art landscape, macro, and original painting, the same
         orientation as the policy practice, in a different language: attention turned toward the
         people and places the frame usually leaves out.
       </p>
@@ -1429,7 +1429,7 @@ export default function App() {
           </div>
           <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.5 }}>
             A portfolio of original photography and painting. Prints and select originals are available,
-            and I take a small number of quick portrait and pet sessions — reach out to buy a piece or book a shoot.
+            and I take a small number of quick portrait and pet sessions. Reach out to buy a piece or book a shoot.
           </div>
         </div>
         <a href="mailto:richer.amanda@gmail.com?subject=Photography%20%E2%80%94%20print%2C%20commission%20or%20session"
@@ -1551,15 +1551,15 @@ export default function App() {
           treats human, animal, and environmental wellbeing as fundamentally interconnected.
         </p>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
-          Her expertise comes from two kinds of direct knowledge, built over roughly a decade: frontline work —
-          outreach, supply distribution, and harm-reduction among unhoused communities — and her own experience of
+          Her expertise comes from two kinds of direct knowledge, built over roughly a decade: frontline work
+          (outreach, supply distribution, and harm reduction among unhoused communities) and her own experience of
           street homelessness. Both inform the work; neither is a footnote. It moves across journalism, policy
           writing, governance, embedded consultancy, and visual practice, held together by a single orientation
           toward universal human rights.
         </p>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
           Her visual work, writing, and policy work are not separate disciplines synthesized into a
-          brand — they are expressions of the same orientation, in different languages.
+          brand. They are expressions of the same orientation, in different languages.
         </p>
       </div>
 
@@ -1604,8 +1604,8 @@ export default function App() {
           AI &amp; Technology
         </div>
         <p className="font-body" style={{ fontSize: 14, color: c.ink, lineHeight: 1.55, margin: 0 }}>
-          I build and direct AI-powered tools — resource platforms, a human-rights learning game, and field
-          simulations — and use AI fluently across research, analysis, and communications. Final judgment, voice,
+          I build and direct AI-powered tools (resource platforms, a human-rights learning game, and field
+          simulations) and use AI fluently across research, analysis, and communications. Final judgment, voice,
           and accountability are my own.
         </p>
       </div>
@@ -1668,11 +1668,11 @@ export default function App() {
   // ─────────────────────────────────────────────
   const TechTab = () => (
     <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
-      <TabHeader c={c} label="Tech & Digital Practice" tagline="Working software I direct, test, and ship using AI tools — deployed tools for the field, not prototypes." color={c.coral} />
+      <TabHeader c={c} label="Tech & Digital Practice" tagline="Working software I direct, test, and ship using AI tools: deployed tools for the field, not prototypes." color={c.coral} />
 
       {/* framing */}
       <p className="font-body" style={{ marginTop: 20, fontSize: 15, color: c.ink, lineHeight: 1.6 }}>
-        I build real applications by directing AI tools — making the design and product
+        I build real applications by directing AI tools, making the design and product
         calls, testing, debugging, and deploying. The result is a growing set of working
         tools that serve displaced and unhoused communities and the people who advocate
         alongside them.

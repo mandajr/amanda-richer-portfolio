@@ -44,28 +44,32 @@ export default function App() {
   // ─────────────────────────────────────────────
   // PALETTE  ·  watercolor + cream
   // ─────────────────────────────────────────────
-  // Dark leadership theme — deep navy canvas, cream text, brass-gold accent.
-  // The dark ground reads gallery-sophisticated, makes the photography and the
-  // gold accents pop, and keeps navy-and-gold authority. Node tones are
-  // brightened so they stay legible and vivid against the dark panels.
+  // "Bold artist, softened" (Manda, 2026-10-08: brighter, "a tiny bit dialed
+  // down with softer colors", last name in bluish teal, menu periwinkle). Warm cream pages, periwinkle
+  // menu, sunshine yellow highlights, rose, sage green and teal. Accent tones
+  // are deep enough to read as text on cream.
   const c = {
-    cream: '#0E141F',      // content area / card / node fill (near-black, faint navy)
-    creamDeep: '#141C2A',  // raised panel (ecomap card, etc.)
-    creamShade: '#26303F', // tile gradient / subtle borders
-    coral: '#D88C5A',      // bronze / amber (brightened)
-    hotpink: '#D67E8A',    // rose
-    magenta: '#A091D6',    // lilac
-    teal: '#46A6B4',       // teal
-    gold: '#DCB45C',       // brass gold accent
-    indigo: '#6E97D6',     // steel blue (deep navy reads as this on dark)
-    sage: '#93AC6E',       // olive
-    ink: '#ECEFF4',        // primary light text
-    inkSoft: '#B7C0D0',    // secondary text
-    inkLight: '#828FA6',   // muted labels
-    line: '#283442',       // hairline on near-black
-    sidebarBg: '#080C14',  // deepest — sidebar / page frame (near-black)
-    sidebarText: 'rgba(236,239,244,0.72)',
-    sidebarActive: '#DCB45C', // gold
+    cream: '#FBF6EE',      // content area / card / node fill (warm cream)
+    creamDeep: '#EEF0FA',  // raised panel (soft periwinkle tint)
+    creamShade: '#DFE2F3', // tile gradient / subtle borders
+    coral: '#C7693F',      // terracotta
+    hotpink: '#BF4F75',    // soft raspberry rose
+    magenta: '#7D58A6',    // soft violet
+    teal: '#1F7A8C',       // bluish teal (also the last name)
+    gold: '#A97A14',       // warm mustard: accent text, borders, buttons
+    indigo: '#4A6CAD',     // soft cornflower
+    sage: '#3F805F',       // sage green
+    ink: '#2E2240',        // primary text (deep plum ink)
+    inkSoft: '#4F4560',    // secondary text
+    inkLight: '#776D86',   // muted labels
+    line: '#DCDFF0',       // hairline on cream
+    sidebarBg: '#6670C4',  // periwinkle menu
+    sidebarText: 'rgba(255,255,255,0.82)',
+    sidebarActive: '#F2C94C', // sunshine yellow
+    sun: '#F2C94C',        // button fill (plum text on it reads clearly)
+    frame: '#E9EBF8',
+    nameTeal: '#2399B0',      // last name on cream: bright bluish teal
+    nameTealLight: '#9DE3EF', // same hue, lighter, for the periwinkle menu      // page frame around the app on wide screens
   };
 
   // ─────────────────────────────────────────────
@@ -119,7 +123,7 @@ export default function App() {
       angle: -90 + 6 * (360 / 7), color: c.teal, tabLink: 'tech', Icon: Smartphone,
       what: 'Co-creating tools and resource systems that reach people who fall outside the reach of conventional services.',
       why: 'Tools built without frontline expertise repeat the failures of the systems they try to fix.',
-      where: 'ShelterApp / OutreachApp (co-founder) · WA State resource database',
+      where: 'ShelterApp / OutreachApp (co-founder) · national resource database (US and parts of Canada)',
       threads: ['ai', 'animals', 'harmreduction'],
       proof: [
         'Co-founder, ShelterApp / OutreachApp',
@@ -208,11 +212,9 @@ export default function App() {
   // CONTENT DATA
   // ─────────────────────────────────────────────
   const currentlyItems = [
-    'Architecture of Displacement series: federal policy impacts on displaced populations',
-    'ShelterApp Washington State resource database build-out',
+    'ShelterApp national resource database build-out (US and parts of Canada)',
     'PNW Co-Sheltering Working Group: ecomap and recruitment',
     'TBI & Homelessness research package: governance-ready deliverables',
-    'Long-form article on cognitive prosthetics and AI as accessibility',
   ];
 
   // ─────────────────────────────────────────────
@@ -332,7 +334,7 @@ export default function App() {
     },
     {
       kind: 'Automation Agent',
-      title: 'ShelterApp: WA resource database & audit agent',
+      title: 'ShelterApp: national resource database & audit agent',
       blurb: 'A local automation program I built that scans public data, adds missing resources, and audits existing listings across a national homeless-services directory, sharply increasing how many services the team can add and verify.',
       tools: ['Claude Code', 'Python', 'Playwright'],
       proof: [
@@ -522,6 +524,15 @@ export default function App() {
   // so the button reads "Visit the shop" instead of "Visit the site".
   const rageAndPositivityUrl = 'https://rageandpositivity.com';
   const rageAndPositivityShopOpen = false;
+  // First drop, from the shop (rageandpositivity.com, Oct 2026). Prices must match the store.
+  const rageAndPositivityProducts = [
+    { name: 'Rage & Positivity Tee', price: '$28', img: '/photos/rap-tee-black.jpg',
+      alt: 'Black t-shirt with RAGE + POSITIVITY across the chest and #HUMAN RIGHTS on the sleeve',
+      url: 'https://rageandpositivity.com/product/rage-positivity-tee-black/' },
+    { name: 'Rage & Positivity Hoodie', price: '$45', img: '/photos/rap-hoodie-black.jpg',
+      alt: 'Black hoodie with the Rage and Positivity wordmark',
+      url: 'https://rageandpositivity.com/product/rage-positivity-hoodie-black/' },
+  ];
 
   const artSections = [
     {
@@ -567,7 +578,7 @@ export default function App() {
     @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
 
     *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; overflow-x: hidden; width: 100%; background: ${c.sidebarBg}; }
+    html, body { margin: 0; padding: 0; overflow-x: hidden; width: 100%; background: ${c.frame}; }
 
     .font-display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
     .font-body    { font-family: 'Spectral', Georgia, serif; }
@@ -576,11 +587,12 @@ export default function App() {
     .grain {
       position: absolute; inset: 0; pointer-events: none;
       background-image:
-        radial-gradient(circle at 18% 14%, rgba(46,80,130,0.10), transparent 38%),
-        radial-gradient(circle at 82% 22%, rgba(220,180,92,0.07), transparent 42%),
-        radial-gradient(circle at 24% 78%, rgba(70,166,180,0.07), transparent 44%),
-        radial-gradient(circle at 78% 80%, rgba(46,61,94,0.10), transparent 40%);
-      mix-blend-mode: screen;
+        radial-gradient(circle at 18% 14%, rgba(102,112,196,0.08), transparent 38%),
+        radial-gradient(circle at 82% 22%, rgba(242,201,76,0.12), transparent 42%),
+        radial-gradient(circle at 24% 78%, rgba(31,122,140,0.07), transparent 44%),
+        radial-gradient(circle at 78% 80%, rgba(191,79,117,0.06), transparent 40%);
+      mix-blend-mode: multiply;
+      display: none;               /* flat design: no glow */
     }
 
     @keyframes fadeUp {
@@ -638,7 +650,6 @@ export default function App() {
           </defs>
 
           {/* center halo */}
-          <circle cx={cx} cy={cy} r={180} fill="url(#centerHalo)" />
 
           {/* spokes from center to each node, faint */}
           {nodes.map(n => {
@@ -660,15 +671,15 @@ export default function App() {
           })}
 
           {/* center node */}
-          <circle cx={cx} cy={cy} r={56} fill={c.creamDeep} stroke={c.ink} strokeWidth="1.5" />
+          <circle cx={cx} cy={cy} r={58} fill={c.sidebarBg} />
           <text x={cx} y={cy - 4} textAnchor="middle"
             className="font-display"
-            style={{ fontSize: 16, fill: c.ink, fontWeight: 500, fontStyle: 'italic' }}>
+            style={{ fontSize: 17, fill: '#FFFFFF', fontWeight: 500, fontStyle: 'italic' }}>
             Human
           </text>
           <text x={cx} y={cy + 14} textAnchor="middle"
             className="font-display"
-            style={{ fontSize: 16, fill: c.ink, fontWeight: 500, fontStyle: 'italic' }}>
+            style={{ fontSize: 17, fill: '#FFFFFF', fontWeight: 500, fontStyle: 'italic' }}>
             Rights
           </text>
 
@@ -687,8 +698,6 @@ export default function App() {
               <g key={n.id}
                 onClick={() => { setSelectedNode(n.id); setSelectedThread(null); }}
                 style={{ cursor: 'pointer' }}>
-                <circle cx={x} cy={y} r={nodeR + 16} fill={`url(#halo-${n.id})`}
-                  opacity={dim ? 0.12 : 1} style={{ transition: 'opacity 0.35s ease' }} />
                 {idle && (
                   <circle cx={x} cy={y} r={nodeR} fill="none" stroke={n.color} strokeWidth="2"
                     style={{ transformOrigin: `${x}px ${y}px`, animation: `ringPulse 2.8s ease-out ${i * 0.3}s infinite`, pointerEvents: 'none' }} />
@@ -699,9 +708,9 @@ export default function App() {
                     style={{ pointerEvents: 'none' }} />
                 )}
                 <circle cx={x} cy={y} r={nodeR}
-                  fill={c.cream}
+                  fill={isSelected ? `${n.color}40` : '#FFFFFF'}
                   stroke={n.color}
-                  strokeWidth={isSelected ? 3 : 2}
+                  strokeWidth={isSelected ? 3 : 2.5}
                   opacity={op}
                   style={{ transition: 'opacity 0.35s ease' }}
                 />
@@ -748,9 +757,9 @@ export default function App() {
                   padding: '5px 10px',
                   borderRadius: 999,
                   cursor: 'pointer',
-                  background: active ? t.color : 'transparent',
-                  color: active ? c.sidebarBg : c.inkLight,
-                  border: `1px solid ${active ? t.color : c.line}`,
+                  background: active ? t.color : '#FFFFFF',
+                  color: active ? '#FFFFFF' : c.inkSoft,
+                  border: 'none',
                   transition: 'all 0.25s ease',
                   letterSpacing: '0.18em',
                   fontWeight: active ? 600 : 400,
@@ -765,8 +774,7 @@ export default function App() {
         {selThread && (
           <div style={{
             marginTop: 14, maxWidth: 440, marginLeft: 'auto', marginRight: 'auto',
-            padding: '12px 16px', background: c.creamDeep, borderRadius: 12,
-            borderLeft: `3px solid ${selThread.color}`,
+            padding: '14px 18px', background: `${selThread.color}1F`, borderRadius: 18,
           }}>
             <div className="font-mono" style={{
               fontSize: 9, color: selThread.color, textTransform: 'uppercase',
@@ -785,7 +793,7 @@ export default function App() {
           <div style={{ textAlign: 'center', marginTop: 16 }}>
             <span className="font-mono" style={{
               display: 'inline-block',
-              fontSize: 10, color: c.sidebarBg, background: c.gold,
+              fontSize: 10, color: c.ink, background: c.sun,
               padding: '7px 15px', borderRadius: 999,
               letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
             }}>
@@ -955,28 +963,47 @@ export default function App() {
   // ─────────────────────────────────────────────
   // NEXUS TAB
   // ─────────────────────────────────────────────
-  const NexusTab = () => (
-    <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
-      <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 10 }}>
-        Seattle, WA · She / Her
-      </div>
-      <h1 className="font-display" style={{
-        margin: 0, fontSize: 44, lineHeight: 1.02, fontWeight: 400, color: c.ink, letterSpacing: '-0.01em',
-      }}>
-        Amanda<br />
-        <span style={{ fontStyle: 'italic', color: c.gold }}>Richer</span>
-      </h1>
-      <p className="font-body" style={{
-        marginTop: 12, fontSize: 17, color: c.inkSoft, lineHeight: 1.5,
-      }}>
-        {['Displacement Consultant', 'Human Rights Advocate', 'Artist'].map((t, i) => (
-          <span key={t}>{i > 0 && ' · '}<span style={{ whiteSpace: 'nowrap' }}>{t}</span></span>
-        ))}
-      </p>
+  // Flat, colorful home (Manda, 2026-10-08: "I love the eco map... I don't want it
+  // looking like a resume"). The ecomap is the centerpiece; everything else is soft
+  // color blocks with no rules or side borders.
+  const tint = (hex, a = '1F') => `${hex}${a}`;   // 6-digit hex + alpha
 
-      {/* WHAT I DO — the answer to "so what do you do?", in place of an elevator pitch */}
-      <div style={{ marginTop: 22, paddingLeft: 16, borderLeft: `2px solid ${c.gold}`, maxWidth: 520 }}>
-        <div className="font-mono" style={{ fontSize: 10, color: c.gold, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 8 }}>
+  const NexusTab = () => (
+    <div className="anim-in" style={{ padding: '28px 22px 110px', maxWidth: 760, margin: '0 auto' }}>
+      {/* HERO: name, then straight into the ecomap */}
+      <div style={{ position: 'relative', textAlign: 'center' }}>
+        <h1 className="font-display" style={{
+          position: 'relative', margin: 0, fontSize: 46, lineHeight: 1.02, fontWeight: 400,
+          color: c.ink, letterSpacing: '-0.01em',
+        }}>
+          Amanda <span style={{ fontStyle: 'italic', color: c.nameTeal }}>Richer</span>
+        </h1>
+        <p className="font-body" style={{ position: 'relative', margin: '10px 0 0', fontSize: 17, color: c.inkSoft, lineHeight: 1.5 }}>
+          {['Displacement Consultant', 'Human Rights Advocate', 'Artist'].map((t, i) => (
+            <span key={t}>{i > 0 && ' · '}<span style={{ whiteSpace: 'nowrap' }}>{t}</span></span>
+          ))}
+        </p>
+      </div>
+
+      {/* ECOMAP — the centerpiece */}
+      <div style={{
+        position: 'relative', overflow: 'hidden', marginTop: 22,
+        background: tint(c.sidebarBg, '14'), borderRadius: 28, padding: '22px 12px 22px',
+      }}>
+        <div className="font-display" style={{
+          position: 'relative', fontSize: 22, color: c.ink, fontStyle: 'italic',
+          textAlign: 'center', marginBottom: 4, fontWeight: 400,
+        }}>
+          One orientation, seven practices.
+        </div>
+        <div style={{ position: 'relative', maxWidth: 560, margin: '0 auto' }}>
+          <Ecomap />
+        </div>
+      </div>
+
+      {/* WHAT I DO — a flat sunny block */}
+      <div style={{ marginTop: 22, background: tint(c.sun, '40'), borderRadius: 24, padding: '22px 22px' }}>
+        <div className="font-mono" style={{ fontSize: 10, color: c.ink, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 8, fontWeight: 600 }}>
           What I do
         </div>
         <p className="font-display" style={{ margin: 0, fontSize: 23, lineHeight: 1.3, color: c.ink, fontWeight: 400 }}>
@@ -990,114 +1017,79 @@ export default function App() {
         <p className="font-body" style={{ margin: '10px 0 0', fontSize: 16, lineHeight: 1.6, color: c.inkSoft }}>
           It's the same way One Health sees the world: nothing stands alone.
         </p>
-      </div>
-      <button onClick={() => { setActiveTab('work'); window.scrollTo(0, 0); }}
-        className="font-mono"
-        style={{
-          marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer',
-          fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
-          color: c.sidebarBg, background: c.gold, border: 'none', padding: '13px 20px', borderRadius: 999,
-        }}>
-        Work With Me <ArrowRight size={14} />
-      </button>
-
-      {/* ECOMAP */}
-      <div style={{
-        marginTop: 48,
-        background: c.creamDeep,
-        borderRadius: 16,
-        padding: '28px 16px 20px',
-        border: `1px solid ${c.creamShade}`,
-      }}>
-        <div className="font-mono" style={{
-          fontSize: 10, color: c.inkLight, letterSpacing: '0.28em',
-          textTransform: 'uppercase', marginBottom: 4, textAlign: 'center',
-        }}>
-          The Work
-        </div>
-        <div className="font-display" style={{
-          fontSize: 20, color: c.ink, fontStyle: 'italic',
-          textAlign: 'center', marginBottom: 8, fontWeight: 400,
-        }}>
-          One orientation, seven practices.
-        </div>
-        <div style={{ maxWidth: 420, margin: '0 auto' }}>
-          <Ecomap />
-        </div>
-      </div>
-
-      {/* CONSULTANCY — current engagements */}
-      <div style={{ marginTop: 40 }}>
-        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
-          Current Engagements
-        </div>
-        {consultantPositions.map((p) => (
-          <div key={p.id} style={{
-            background: c.cream, border: `1px solid ${c.line}`, borderRadius: 14,
-            padding: '16px', marginBottom: 10, borderLeft: `3px solid ${c.gold}`,
+        <button onClick={() => { setActiveTab('work'); window.scrollTo(0, 0); }}
+          className="font-mono"
+          style={{
+            marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer',
+            fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
+            color: '#FFFFFF', background: c.sidebarBg, border: 'none', padding: '13px 20px', borderRadius: 999,
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
-              <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
-                {p.role}
+          Work With Me <ArrowRight size={14} />
+        </button>
+      </div>
+
+      {/* CURRENT ENGAGEMENTS — flat color tiles */}
+      <div className="font-display" style={{ fontSize: 22, color: c.ink, fontStyle: 'italic', margin: '34px 0 12px' }}>
+        Current engagements
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
+        {consultantPositions.map((p, i) => {
+          const col = [c.teal, c.hotpink, c.indigo, c.sage, c.coral][i % 5];
+          return (
+            <div key={p.id} style={{ background: tint(col, '1C'), borderRadius: 20, padding: '18px' }}>
+              <div className="font-mono" style={{ fontSize: 9, color: col, textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 600 }}>
+                {p.role} · {p.years}
               </div>
-              <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, letterSpacing: '0.12em', flexShrink: 0 }}>
-                {p.years}
+              <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500, lineHeight: 1.2, marginTop: 6 }}>
+                {p.title}
               </div>
+              <p className="font-body" style={{ fontSize: 13.5, color: c.inkSoft, lineHeight: 1.5, margin: '6px 0 0' }}>
+                {p.what}
+              </p>
             </div>
-            <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500, lineHeight: 1.2, marginTop: 4 }}>
-              {p.title}
-            </div>
-            <p className="font-body" style={{ fontSize: 13.5, color: c.inkSoft, lineHeight: 1.5, margin: '6px 0 0' }}>
-              {p.what}
-            </p>
+          );
+        })}
+      </div>
+
+      {/* CURRENTLY — soft chips */}
+      <div className="font-display" style={{ fontSize: 22, color: c.ink, fontStyle: 'italic', margin: '34px 0 12px' }}>
+        Currently
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {currentlyItems.map((item, i) => (
+          <div key={i} className="font-body" style={{
+            fontSize: 14.5, color: c.ink, lineHeight: 1.45, padding: '12px 16px',
+            background: tint([c.sun, c.teal, c.sidebarBg, c.hotpink][i % 4], i % 4 === 0 ? '38' : '17'),
+            borderRadius: 16,
+          }}>
+            {item}
           </div>
         ))}
       </div>
 
-      {/* CURRENTLY — active projects */}
-      <div style={{ marginTop: 34 }}>
-        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
-          Currently
-        </div>
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-          {currentlyItems.map((item, i) => (
-            <li key={i} className="font-body" style={{
-              fontSize: 14, color: c.ink, lineHeight: 1.45,
-              padding: '10px 0',
-              borderBottom: i < currentlyItems.length - 1 ? `1px solid ${c.line}` : 'none',
-              display: 'flex', gap: 12,
-            }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.teal, marginTop: 9, flexShrink: 0 }} />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* COURSES & LEARNING HIGHLIGHT — links to the standalone course platform */}
+      {/* COURSES — a flat green block */}
       <a
         href="https://courses.amandaricher.com"
         target="_blank" rel="noopener noreferrer"
         style={{
+          position: 'relative', overflow: 'hidden',
           display: 'block', width: '100%', textAlign: 'left', cursor: 'pointer',
           marginTop: 34, textDecoration: 'none',
-          background: `linear-gradient(135deg, ${c.creamDeep}, ${c.cream})`,
-          border: `1.5px solid ${c.gold}`,
-          borderRadius: 16, padding: '22px 22px',
+          background: tint(c.sage, '22'), borderRadius: 24, padding: '22px 22px',
         }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-          <GraduationCap size={26} color={c.gold} strokeWidth={1.75} style={{ flexShrink: 0 }} />
-          <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
+        <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+          <GraduationCap size={26} color={c.sage} strokeWidth={1.75} style={{ flexShrink: 0 }} />
+          <div className="font-mono" style={{ fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em', fontWeight: 600 }}>
             Teaching &amp; Courses
           </div>
         </div>
-        <div className="font-display" style={{ fontSize: 21, color: c.ink, fontWeight: 500, fontStyle: 'italic', lineHeight: 1.15 }}>
+        <div className="font-display" style={{ position: 'relative', fontSize: 21, color: c.ink, fontWeight: 500, fontStyle: 'italic', lineHeight: 1.15 }}>
           Learning built for advocates: free, and beyond.
         </div>
-        <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, marginTop: 6, lineHeight: 1.5 }}>
+        <div className="font-body" style={{ position: 'relative', fontSize: 14, color: c.inkSoft, marginTop: 6, lineHeight: 1.5 }}>
           Eleven free, self-paced Rights-Based Practice courses across three levels, each with quizzes and a certificate, plus Rights World, my gamified human-rights learning app.
         </div>
-        <div className="font-mono" style={{ fontSize: 10, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div className="font-mono" style={{ position: 'relative', fontSize: 10, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6, fontWeight: 600 }}>
           Visit the course platform <ExternalLink size={13} />
         </div>
       </a>
@@ -1128,7 +1120,7 @@ export default function App() {
           }}>
             <span className="font-display" style={{
               width: 28, height: 28, borderRadius: '50%', flexShrink: 0,
-              background: c.gold, color: c.sidebarBg,
+              background: c.sun, color: c.ink,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: 15, fontWeight: 600,
             }}>{i + 1}</span>
@@ -1180,7 +1172,7 @@ export default function App() {
             <a href={o.href} className="font-mono" style={{
               marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 8,
               fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
-              color: c.sidebarBg, background: o.color, padding: '12px 18px', borderRadius: 999,
+              color: '#FFFFFF', background: o.color, padding: '12px 18px', borderRadius: 999,
               textDecoration: 'none',
             }}>
               {o.cta} <ArrowRight size={14} />
@@ -1211,7 +1203,7 @@ export default function App() {
           {...(bookingUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           className="font-mono" style={{
             flexShrink: 0, fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
-            color: c.sidebarBg, background: c.gold, padding: '12px 18px', borderRadius: 999, textDecoration: 'none',
+            color: c.ink, background: c.sun, padding: '12px 18px', borderRadius: 999, textDecoration: 'none',
           }}>
           {bookingUrl ? 'Book a call' : 'Request a call'}
         </a>
@@ -1229,8 +1221,8 @@ export default function App() {
       <div style={{ marginTop: 28 }}>
         {governanceRoles.map((g, i) => (
           <div key={i} style={{
-            background: c.cream, border: `1px solid ${c.line}`, borderRadius: 14,
-            padding: '16px', marginBottom: 10, borderLeft: `3px solid ${c.indigo}`,
+            background: `${c.indigo}17`, borderRadius: 20,
+            padding: '18px', marginBottom: 12,
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
               <div className="font-mono" style={{ fontSize: 9, color: c.indigo, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
@@ -1341,8 +1333,8 @@ export default function App() {
         </div>
         {educationItems.map((e, i) => (
           <div key={i} style={{
-            background: c.creamDeep, padding: '14px 16px', borderRadius: 12,
-            marginBottom: 10, borderLeft: `3px solid ${c.sage}`,
+            background: `${c.sage}1C`, padding: '16px 18px', borderRadius: 20,
+            marginBottom: 12,
           }}>
             <div className="font-mono" style={{ fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 6 }}>
               {e.kind}
@@ -1430,7 +1422,7 @@ export default function App() {
 
       {/* Clothing: Rage and Positivity */}
       <div style={{ marginTop: 34 }}>
-        <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.24em', marginBottom: 6 }}>
+        <div className="font-mono" style={{ fontSize: 9, color: c.coral, textTransform: 'uppercase', letterSpacing: '0.24em', marginBottom: 6, fontWeight: 600 }}>
           Clothing
         </div>
         <div className="font-display" style={{ fontSize: 23, color: c.ink, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.12 }}>
@@ -1440,20 +1432,37 @@ export default function App() {
           Rage at the system, paired with the positivity that we can do better. A clothing line for anyone
           exhausted and still going.
         </p>
-        {rageAndPositivityUrl ? (
-          <a href={rageAndPositivityUrl} target="_blank" rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 14, padding: '12px 18px',
-              border: `1px solid ${c.gold}`, borderRadius: 12, textDecoration: 'none', color: c.gold,
-            }}>
-            <span className="font-body" style={{ fontSize: 14 }}>{rageAndPositivityShopOpen ? 'Visit the shop' : 'Visit the site (shop coming soon)'}</span>
-            <ExternalLink size={15} color={c.gold} />
-          </a>
-        ) : (
-          <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.2em', textTransform: 'uppercase', marginTop: 12 }}>
-            Coming soon
-          </div>
-        )}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 14, marginTop: 16 }}>
+          {rageAndPositivityProducts.map(prod => (
+            <a key={prod.name} href={prod.url} target="_blank" rel="noopener noreferrer"
+              style={{ display: 'block', textDecoration: 'none', background: `${c.coral}14`, borderRadius: 20, overflow: 'hidden' }}>
+              <img src={prod.img} alt={prod.alt} loading="lazy"
+                style={{ width: '100%', aspectRatio: '1 / 1', objectFit: 'cover', display: 'block' }} />
+              <div style={{ padding: '12px 16px 16px' }}>
+                <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500 }}>{prod.name}</div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 8, gap: 8 }}>
+                  <span className="font-body" style={{ fontSize: 15, color: c.ink }}>{prod.price}</span>
+                  <span className="font-mono" style={{
+                    fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
+                    padding: '7px 12px', borderRadius: 999,
+                    background: rageAndPositivityShopOpen ? c.sun : '#FFFFFF', color: c.ink,
+                  }}>
+                    {rageAndPositivityShopOpen ? 'Buy now' : 'Coming soon'}
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+        <a href={rageAndPositivityUrl} target="_blank" rel="noopener noreferrer"
+          className="font-mono"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 14,
+            fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
+            color: c.coral, textDecoration: 'none',
+          }}>
+          {rageAndPositivityShopOpen ? 'See the whole shop' : 'Visit Rage and Positivity (shop opening soon)'} <ExternalLink size={13} />
+        </a>
       </div>
       {/* portfolio + inquiry */}
       <div style={{
@@ -1475,7 +1484,7 @@ export default function App() {
           className="font-mono"
           style={{
             flexShrink: 0, fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase',
-            color: c.sidebarBg, background: c.gold, padding: '11px 18px', borderRadius: 999,
+            color: c.ink, background: c.sun, padding: '11px 18px', borderRadius: 999,
             textDecoration: 'none', fontWeight: 600,
           }}>
           Inquire / Book
@@ -1663,10 +1672,9 @@ export default function App() {
       {/* AI Working Standards */}
       <div style={{
         marginTop: 30,
-        background: c.creamDeep,
-        padding: '16px 18px',
-        borderRadius: 12,
-        borderLeft: `3px solid ${c.magenta}`,
+        background: `${c.magenta}17`,
+        padding: '18px 20px',
+        borderRadius: 20,
       }}>
         <div className="font-mono" style={{ fontSize: 9, color: c.magenta, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 8 }}>
           AI &amp; Technology
@@ -1767,9 +1775,8 @@ export default function App() {
       <div style={{ marginTop: 28 }}>
         {techProjects.map((p, i) => (
           <div key={i} style={{
-            background: c.cream, border: `1px solid ${c.line}`, borderRadius: 14,
-            padding: '16px', marginBottom: 10,
-            borderLeft: `3px solid ${p.draft ? c.gold : c.coral}`,
+            background: `${p.draft ? c.sun : c.coral}${p.draft ? '33' : '17'}`, borderRadius: 20,
+            padding: '18px', marginBottom: 12,
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10 }}>
               <div className="font-mono" style={{ fontSize: 9, color: c.coral, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
@@ -1856,7 +1863,7 @@ export default function App() {
   };
 
   return (
-    <div style={{ background: c.sidebarBg, minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
+    <div style={{ background: c.frame, minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
       <style>{fontStack}</style>
       <div className="grain" />
 
@@ -1896,7 +1903,7 @@ export default function App() {
             <div className="font-display" style={{ fontSize: 19, color: 'rgba(244,240,234,0.9)', fontStyle: 'italic', fontWeight: 500, marginBottom: 2 }}>
               Amanda
             </div>
-            <div className="font-display" style={{ fontSize: 19, color: c.sidebarActive, fontStyle: 'italic', fontWeight: 500, marginBottom: 36 }}>
+            <div className="font-display" style={{ fontSize: 19, color: c.nameTealLight, fontStyle: 'italic', fontWeight: 500, marginBottom: 36 }}>
               Richer
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -1929,12 +1936,12 @@ export default function App() {
             <button onClick={() => setActiveTab('work')}
               style={{
                 marginTop: 20, width: '100%', cursor: 'pointer',
-                background: c.gold, border: `1px solid ${c.gold}`,
+                background: c.sun, border: `1px solid ${c.sun}`,
                 textAlign: 'left', padding: '11px 14px', borderRadius: 8,
-                color: c.sidebarBg, display: 'flex', alignItems: 'center', gap: 8,
-                boxShadow: activeTab === 'work' ? `0 0 0 2px ${c.sidebarBg}, 0 0 0 4px ${c.gold}` : 'none',
+                color: c.ink, display: 'flex', alignItems: 'center', gap: 8,
+                boxShadow: activeTab === 'work' ? `0 0 0 2px ${c.sidebarBg}, 0 0 0 4px ${c.sun}` : 'none',
               }}>
-              <Handshake size={14} color={c.sidebarBg} strokeWidth={2} style={{ flexShrink: 0 }} />
+              <Handshake size={14} color={c.ink} strokeWidth={2} style={{ flexShrink: 0 }} />
               <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 700, flex: 1 }}>
                 Work With Me
               </span>
@@ -1945,20 +1952,20 @@ export default function App() {
               target="_blank" rel="noopener noreferrer"
               style={{
                 marginTop: 10, width: '100%',
-                background: 'rgba(220,180,92,0.08)',
-                border: `1px solid ${c.gold}`, cursor: 'pointer',
+                background: 'rgba(255,255,255,0.16)',
+                border: '1px solid rgba(255,255,255,0.85)', cursor: 'pointer',
                 textAlign: 'left', padding: '11px 14px', borderRadius: 8,
-                color: c.gold, transition: 'all 0.18s ease', textDecoration: 'none',
+                color: '#FFFFFF', transition: 'all 0.18s ease', textDecoration: 'none',
                 display: 'flex', alignItems: 'center', gap: 8,
               }}>
-              <GraduationCap size={14} color={c.gold} strokeWidth={2} style={{ flexShrink: 0 }} />
+              <GraduationCap size={14} color="#FFFFFF" strokeWidth={2} style={{ flexShrink: 0 }} />
               <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 600, flex: 1 }}>
                 Courses
               </span>
-              <ExternalLink size={12} color={c.gold} style={{ flexShrink: 0 }} />
+              <ExternalLink size={12} color="#FFFFFF" style={{ flexShrink: 0 }} />
             </a>
           </div>
-          <div className="font-mono" style={{ fontSize: 9, color: 'rgba(244,240,234,0.35)', letterSpacing: '0.14em', lineHeight: 1.8, textTransform: 'uppercase' }}>
+          <div className="font-mono" style={{ fontSize: 9, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.14em', lineHeight: 1.8, textTransform: 'uppercase' }}>
             Seattle, WA<br />
             She / Her
           </div>
@@ -2028,7 +2035,7 @@ function Section({ c, label, body, accent }) {
       <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 6 }}>
         {label}
       </div>
-      <div className="font-body" style={{ fontSize: 14.5, color: c.ink, lineHeight: 1.55, paddingLeft: 10, borderLeft: `2px solid ${accent}` }}>
+      <div className="font-body" style={{ fontSize: 14.5, color: c.ink, lineHeight: 1.55, padding: '10px 14px', background: `${accent}1A`, borderRadius: 14 }}>
         {body}
       </div>
     </div>
@@ -2037,18 +2044,18 @@ function Section({ c, label, body, accent }) {
 
 function TabHeader({ c, label, tagline, color }) {
   return (
-    <div>
-      <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 10 }}>
+    <div style={{ position: 'relative' }}>
+      <div className="font-mono" style={{ position: 'relative', fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 10 }}>
         Section · {label}
       </div>
       <h2 className="font-display" style={{
-        margin: 0, fontSize: 36, fontWeight: 400, color: c.ink, letterSpacing: '-0.01em',
+        position: 'relative', margin: 0, fontSize: 36, fontWeight: 400, color: c.ink, letterSpacing: '-0.01em',
         fontStyle: 'italic',
       }}>
         {label}
       </h2>
-      <div style={{ width: 40, height: 2, background: color, marginTop: 10, marginBottom: 14 }} />
-      <p className="font-body" style={{ fontSize: 15, color: c.inkSoft, lineHeight: 1.55, margin: 0, maxWidth: 360 }}>
+      <div style={{ height: 14 }} />
+      <p className="font-body" style={{ position: 'relative', fontSize: 15, color: c.inkSoft, lineHeight: 1.55, margin: 0, maxWidth: 360 }}>
         {tagline}
       </p>
     </div>

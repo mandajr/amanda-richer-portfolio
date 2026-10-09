@@ -1,5 +1,5 @@
 # Generates public/og-image.jpg (1200x630) — the social share card.
-# A clean branded card (navy + brass gold, name + title), no photo — avoids
+# A clean branded card (cream + periwinkle + teal, name + title), no photo — avoids
 # awkward photo crops and matches the site. GDI+ (System.Drawing); no native deps.
 Add-Type -AssemblyName System.Drawing
 
@@ -12,37 +12,34 @@ $g = [System.Drawing.Graphics]::FromImage($bmp)
 $g.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
 $g.TextRenderingHint = [System.Drawing.Text.TextRenderingHint]::AntiAliasGridFit
 
-# background: diagonal navy gradient
+# Flat design to match the site (2026-10-08): cream card, periwinkle band like
+# the menu, last name in bluish teal, sunshine pill for the address.
 $rect = New-Object System.Drawing.Rectangle 0, 0, $W, $H
-$navy1 = [System.Drawing.Color]::FromArgb(8, 12, 20)     # #080C14
-$navy2 = [System.Drawing.Color]::FromArgb(20, 28, 42)    # #141C2A
-$bg = New-Object System.Drawing.Drawing2D.LinearGradientBrush($rect, $navy1, $navy2, 55)
-$g.FillRectangle($bg, $rect)
+$g.FillRectangle((New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(251, 246, 238))), $rect)   # #FBF6EE
+$g.FillRectangle((New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(102, 112, 196))), 0, 0, 36, $H)   # #6670C4 band
 
-$gold  = [System.Drawing.Color]::FromArgb(220, 180, 92)
-$cream = [System.Drawing.Color]::FromArgb(236, 239, 244)
-$soft  = [System.Drawing.Color]::FromArgb(183, 192, 208)
-$goldBrush  = New-Object System.Drawing.SolidBrush $gold
-$creamBrush = New-Object System.Drawing.SolidBrush $cream
-$softBrush  = New-Object System.Drawing.SolidBrush $soft
+$ink   = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(46, 34, 64))     # #2E2240
+$teal  = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(35, 153, 176))   # #2399B0
+$soft  = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(79, 69, 96))     # #4F4560
+$sun   = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(242, 201, 76))   # #F2C94C
 
-# short gold rule
-$goldPen = New-Object System.Drawing.Pen $gold, 3
-$g.DrawLine($goldPen, 74, 182, 136, 182)
+# name (stacked, italic serif): Amanda J. / Richer, Richer in teal
+$nameFont = New-Object System.Drawing.Font('Georgia', 100, [System.Drawing.FontStyle]::Italic, [System.Drawing.GraphicsUnit]::Pixel)
+$g.DrawString('Amanda J.', $nameFont, $ink, 96, 130)
+$g.DrawString('Richer', $nameFont, $teal, 96, 235)
 
-# name (stacked, italic serif) — Amanda / Richer, Richer in gold
-$nameFont = New-Object System.Drawing.Font('Georgia', 92, [System.Drawing.FontStyle]::Italic, [System.Drawing.GraphicsUnit]::Pixel)
-$g.DrawString('Amanda J.', $nameFont, $creamBrush, 66, 205)
-$g.DrawString('Richer', $nameFont, $goldBrush, 66, 300)
-
-# subtitle
-$subFont = New-Object System.Drawing.Font('Georgia', 29, [System.Drawing.FontStyle]::Italic, [System.Drawing.GraphicsUnit]::Pixel)
+# subtitle (matches the site heading)
+$subFont = New-Object System.Drawing.Font('Georgia', 30, [System.Drawing.FontStyle]::Italic, [System.Drawing.GraphicsUnit]::Pixel)
 $dot = [char]0x00B7
-$g.DrawString("Displacement Consultant $dot Human Rights Advocate $dot Artist", $subFont, $softBrush, 72, 430)
+$g.DrawString("Displacement Consultant $dot Human Rights Advocate $dot Artist", $subFont, $soft, 102, 380)
 
-# url
-$urlFont = New-Object System.Drawing.Font('Consolas', 19, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Pixel)
-$g.DrawString('amandaricher.com', $urlFont, $goldBrush, 74, 545)
+# address in a sunshine pill
+$urlFont = New-Object System.Drawing.Font('Consolas', 22, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Pixel)
+$pill = New-Object System.Drawing.Drawing2D.GraphicsPath
+$px = 102; $py = 488; $pw = 268; $ph = 54; $d = $ph
+$pill.AddArc($px, $py, $d, $d, 90, 180); $pill.AddArc($px + $pw - $d, $py, $d, $d, 270, 180); $pill.CloseFigure()
+$g.FillPath($sun, $pill)
+$g.DrawString('amandaricher.com', $urlFont, $ink, 122, 501)
 
 # save JPEG q90
 $codec = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object { $_.MimeType -eq 'image/jpeg' }

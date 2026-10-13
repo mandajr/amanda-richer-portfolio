@@ -1980,6 +1980,24 @@ export default function App() {
       {/* bottom sheet for ecomap */}
       <NodeSheet />
 
+      {/* Work With Me — floating button on mobile, so it's reachable from every tab */}
+      {activeTab !== 'work' && (
+        <button className="mobile-bottom-nav" onClick={() => setActiveTab('work')}
+          aria-label="Work With Me"
+          style={{
+            position: 'fixed', right: 14, bottom: 78, zIndex: 41,
+            background: c.sun, border: 'none', borderRadius: 999, cursor: 'pointer',
+            padding: '10px 16px', color: c.ink,
+            display: 'flex', alignItems: 'center', gap: 7,
+            boxShadow: '0 4px 14px rgba(0,0,0,0.18)',
+          }}>
+          <Handshake size={15} color={c.ink} strokeWidth={2} />
+          <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.16em', fontWeight: 700 }}>
+            Work With Me
+          </span>
+        </button>
+      )}
+
       {/* bottom nav — mobile only */}
       <div className="mobile-bottom-nav" style={{
         position: 'fixed', bottom: 0, left: 0, right: 0,

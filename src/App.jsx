@@ -524,15 +524,10 @@ export default function App() {
   // so the button reads "Visit the shop" instead of "Visit the site".
   const rageAndPositivityUrl = 'https://rageandpositivity.com';
   const rageAndPositivityShopOpen = false;
-  // First drop, from the shop (rageandpositivity.com, Oct 2026). Prices must match the store.
-  const rageAndPositivityProducts = [
-    { name: 'Rage & Positivity Tee', price: '$28', img: '/photos/rap-tee-black.jpg',
-      alt: 'Black t-shirt with RAGE + POSITIVITY across the chest and #HUMAN RIGHTS on the sleeve',
-      url: 'https://rageandpositivity.com/product/rage-positivity-tee-black/' },
-    { name: 'Rage & Positivity Hoodie', price: '$45', img: '/photos/rap-hoodie-black.jpg',
-      alt: 'Black hoodie with the Rage and Positivity wordmark',
-      url: 'https://rageandpositivity.com/product/rage-positivity-hoodie-black/' },
-  ];
+  // First drop, from the shop (rageandpositivity.com). Prices must match the store.
+  // Empty until the Printful-linked products have their final links (the old tee and
+  // black hoodie were retired Oct 2026 and their pages 404). Fill before the Oct 17 reveal.
+  const rageAndPositivityProducts = [];
 
   const artSections = [
     {

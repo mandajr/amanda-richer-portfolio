@@ -523,11 +523,24 @@ export default function App() {
   // The Rage and Positivity site. Set rageAndPositivityShopOpen to true when the store opens,
   // so the button reads "Visit the shop" instead of "Visit the site".
   const rageAndPositivityUrl = 'https://rageandpositivity.com';
-  const rageAndPositivityShopOpen = false;
-  // First drop, from the shop (rageandpositivity.com). Prices must match the store.
-  // Empty until the Printful-linked products have their final links (the old tee and
-  // black hoodie were retired Oct 2026 and their pages 404). Fill before the Oct 17 reveal.
-  const rageAndPositivityProducts = [];
+  const rageAndPositivityShopOpen = true;
+  // First drop, from the shop (rageandpositivity.com, checkout open Oct 18 2026). Prices must
+  // match the store. Photos are the store's Printful mockups. The latte mug ($18) waits for a
+  // front-facing photo (the store's only mockup shows the design cut off at the edge).
+  const rageAndPositivityProducts = [
+    { name: 'Soft Hoodie', price: 'From $60', img: '/photos/rap-soft-hoodie.jpg',
+      alt: 'Dusty rose hoodie with the Rage + Positivity wordmark above the fire and flower characters holding hands',
+      url: 'https://rageandpositivity.com/product/rage-positivity-soft-hoodie-light-colors/' },
+    { name: 'Cropped Hoodie', price: 'From $55', img: '/photos/rap-cropped-hoodie.jpg',
+      alt: 'Black cropped hoodie with the wordmark in red, green and yellow above the fire and flower characters',
+      url: 'https://rageandpositivity.com/product/rage-positivity-cropped-hoodie-black-storm-color-print/' },
+    { name: 'Characters Beanie', price: '$32', img: '/photos/rap-characters-beanie.jpg',
+      alt: 'Black cuffed beanie with the fire and flower characters embroidered in full color',
+      url: 'https://rageandpositivity.com/product/rage-positivity-characters-beanie-embroidered-full-color/' },
+    { name: 'Wordmark Beanie', price: '$28', img: '/photos/rap-wordmark-beanie.jpg',
+      alt: 'Grey cuffed beanie with the Rage + Positivity wordmark embroidered in black',
+      url: 'https://rageandpositivity.com/product/rage-positivity-embroidered-beanie/' },
+  ];
 
   const artSections = [
     {
@@ -1424,8 +1437,8 @@ export default function App() {
           Rage and Positivity
         </div>
         <p className="font-body" style={{ fontSize: 13.5, color: c.inkSoft, lineHeight: 1.55, margin: '8px 0 0', maxWidth: 520 }}>
-          Rage at the system, paired with the positivity that we can do better. A clothing line for anyone
-          exhausted and still going.
+          Rage moves us to action. Positivity keeps us moving. My fire and flower characters, on soft
+          hoodies, beanies and a latte mug, each made to order.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 14, marginTop: 16 }}>
           {rageAndPositivityProducts.map(prod => (

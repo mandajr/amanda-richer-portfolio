@@ -233,7 +233,7 @@ export default function App() {
   const nominateUrl = mailto('Full Circle Leadership nomination', ['Who I am nominating', 'How to reach them', 'Why they should be featured']);
   const onNewsletter = activeTab === 'newsletter';
   const primaryAction = () => { if (onNewsletter) window.location.href = nominateUrl; else setActiveTab('work'); };
-  const primaryLabel = onNewsletter ? 'Nominate Someone' : 'Work With Me';
+  const primaryLabel = onNewsletter ? 'Nominate a Leader' : 'Work With Me';
 
   const offerings = [
     {

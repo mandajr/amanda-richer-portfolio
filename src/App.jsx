@@ -230,6 +230,11 @@ export default function App() {
   const mailto = (subject, prompts) =>
     `mailto:richer.amanda@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(prompts.map(q => `${q}: `).join('\n') + '\n\n')}`;
 
+  const nominateUrl = mailto('Full Circle Leadership nomination', ['Who I am nominating', 'How to reach them', 'Why they should be featured']);
+  const onNewsletter = activeTab === 'newsletter';
+  const primaryAction = () => { if (onNewsletter) window.location.href = nominateUrl; else setActiveTab('work'); };
+  const primaryLabel = onNewsletter ? 'Nominate Someone' : 'Work With Me';
+
   const offerings = [
     {
       id: 'speaking', Icon: Mic, color: c.hotpink,
@@ -1943,7 +1948,7 @@ export default function App() {
               })}
             </div>
             {/* Work With Me — the one solid-gold item, so it reads as the primary action */}
-            <button onClick={() => setActiveTab('work')}
+            <button onClick={primaryAction}
               style={{
                 marginTop: 20, width: '100%', cursor: 'pointer',
                 background: c.sun, border: `1px solid ${c.sun}`,
@@ -1953,7 +1958,7 @@ export default function App() {
               }}>
               <Handshake size={14} color={c.ink} strokeWidth={2} style={{ flexShrink: 0 }} />
               <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 700, flex: 1 }}>
-                Work With Me
+                {primaryLabel}
               </span>
             </button>
             {/* Courses — set apart below the other tabs, links to the course platform */}
@@ -1992,8 +1997,8 @@ export default function App() {
 
       {/* Work With Me — floating button on mobile, so it's reachable from every tab */}
       {activeTab !== 'work' && (
-        <button className="mobile-bottom-nav" onClick={() => setActiveTab('work')}
-          aria-label="Work With Me"
+        <button className="mobile-bottom-nav" onClick={primaryAction}
+          aria-label={primaryLabel}
           style={{
             position: 'fixed', right: 14, bottom: 78, zIndex: 41,
             background: c.sun, border: 'none', borderRadius: 999, cursor: 'pointer',
@@ -2003,7 +2008,7 @@ export default function App() {
           }}>
           <Handshake size={15} color={c.ink} strokeWidth={2} />
           <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.16em', fontWeight: 700 }}>
-            Work With Me
+            {primaryLabel}
           </span>
         </button>
       )}

@@ -227,10 +227,10 @@ export default function App() {
   // "Book a call" button. Empty = the button emails instead.
   const bookingUrl = 'https://calendar.app.google/GA5DcrqpTW5ybU5w5';
 
-  const mailto = (subject, prompts) =>
-    `mailto:richer.amanda@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(prompts.map(q => `${q}: `).join('\n') + '\n\n')}`;
+  const mailto = (subject, prompts, to = 'richer.amanda@gmail.com') =>
+    `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(prompts.map(q => `${q}: `).join('\n') + '\n\n')}`;
 
-  const nominateUrl = mailto('Full Circle Leadership nomination', ['Who I am nominating', 'How to reach them', 'Why they should be featured']);
+  const nominateUrl = mailto('Full Circle Leadership nomination', ['Who I am nominating', 'How to reach them', 'Why they should be featured'], 'amanda@amandaricher.com');
   const onNewsletter = activeTab === 'newsletter';
   const primaryAction = () => { if (onNewsletter) window.location.href = nominateUrl; else setActiveTab('work'); };
   const primaryLabel = onNewsletter ? 'Nominate a Leader' : 'Work With Me';

@@ -410,11 +410,11 @@ export default function App() {
     { kind: 'Mentorship', text: 'One-on-one mentorship for ShelterApp volunteers, NAEH Advocacy Cohort members, and people new to advocacy grounded in frontline expertise.' },
   ];
 
-  // Full Circle Leadership newsletter, newest first. Add each new issue's public Canva
-  // view link at the top; every issue is shown on the Writing page.
+  // Full Circle Leadership newsletter, newest first. Each issue is hosted here: export its
+  // pages (JPG) and PDF from Canva into public/newsletters/, then add it at the top.
   const newsletterIssues = [
-    { label: 'Issue 2, October 2026', url: 'https://www.canva.com/design/DAHZgldn94w/991v7_GYBXPf2t-M2yo22w/view' },
-    { label: 'Issue 1, September 2026', url: 'https://www.canva.com/design/DAHWF05yDFE/yx431DL9u72oEg3CvFqP8Q/view' },
+    { label: 'Issue 2, October 2026', slug: 'issue-2', pages: 4, featuring: 'Hanoi "Cici" Rojas Pérez' },
+    { label: 'Issue 1, September 2026', slug: 'issue-1', pages: 4, featuring: 'Mrs. Kennetha Patterson and Hussein Ugas' },
   ];
 
   const proseItems = [
@@ -1509,25 +1509,25 @@ export default function App() {
   const NewsletterTab = () => (
     <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 960, margin: '0 auto' }}>
       <TabHeader c={c} label="Leadership Newsletter" tagline="Full Circle Leadership: Leading With Purpose. Changing the world after survival, told by the people doing it." color={c.magenta} />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, marginTop: 22 }}>
-        {newsletterIssues.map((n) => (
-          <div key={n.url}>
-            <div className="font-body" style={{ fontSize: 14, color: c.ink, fontWeight: 600, marginBottom: 6 }}>{n.label}</div>
-            <div style={{ position: 'relative', width: '100%', paddingTop: '129.5%', borderRadius: 12, overflow: 'hidden', border: `1px solid ${c.line}`, background: c.creamDeep }}>
-              <iframe
-                title={`Full Circle Leadership, ${n.label}`}
-                src={`${n.url}?embed`}
+      {newsletterIssues.map((n) => (
+        <section key={n.slug} style={{ marginTop: 30 }}>
+          <div className="font-body" style={{ fontSize: 18, color: c.ink, fontWeight: 600 }}>{n.label}</div>
+          <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, margin: '2px 0 8px' }}>Featuring {n.featuring}</div>
+          <a href={`/newsletters/full-circle-leadership-${n.slug}.pdf`} target="_blank" rel="noopener noreferrer"
+            className="font-body" style={{ fontSize: 14, color: c.magenta, display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
+            Download PDF <ExternalLink size={13} color={c.magenta} />
+          </a>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(340px, 100%), 1fr))', gap: 16 }}>
+            {Array.from({ length: n.pages }, (_, i) => (
+              <img key={i}
+                src={`/newsletters/${n.slug}-page-${i + 1}.jpg`}
+                alt={`Full Circle Leadership, ${n.label}, page ${i + 1} of ${n.pages}, featuring ${n.featuring}. The PDF has the full text.`}
                 loading="lazy"
-                allowFullScreen
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }} />
-            </div>
-            <a href={n.url} target="_blank" rel="noopener noreferrer"
-              className="font-body" style={{ fontSize: 14, color: c.magenta, display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 8 }}>
-              Open full size <ExternalLink size={13} color={c.magenta} />
-            </a>
+                style={{ display: 'block', width: '100%', height: 'auto', borderRadius: 12, border: `1px solid ${c.line}` }} />
+            ))}
           </div>
-        ))}
-      </div>
+        </section>
+      ))}
     </div>
   );
 

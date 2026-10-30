@@ -227,10 +227,10 @@ export default function App() {
   // "Book a call" button. Empty = the button emails instead.
   const bookingUrl = 'https://calendar.app.google/GA5DcrqpTW5ybU5w5';
 
-  const mailto = (subject, prompts, to = 'richer.amanda@gmail.com') =>
-    `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(prompts.map(q => `${q}: `).join('\n') + '\n\n')}`;
+  const mailto = (subject, prompts) =>
+    `mailto:amanda@amandaricher.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(prompts.map(q => `${q}: `).join('\n') + '\n\n')}`;
 
-  const nominateUrl = mailto('Full Circle Leadership nomination', ['Who I am nominating', 'How to reach them', 'Why they should be featured'], 'amanda@amandaricher.com');
+  const nominateUrl = mailto('Full Circle Leadership nomination', ['Who I am nominating', 'How to reach them', 'Why they should be featured']);
   const onNewsletter = activeTab === 'newsletter';
   const primaryAction = () => { if (onNewsletter) window.location.href = nominateUrl; else setActiveTab('work'); };
   const primaryLabel = onNewsletter ? 'Nominate a Leader' : 'Work With Me';
@@ -1495,7 +1495,7 @@ export default function App() {
             and I take a small number of quick portrait and pet sessions. Reach out to buy a piece or book a shoot.
           </div>
         </div>
-        <a href="mailto:richer.amanda@gmail.com?subject=Photography%20%E2%80%94%20print%2C%20commission%20or%20session"
+        <a href="mailto:amanda@amandaricher.com?subject=Photography%20%E2%80%94%20print%2C%20commission%20or%20session"
           className="font-mono"
           style={{
             flexShrink: 0, fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase',
@@ -1705,7 +1705,7 @@ export default function App() {
         <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
           Contact
         </div>
-        <a href="mailto:richer.amanda@gmail.com"
+        <a href="mailto:amanda@amandaricher.com"
           style={{
             display: 'flex', alignItems: 'center', gap: 10,
             padding: '14px 16px',
@@ -1717,7 +1717,7 @@ export default function App() {
           }}>
           <Mail size={18} color={c.indigo} />
           <span className="font-body" style={{ fontSize: 14 }}>
-            richer.amanda@gmail.com
+            amanda@amandaricher.com
           </span>
         </a>
         <a href="tel:+12063767859"

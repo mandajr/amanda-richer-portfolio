@@ -412,6 +412,7 @@ export default function App() {
   // Full Circle Leadership newsletter, newest first. Add each new issue's public Canva
   // view link at the top; the newest one is shown on the Writing page.
   const newsletterIssues = [
+    { label: 'Issue 2', url: 'https://www.canva.com/design/DAHZgldn94w/991v7_GYBXPf2t-M2yo22w/view' },
     { label: 'Issue 1', url: 'https://www.canva.com/design/DAHWF05yDFE/yx431DL9u72oEg3CvFqP8Q/view' },
   ];
 

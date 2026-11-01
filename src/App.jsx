@@ -1,31 +1,42 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   X, ExternalLink, ChevronDown, Mail, Phone, Download,
   PenTool, Mic, GraduationCap, Smartphone, HeartPulse, Landmark, Palette,
   Handshake, Camera, CalendarDays, ArrowRight,
 } from 'lucide-react';
+import { pages } from './pages.js';
 
-export default function App() {
-  // Each tab has its own shareable address (e.g. /#work), so a post can link
-  // straight to a page. The hash is read on load and kept in sync after that.
-  const tabIds = ['nexus', 'governance', 'writing', 'newsletter', 'art', 'courses', 'tech', 'about', 'work'];
-  const tabFromHash = () => {
-    const h = window.location.hash.slice(1).toLowerCase();
-    return tabIds.includes(h) ? h : 'nexus';
+export default function App({ initialTab }) {
+  // Each tab has its own real address (e.g. /work), so a post can link straight
+  // to a page and search tools can read it. Older links like /#work still work.
+  const tabIds = Object.keys(pages);
+  const tabFromUrl = () => {
+    const hash = window.location.hash.slice(1).toLowerCase();
+    const path = window.location.pathname.replace(/\/$/, '').slice(1).toLowerCase();
+    return tabIds.includes(hash) ? hash : tabIds.includes(path) ? path : 'nexus';
   };
-  const [activeTab, setActiveTab] = useState(tabFromHash);
+  const [activeTab, setActiveTab] = useState(() => initialTab || tabFromUrl());
+  const firstRun = useRef(true);
   useEffect(() => {
-    if (activeTab === 'nexus') {
-      if (window.location.hash) window.history.replaceState(null, '', window.location.pathname + window.location.search);
-    } else if (window.location.hash !== `#${activeTab}`) {
-      window.history.replaceState(null, '', `#${activeTab}`);
+    const { path, title } = pages[activeTab];
+    if (window.location.pathname !== path || window.location.hash) {
+      window.history[firstRun.current ? 'replaceState' : 'pushState'](null, '', path);
     }
+    firstRun.current = false;
+    document.title = title;
   }, [activeTab]);
   useEffect(() => {
-    const onHash = () => setActiveTab(tabFromHash());
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
+    const onNav = () => setActiveTab(tabFromUrl());
+    window.addEventListener('popstate', onNav);
+    return () => window.removeEventListener('popstate', onNav);
   }, []);
+  // Menu items are real links, so search tools can follow them. A plain click
+  // stays on the page and just switches tabs.
+  const goToTab = (e, id) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    setActiveTab(id);
+  };
   const [selectedNode, setSelectedNode] = useState(null);
   const [selectedThread, setSelectedThread] = useState(null);
   const [mounted, setMounted] = useState(false);
@@ -1879,11 +1890,11 @@ export default function App() {
 
   return (
     <div style={{ background: c.frame, minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
-      <style>{fontStack}</style>
+      <style dangerouslySetInnerHTML={{ __html: fontStack }} />
       <div className="grain" />
 
       {/* desktop layout wrapper */}
-      <div style={{
+      <div className="app-shell" style={{
         position: 'relative', zIndex: 2,
         display: 'flex',
         minHeight: '100vh',
@@ -1925,12 +1936,13 @@ export default function App() {
               {tabs.filter(t => t.id !== 'courses').map(t => {
                 const active = activeTab === t.id;
                 return (
-                  <button key={t.id}
-                    onClick={() => setActiveTab(t.id)}
+                  <a key={t.id}
+                    href={pages[t.id].path}
+                    onClick={e => goToTab(e, t.id)}
                     style={{
                       background: active ? 'rgba(199,162,74,0.16)' : 'transparent',
                       border: 'none', cursor: 'pointer',
-                      textAlign: 'left',
+                      textAlign: 'left', textDecoration: 'none', font: '13.3333px Arial',
                       padding: '11px 14px',
                       borderRadius: 6,
                       borderLeft: active ? `3px solid ${c.sidebarActive}` : '3px solid transparent',
@@ -1943,16 +1955,17 @@ export default function App() {
                     }}>
                       {t.label}
                     </span>
-                  </button>
+                  </a>
                 );
               })}
             </div>
             {/* Work With Me — the one solid-gold item, so it reads as the primary action */}
-            <button onClick={primaryAction}
+            <a href={onNewsletter ? nominateUrl : pages.work.path}
+              onClick={e => { if (!onNewsletter) goToTab(e, 'work'); }}
               style={{
                 marginTop: 20, width: '100%', cursor: 'pointer',
                 background: c.sun, border: `1px solid ${c.sun}`,
-                textAlign: 'left', padding: '11px 14px', borderRadius: 8,
+                textAlign: 'left', padding: '11px 14px', borderRadius: 8, textDecoration: 'none',
                 color: c.ink, display: 'flex', alignItems: 'center', gap: 8,
                 boxShadow: activeTab === 'work' ? `0 0 0 2px ${c.sidebarBg}, 0 0 0 4px ${c.sun}` : 'none',
               }}>
@@ -1960,7 +1973,7 @@ export default function App() {
               <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 700, flex: 1 }}>
                 {primaryLabel}
               </span>
-            </button>
+            </a>
             {/* Courses — set apart below the other tabs, links to the course platform */}
             <a
               href="https://courses.amandaricher.com"
@@ -2029,10 +2042,11 @@ export default function App() {
           {tabs.map(t => {
             const active = activeTab === t.id;
             return (
-              <button key={t.id}
-                onClick={() => setActiveTab(t.id)}
+              <a key={t.id}
+                href={pages[t.id].path}
+                onClick={e => goToTab(e, t.id)}
                 style={{
-                  background: 'transparent', border: 'none', cursor: 'pointer',
+                  background: 'transparent', border: 'none', cursor: 'pointer', textDecoration: 'none',
                   display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5,
                   padding: '4px 3px',
                   color: active ? t.color : c.inkLight,
@@ -2050,7 +2064,7 @@ export default function App() {
                 }}>
                   {t.short || t.label}
                 </span>
-              </button>
+              </a>
             );
           })}
         </div>

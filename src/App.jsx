@@ -1009,7 +1009,7 @@ export default function App({ initialTab }) {
           position: 'relative', margin: 0, fontSize: 46, lineHeight: 1.02, fontWeight: 400,
           color: c.ink, letterSpacing: '-0.01em',
         }}>
-          Amanda <span style={{ fontStyle: 'italic', color: c.nameTeal }}>Richer</span>
+          Amanda J. <span style={{ fontStyle: 'italic', color: c.nameTeal }}>Richer</span>
         </h1>
         <p className="font-body" style={{ position: 'relative', margin: '10px 0 0', fontSize: 17, color: c.inkSoft, lineHeight: 1.5 }}>
           {['Displacement Consultant', 'Human Rights Advocate', 'Artist'].map((t, i) => (
@@ -1680,7 +1680,7 @@ export default function App({ initialTab }) {
       {/* Bio */}
       <div style={{ marginTop: 22 }}>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
-          Amanda Richer is a displacement consultant, writer, and visual artist. Displacement is the human-rights
+          Amanda J. Richer is a displacement consultant, writer, and visual artist. Displacement is the human-rights
           frame her work lives in; homelessness is the specific, most visible form she knows deepest. She works at
           the intersection of homelessness policy, community health, and the <em>One Health</em> framework, which
           treats human, animal, and environmental wellbeing as fundamentally interconnected.
@@ -1960,7 +1960,7 @@ export default function App({ initialTab }) {
         }}>
           <div>
             <div className="font-display" style={{ fontSize: 19, color: 'rgba(244,240,234,0.9)', fontStyle: 'italic', fontWeight: 500, marginBottom: 2 }}>
-              Amanda
+              Amanda J.
             </div>
             <div className="font-display" style={{ fontSize: 19, color: c.nameTealLight, fontStyle: 'italic', fontWeight: 500, marginBottom: 36 }}>
               Richer

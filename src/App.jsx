@@ -1672,21 +1672,23 @@ export default function App({ initialTab }) {
       {/* Bio */}
       <div style={{ marginTop: 22 }}>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
-          Amanda J. Richer is a displacement consultant, writer, and visual artist. Displacement is the human-rights
-          frame her work lives in; homelessness is the specific, most visible form she knows deepest. She works at
-          the intersection of homelessness policy, community health, and the <em>One Health</em> framework, which
-          treats human, animal, and environmental wellbeing as fundamentally interconnected.
+          Amanda J. Richer is a human rights advocate and displacement consultant. Her work starts from one idea:
+          human rights are interconnected, and so are the systems that protect or deny them. Housing, health,
+          disability, climate, migration, and the bond between people and their animals all meet in the same
+          lives. Homelessness is where she knows those connections most deeply, and where she has seen what
+          happens when rights fail.
         </p>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
-          Her expertise comes from two kinds of direct knowledge, built over roughly a decade: frontline work
-          (outreach, supply distribution, and harm reduction among unhoused communities) and her own experience of
-          street homelessness. Both inform the work; neither is a footnote. It moves across journalism, policy
-          writing, governance, embedded consultancy, and visual practice, held together by a single orientation
-          toward universal human rights.
+          She helps health systems, researchers, and nonprofits build rights-based practice: work that honors the
+          human rights of the people they serve. She is a displacement consultant to the UW Center for One Health
+          Research and the One Health Clinic, a co-author of peer-reviewed research, and a board member of the
+          National Health Care for the Homeless Council. With the UN NGO Working Group to End Homelessness, she
+          serves on the Executive Committee, and she has presented at CSW70 and for UNITAR.
         </p>
         <p className="font-body" style={{ fontSize: 15.5, color: c.ink, lineHeight: 1.65 }}>
-          Her visual work, writing, and policy work are not separate disciplines synthesized into a
-          brand. They are expressions of the same orientation, in different languages.
+          Her expertise comes from roughly a decade of frontline work (outreach, supply distribution, and harm
+          reduction) and from her own experience of street homelessness. Her writing, teaching, tools, and art are
+          not separate disciplines. They are facets of the same work, in different languages.
         </p>
       </div>
 

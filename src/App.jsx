@@ -1496,8 +1496,8 @@ export default function App({ initialTab }) {
           Rage and Positivity
         </div>
         <p className="font-body" style={{ fontSize: 13.5, color: c.inkSoft, lineHeight: 1.55, margin: '8px 0 0', maxWidth: 520 }}>
-          Rage moves us to action. Positivity keeps us moving. My fire and flower characters, on soft
-          hoodies, beanies and a latte mug, each made to order.
+          Rage moves us to action. Positivity keeps us moving. The fire and flower characters and
+          the wordmark, on hoodies, tees, glasses, backpacks and more, each made to order.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 14, marginTop: 16 }}>
           {rageAndPositivityProducts.map(prod => (

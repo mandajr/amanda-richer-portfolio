@@ -370,7 +370,7 @@ export default function App({ initialTab }) {
       tools: ['Claude Code', 'Python', 'Playwright'],
       proof: [
         'Dramatically increased the team’s capacity to add and verify services',
-        'Add + audit across 30,000+ national listings, and growing, with duplicate-safety',
+        'Add + audit across 60,000+ national listings, and growing, with duplicate-safety',
         'Fuzzy entity-matching + geocoding over open data (HRSA, OpenStreetMap)',
         'Designed the platform’s early empathetic chatbot (2019), with empathy built into the response logic, not just the wording',
       ],

@@ -398,14 +398,6 @@ export default function App({ initialTab }) {
       ],
     },
     {
-      kind: 'Interactive Simulation',
-      badge: 'Base44',
-      title: 'End Homelessness',
-      blurb: 'A policy-simulation game: players run a city’s housing levers (development permits, budgets, ordinances) and watch the human consequences unfold. The choice it poses: prioritize profit, or dismantle the barriers to housing.',
-      tools: ['Base44'],
-      link: { label: 'Play End Homelessness', url: 'https://shift-structural-systems.base44.app' },
-    },
-    {
       kind: 'Learning Platform',
       badge: 'Base44 · Do Good Initiative',
       title: 'Rights World',

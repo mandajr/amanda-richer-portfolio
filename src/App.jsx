@@ -319,10 +319,10 @@ export default function App({ initialTab }) {
   const consultantPositions = [
     {
       id: 'uw',
-      title: 'UW Center for One Health Research',
+      title: 'UW Center for One Health Research · One Health Clinic',
       role: 'Displacement Consultant',
       years: '2018 to Present',
-      what: 'Guide researchers working with displaced populations, review materials designed for unhoused communities, and build pathways between UW and King County service providers.',
+      what: 'Guide researchers working with displaced populations, review materials designed for unhoused communities, and build pathways between UW and King County service providers. Displacement consultant to the One Health Clinic, which cares for young adults experiencing homelessness and their companion animals.',
     },
     {
       id: 'shelterapp',
@@ -1015,6 +1015,10 @@ export default function App({ initialTab }) {
           {['Displacement Consultant', 'Human Rights Advocate', 'Artist'].map((t, i) => (
             <span key={t}>{i > 0 && ' · '}<span style={{ whiteSpace: 'nowrap' }}>{t}</span></span>
           ))}
+        </p>
+        {/* who hires me, in Manda's words (chosen Nov 3, 2026) */}
+        <p className="font-body" style={{ position: 'relative', margin: '14px auto 0', maxWidth: 520, fontSize: 18, color: c.ink, lineHeight: 1.5 }}>
+          I help health systems, researchers, and nonprofits build <span style={{ whiteSpace: 'nowrap' }}>rights-based</span> practice: work that honors the human rights of the people they serve.
         </p>
       </div>
 

@@ -4,7 +4,7 @@ export const pages = {
   nexus: {
     path: '/',
     title: 'Amanda J. Richer',
-    description: 'Amanda J. Richer: displacement consultant, writer, and visual artist working at the intersections of homelessness policy, frontline expertise, and the One Health framework.',
+    description: 'Amanda J. Richer: human rights advocate and displacement consultant helping health systems, researchers, and nonprofits build rights-based practice.',
   },
   governance: {
     path: '/governance',

@@ -225,7 +225,6 @@ export default function App({ initialTab }) {
   // ─────────────────────────────────────────────
   const currentlyItems = [
     'ShelterApp national resource database build-out (US and parts of Canada)',
-    'PNW Co-Sheltering Working Group: ecomap and recruitment',
     'TBI & Homelessness research package: governance-ready deliverables',
   ];
 
@@ -375,17 +374,6 @@ export default function App({ initialTab }) {
         'Designed the platform’s early empathetic chatbot (2019), with empathy built into the response logic, not just the wording',
       ],
       link: { label: 'Visit ShelterApp', url: 'https://www.shelterapp.org' },
-    },
-    {
-      kind: 'Real-time App',
-      title: 'PNW Co-Sheltering ecomap',
-      blurb: 'A live, multi-user relationship map for a multi-state working group: everyone edits one shared map and changes sync instantly.',
-      tools: ['Claude Code', 'React', 'Firebase'],
-      proof: [
-        'Real-time sync via Firestore with anonymous auth',
-        'Built for the PNW Co-Sheltering Working Group',
-      ],
-      link: { label: 'Open the live map', url: 'https://pnw-co-sheltering.netlify.app/' },
     },
     {
       kind: 'Learning Platform',

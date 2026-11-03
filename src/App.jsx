@@ -246,6 +246,20 @@ export default function App({ initialTab }) {
   const primaryAction = () => { if (onNewsletter) window.location.href = nominateUrl; else setActiveTab('work'); };
   const primaryLabel = onNewsletter ? 'Nominate a Leader' : 'Work With Me';
 
+  // Recommendations from LinkedIn, quoted word for word (Manda approved Nov 3, 2026).
+  const testimonials = [
+    {
+      quote: "Amanda is the colleague with the perfect combination of integrity, knowledge and experience. Amanda isn't afraid to speak truth to power, or to be told the truth when she IS the power.",
+      name: 'Ann Oliva',
+      role: 'CEO, National Alliance to End Homelessness',
+    },
+    {
+      quote: 'What sets Amanda apart is her rare combination of technical intelligence and deep human empathy. Her ability to design scalable, user-centric AI systems made a tangible difference in how efficiently critical resources were cataloged and delivered.',
+      name: 'Raj Lanka',
+      role: 'Founder, ShelterApp',
+    },
+  ];
+
   const offerings = [
     {
       id: 'speaking', Icon: Mic, color: c.hotpink,
@@ -1207,6 +1221,32 @@ export default function App({ initialTab }) {
           </section>
         ))}
       </div>
+
+      {/* what colleagues say */}
+      <section aria-labelledby="colleagues-say" style={{ marginTop: 30 }}>
+        <h2 id="colleagues-say" className="font-mono" style={{ margin: '0 0 12px', fontSize: 12, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', fontWeight: 400 }}>
+          What colleagues say
+        </h2>
+        <div style={{ display: 'grid', gap: 12 }}>
+          {testimonials.map(t => (
+            <figure key={t.name} style={{
+              margin: 0, background: c.creamDeep, borderLeft: `3px solid ${c.gold}`,
+              borderRadius: 12, padding: '18px 20px',
+            }}>
+              <blockquote className="font-display" style={{ margin: 0, fontSize: 17, color: c.ink, fontStyle: 'italic', lineHeight: 1.45 }}>
+                "{t.quote}"
+              </blockquote>
+              <figcaption className="font-body" style={{ fontSize: 14, color: c.inkSoft, marginTop: 10, lineHeight: 1.4 }}>
+                <span style={{ color: c.ink, fontWeight: 600 }}>{t.name}</span>, {t.role}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <a href="https://linkedin.com/in/amandaricher/details/recommendations/" target="_blank" rel="noopener noreferrer"
+          className="font-body" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, minHeight: 28, marginTop: 10, fontSize: 14, color: c.indigo }}>
+          Read the full recommendations on LinkedIn <ExternalLink size={13} />
+        </a>
+      </section>
 
       {/* intro call */}
       <div style={{

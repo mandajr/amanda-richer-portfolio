@@ -72,7 +72,7 @@ export default function App({ initialTab }) {
     sage: '#3F805F',       // sage green
     ink: '#2E2240',        // primary text (deep plum ink)
     inkSoft: '#4F4560',    // secondary text
-    inkLight: '#776D86',   // muted labels
+    inkLight: '#6E647D',   // muted labels
     line: '#DCDFF0',       // hairline on cream
     sidebarBg: '#6670C4',  // periwinkle menu
     sidebarText: 'rgba(255,255,255,0.82)',
@@ -760,7 +760,7 @@ export default function App({ initialTab }) {
 
         {/* foundation caption — clean, replaces the old dashed arc */}
         <div className="font-mono" style={{
-          textAlign: 'center', fontSize: 9, color: c.inkLight,
+          textAlign: 'center', fontSize: 12, color: c.inkLight,
           letterSpacing: '0.22em', textTransform: 'uppercase',
           margin: '2px 0 14px',
         }}>
@@ -778,9 +778,10 @@ export default function App({ initialTab }) {
               <button key={t.id} className="font-mono"
                 onClick={() => { setSelectedThread(selectedThread === t.id ? null : t.id); setSelectedNode(null); }}
                 style={{
-                  fontSize: 9,
+                  fontSize: 12,
                   textTransform: 'uppercase',
                   padding: '5px 10px',
+                  minHeight: 26,
                   borderRadius: 999,
                   cursor: 'pointer',
                   background: active ? t.color : '#FFFFFF',
@@ -803,7 +804,7 @@ export default function App({ initialTab }) {
             padding: '14px 18px', background: `${selThread.color}1F`, borderRadius: 18,
           }}>
             <div className="font-mono" style={{
-              fontSize: 9, color: selThread.color, textTransform: 'uppercase',
+              fontSize: 12, color: selThread.color, textTransform: 'uppercase',
               letterSpacing: '0.2em', marginBottom: 6,
             }}>
               {selThread.label} · the through-line
@@ -819,7 +820,7 @@ export default function App({ initialTab }) {
           <div style={{ textAlign: 'center', marginTop: 16 }}>
             <span className="font-mono" style={{
               display: 'inline-block',
-              fontSize: 10, color: c.ink, background: c.sun,
+              fontSize: 12, color: c.ink, background: c.sun,
               padding: '7px 15px', borderRadius: 999,
               letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
             }}>
@@ -889,7 +890,7 @@ export default function App({ initialTab }) {
               {n.short.slice(0,2)}
             </div>
             <div>
-              <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
+              <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
                 Practice
               </div>
               <div className="font-display" style={{ fontSize: 22, fontWeight: 500, color: c.ink, fontStyle: 'italic', lineHeight: 1.1 }}>
@@ -906,7 +907,7 @@ export default function App({ initialTab }) {
           {/* proof */}
           {n.proof && (
             <div style={{ marginTop: 18 }}>
-              <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, marginBottom: 8, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+              <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, marginBottom: 8, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
                 Proof
               </div>
               {n.proof.map((p, i) => (
@@ -919,7 +920,7 @@ export default function App({ initialTab }) {
           )}
 
           {/* threads */}
-          <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, marginTop: 18, marginBottom: 8, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+          <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, marginTop: 18, marginBottom: 8, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
             Connected Threads
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
@@ -947,7 +948,7 @@ export default function App({ initialTab }) {
                 <a key={i} href={l.url} target="_blank" rel="noopener noreferrer" className="font-mono"
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: 6,
-                    fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase',
+                    fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase',
                     color: n.color, textDecoration: 'none',
                     border: `1px solid ${n.color}`, borderRadius: 999, padding: '8px 14px',
                   }}>
@@ -971,7 +972,7 @@ export default function App({ initialTab }) {
                 border: 'none',
                 padding: '14px 16px',
                 borderRadius: 12,
-                fontSize: 11,
+                fontSize: 12,
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
@@ -1029,7 +1030,7 @@ export default function App({ initialTab }) {
 
       {/* WHAT I DO — a flat sunny block */}
       <div style={{ marginTop: 22, background: tint(c.sun, '40'), borderRadius: 24, padding: '22px 22px' }}>
-        <div className="font-mono" style={{ fontSize: 10, color: c.ink, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 8, fontWeight: 600 }}>
+        <div className="font-mono" style={{ fontSize: 12, color: c.ink, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 8, fontWeight: 600 }}>
           What I do
         </div>
         <p className="font-display" style={{ margin: 0, fontSize: 23, lineHeight: 1.3, color: c.ink, fontWeight: 400 }}>
@@ -1047,7 +1048,7 @@ export default function App({ initialTab }) {
           className="font-mono"
           style={{
             marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer',
-            fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
+            fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
             color: '#FFFFFF', background: c.sidebarBg, border: 'none', padding: '13px 20px', borderRadius: 999,
           }}>
           Work With Me <ArrowRight size={14} />
@@ -1063,7 +1064,7 @@ export default function App({ initialTab }) {
           const col = [c.teal, c.hotpink, c.indigo, c.sage, c.coral][i % 5];
           return (
             <div key={p.id} style={{ background: tint(col, '1C'), borderRadius: 20, padding: '18px' }}>
-              <div className="font-mono" style={{ fontSize: 9, color: col, textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 600 }}>
+              <div className="font-mono" style={{ fontSize: 12, color: col, textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 600 }}>
                 {p.role} · {p.years}
               </div>
               <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500, lineHeight: 1.2, marginTop: 6 }}>
@@ -1105,7 +1106,7 @@ export default function App({ initialTab }) {
         }}>
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
           <GraduationCap size={26} color={c.sage} strokeWidth={1.75} style={{ flexShrink: 0 }} />
-          <div className="font-mono" style={{ fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em', fontWeight: 600 }}>
+          <div className="font-mono" style={{ fontSize: 12, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em', fontWeight: 600 }}>
             Teaching &amp; Courses
           </div>
         </div>
@@ -1115,7 +1116,7 @@ export default function App({ initialTab }) {
         <div className="font-body" style={{ position: 'relative', fontSize: 14, color: c.inkSoft, marginTop: 6, lineHeight: 1.5 }}>
           Eleven free, self-paced Rights-Based Practice courses across three levels, each with quizzes and a certificate, plus Rights World, my gamified human-rights learning app.
         </div>
-        <div className="font-mono" style={{ position: 'relative', fontSize: 10, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6, fontWeight: 600 }}>
+        <div className="font-mono" style={{ position: 'relative', fontSize: 12, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: 14, display: 'flex', alignItems: 'center', gap: 6, fontWeight: 600 }}>
           Visit the course platform <ExternalLink size={13} />
         </div>
       </a>
@@ -1178,7 +1179,7 @@ export default function App({ initialTab }) {
             </div>
 
             <p className="font-body" style={{ fontSize: 14.5, color: c.ink, lineHeight: 1.5, margin: '14px 0 0' }}>
-              <span className="font-mono" style={{ fontSize: 9, color: o.color, textTransform: 'uppercase', letterSpacing: '0.2em', marginRight: 8 }}>Best for</span>
+              <span className="font-mono" style={{ fontSize: 12, color: o.color, textTransform: 'uppercase', letterSpacing: '0.2em', marginRight: 8 }}>Best for</span>
               {o.bestFor}
             </p>
 
@@ -1197,7 +1198,7 @@ export default function App({ initialTab }) {
 
             <a href={o.href} className="font-mono" style={{
               marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 8,
-              fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
+              fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
               color: '#FFFFFF', background: o.color, padding: '12px 18px', borderRadius: 999,
               textDecoration: 'none',
             }}>
@@ -1228,7 +1229,7 @@ export default function App({ initialTab }) {
         <a href={bookingUrl || mailto('Intro call', ['Your name and organization', 'What you would like to talk about', 'A few times that work for you'])}
           {...(bookingUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           className="font-mono" style={{
-            flexShrink: 0, fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
+            flexShrink: 0, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
             color: c.ink, background: c.sun, padding: '12px 18px', borderRadius: 999, textDecoration: 'none',
           }}>
           {bookingUrl ? 'Book a call' : 'Request a call'}
@@ -1251,10 +1252,10 @@ export default function App({ initialTab }) {
             padding: '18px', marginBottom: 12,
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
-              <div className="font-mono" style={{ fontSize: 9, color: c.indigo, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
+              <div className="font-mono" style={{ fontSize: 12, color: c.indigo, textTransform: 'uppercase', letterSpacing: '0.2em' }}>
                 {g.role}
               </div>
-              <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, letterSpacing: '0.12em', flexShrink: 0 }}>
+              <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, letterSpacing: '0.12em', flexShrink: 0 }}>
                 {g.years}
               </div>
             </div>
@@ -1270,7 +1271,7 @@ export default function App({ initialTab }) {
 
       {/* Selected Engagements */}
       <div style={{ marginTop: 38 }}>
-        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
+        <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
           Selected Engagements
         </div>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
@@ -1319,7 +1320,7 @@ export default function App({ initialTab }) {
 
       <div style={{ marginTop: 24, marginBottom: 8 }}>
         <span className="font-mono" style={{
-          fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.2em',
+          fontSize: 12, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.2em',
           border: `1px solid ${c.sage}`, borderRadius: 999, padding: '4px 10px',
         }}>
           Beginner Series · Free
@@ -1337,7 +1338,7 @@ export default function App({ initialTab }) {
               borderRadius: 14, padding: '16px', marginBottom: 10, textDecoration: 'none',
             }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10 }}>
-              <div className="font-mono" style={{ fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
+              <div className="font-mono" style={{ fontSize: 12, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
                 Course {i + 1} · Free
               </div>
               <ExternalLink size={14} color={c.inkLight} />
@@ -1354,7 +1355,7 @@ export default function App({ initialTab }) {
 
       {/* Beyond the courses */}
       <div style={{ marginTop: 38 }}>
-        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 14 }}>
+        <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 14 }}>
           Workshops & Mentorship
         </div>
         {educationItems.map((e, i) => (
@@ -1362,7 +1363,7 @@ export default function App({ initialTab }) {
             background: `${c.sage}1C`, padding: '16px 18px', borderRadius: 20,
             marginBottom: 12,
           }}>
-            <div className="font-mono" style={{ fontSize: 9, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 6 }}>
+            <div className="font-mono" style={{ fontSize: 12, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 6 }}>
               {e.kind}
             </div>
             <div className="font-body" style={{ fontSize: 14, color: c.ink, lineHeight: 1.5 }}>
@@ -1403,7 +1404,7 @@ export default function App({ initialTab }) {
           <div className="font-display" style={{ fontSize: 19, color: '#F2EFE9', fontStyle: 'italic', lineHeight: 1.1 }}>
             {heroPhoto.title}
           </div>
-          <div className="font-mono" style={{ fontSize: 8, color: 'rgba(242,239,233,0.82)', textTransform: 'uppercase', letterSpacing: '0.16em', marginTop: 4 }}>
+          <div className="font-mono" style={{ fontSize: 12, color: 'rgba(242,239,233,0.82)', textTransform: 'uppercase', letterSpacing: '0.16em', marginTop: 4 }}>
             {heroPhoto.meta}
           </div>
         </figcaption>
@@ -1412,7 +1413,7 @@ export default function App({ initialTab }) {
       {/* sections: series · prints · paintings */}
       {artSections.map((section) => (
         <div key={section.id} style={{ marginTop: 34 }}>
-          <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.24em', marginBottom: 6 }}>
+          <div className="font-mono" style={{ fontSize: 12, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.24em', marginBottom: 6 }}>
             {section.eyebrow}
           </div>
           <div className="font-display" style={{ fontSize: 23, color: c.ink, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.12 }}>
@@ -1436,7 +1437,7 @@ export default function App({ initialTab }) {
                   <div className="font-display" style={{ fontSize: 15, color: '#F2EFE9', fontStyle: 'italic', lineHeight: 1.1 }}>
                     {p.title}
                   </div>
-                  <div className="font-mono" style={{ fontSize: 8, color: 'rgba(242,239,233,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', marginTop: 3 }}>
+                  <div className="font-mono" style={{ fontSize: 12, color: 'rgba(242,239,233,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', marginTop: 3 }}>
                     {p.meta}
                   </div>
                 </figcaption>
@@ -1448,7 +1449,7 @@ export default function App({ initialTab }) {
 
       {/* Clothing: Rage and Positivity */}
       <div style={{ marginTop: 34 }}>
-        <div className="font-mono" style={{ fontSize: 9, color: c.coral, textTransform: 'uppercase', letterSpacing: '0.24em', marginBottom: 6, fontWeight: 600 }}>
+        <div className="font-mono" style={{ fontSize: 12, color: c.coral, textTransform: 'uppercase', letterSpacing: '0.24em', marginBottom: 6, fontWeight: 600 }}>
           Clothing
         </div>
         <div className="font-display" style={{ fontSize: 23, color: c.ink, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.12 }}>
@@ -1469,7 +1470,7 @@ export default function App({ initialTab }) {
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 8, gap: 8 }}>
                   <span className="font-body" style={{ fontSize: 15, color: c.ink }}>{prod.price}</span>
                   <span className="font-mono" style={{
-                    fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
+                    fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
                     padding: '7px 12px', borderRadius: 999,
                     background: rageAndPositivityShopOpen ? c.sun : '#FFFFFF', color: c.ink,
                   }}>
@@ -1483,8 +1484,8 @@ export default function App({ initialTab }) {
         <a href={rageAndPositivityUrl} target="_blank" rel="noopener noreferrer"
           className="font-mono"
           style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 14,
-            fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
+            display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 14, minHeight: 28,
+            fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600,
             color: c.coral, textDecoration: 'none',
           }}>
           {rageAndPositivityShopOpen ? 'See the whole shop' : 'Visit Rage and Positivity (shop opening soon)'} <ExternalLink size={13} />
@@ -1498,7 +1499,7 @@ export default function App({ initialTab }) {
         gap: 16, flexWrap: 'wrap',
       }}>
         <div style={{ flex: '1 1 240px' }}>
-          <div className="font-mono" style={{ fontSize: 9, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 5 }}>
+          <div className="font-mono" style={{ fontSize: 12, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 5 }}>
             Prints, Originals & Sessions
           </div>
           <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.5 }}>
@@ -1509,7 +1510,7 @@ export default function App({ initialTab }) {
         <a href="mailto:amanda@amandaricher.com?subject=Photography%20%E2%80%94%20print%2C%20commission%20or%20session"
           className="font-mono"
           style={{
-            flexShrink: 0, fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase',
+            flexShrink: 0, fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase',
             color: c.ink, background: c.sun, padding: '11px 18px', borderRadius: 999,
             textDecoration: 'none', fontWeight: 600,
           }}>
@@ -1530,7 +1531,7 @@ export default function App({ initialTab }) {
           <div className="font-body" style={{ fontSize: 18, color: c.ink, fontWeight: 600 }}>{n.label}</div>
           <div className="font-body" style={{ fontSize: 14, color: c.inkSoft, margin: '2px 0 8px' }}>Featuring {n.featuring}</div>
           <a href={`/newsletters/full-circle-leadership-${n.slug}.pdf`} target="_blank" rel="noopener noreferrer"
-            className="font-body" style={{ fontSize: 14, color: c.magenta, display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
+            className="font-body" style={{ fontSize: 14, color: c.magenta, display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 12, minHeight: 28 }}>
             Download PDF <ExternalLink size={13} color={c.magenta} />
           </a>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(340px, 100%), 1fr))', gap: 16 }}>
@@ -1579,7 +1580,7 @@ export default function App({ initialTab }) {
       {/* Latest: filled automatically from Substack */}
       {latestPosts.length > 0 && (
         <div style={{ marginTop: 28 }}>
-          <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
+          <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
             Latest on Substack
           </div>
           {latestPosts.map(p => (
@@ -1589,7 +1590,7 @@ export default function App({ initialTab }) {
               }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12 }}>
                 <span className="font-display" style={{ fontSize: 18, color: c.ink, fontStyle: 'italic', lineHeight: 1.25 }}>{p.title}</span>
-                <span className="font-mono" style={{ fontSize: 10, color: c.inkLight, whiteSpace: 'nowrap' }}>
+                <span className="font-mono" style={{ fontSize: 12, color: c.inkLight, whiteSpace: 'nowrap' }}>
                   {new Date(p.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                 </span>
               </div>
@@ -1601,7 +1602,7 @@ export default function App({ initialTab }) {
         </div>
       )}
 
-      <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginTop: 30 }}>
+      <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginTop: 30 }}>
         Selected essays and reporting
       </div>
       <div style={{ marginTop: 12 }}>
@@ -1620,7 +1621,7 @@ export default function App({ initialTab }) {
               textDecoration: 'none',
             }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10 }}>
-              <div className="font-mono" style={{ fontSize: 9, color: c.magenta, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
+              <div className="font-mono" style={{ fontSize: 12, color: c.magenta, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
                 {p.kind} · {p.status}
               </div>
               <ExternalLink size={14} color={c.inkLight} />
@@ -1667,7 +1668,7 @@ export default function App({ initialTab }) {
 
       {/* Curriculum Vitae */}
       <div style={{ marginTop: 30 }}>
-        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
+        <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
           Curriculum Vitae
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
@@ -1701,7 +1702,7 @@ export default function App({ initialTab }) {
         padding: '18px 20px',
         borderRadius: 20,
       }}>
-        <div className="font-mono" style={{ fontSize: 9, color: c.magenta, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 8 }}>
+        <div className="font-mono" style={{ fontSize: 12, color: c.magenta, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 8 }}>
           AI &amp; Technology
         </div>
         <p className="font-body" style={{ fontSize: 14, color: c.ink, lineHeight: 1.55, margin: 0 }}>
@@ -1713,7 +1714,7 @@ export default function App({ initialTab }) {
 
       {/* Contact */}
       <div style={{ marginTop: 30 }}>
-        <div className="font-mono" style={{ fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
+        <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 12 }}>
           Contact
         </div>
         <a href="mailto:amanda@amandaricher.com"
@@ -1781,7 +1782,7 @@ export default function App({ initialTab }) {
 
       {/* tools I work with */}
       <div style={{ marginTop: 20 }}>
-        <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: 8 }}>
+        <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: 8 }}>
           Tools I work with
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
@@ -1804,12 +1805,12 @@ export default function App({ initialTab }) {
             padding: '18px', marginBottom: 12,
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10 }}>
-              <div className="font-mono" style={{ fontSize: 9, color: c.coral, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
+              <div className="font-mono" style={{ fontSize: 12, color: c.coral, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
                 {p.kind}
               </div>
               {p.badge && (
                 <span className="font-mono" style={{
-                  fontSize: 8.5, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.16em',
+                  fontSize: 12, color: c.gold, textTransform: 'uppercase', letterSpacing: '0.16em',
                   border: `1px solid ${c.gold}`, borderRadius: 999, padding: '3px 8px', flexShrink: 0,
                 }}>
                   {p.badge}
@@ -1838,7 +1839,7 @@ export default function App({ initialTab }) {
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 12 }}>
                 {p.tools.map((t, j) => (
                   <span key={j} className="font-mono" style={{
-                    fontSize: 9, color: c.inkLight, textTransform: 'uppercase', letterSpacing: '0.12em',
+                    fontSize: 12, color: c.inkLight, textTransform: 'uppercase', letterSpacing: '0.12em',
                     border: `1px solid ${c.line}`, borderRadius: 6, padding: '4px 8px',
                   }}>
                     {t}
@@ -1850,7 +1851,7 @@ export default function App({ initialTab }) {
             {p.link && (
               <a href={p.link.url} target="_blank" rel="noopener noreferrer" className="font-mono" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 6,
-                fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase',
+                fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase',
                 color: c.coral, textDecoration: 'none',
                 border: `1px solid ${c.coral}`, borderRadius: 999, padding: '8px 14px', marginTop: 12,
               }}>
@@ -1860,7 +1861,7 @@ export default function App({ initialTab }) {
             )}
 
             {p.draft && (
-              <div className="font-mono" style={{ fontSize: 9, color: c.gold, letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: 12 }}>
+              <div className="font-mono" style={{ fontSize: 12, color: c.gold, letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: 12 }}>
                 Draft · details to confirm
               </div>
             )}
@@ -1950,7 +1951,7 @@ export default function App({ initialTab }) {
                       transition: 'all 0.18s ease',
                     }}>
                     <span className="font-mono" style={{
-                      fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em',
+                      fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.18em',
                       fontWeight: active ? 600 : 400,
                     }}>
                       {t.label}
@@ -1970,7 +1971,7 @@ export default function App({ initialTab }) {
                 boxShadow: activeTab === 'work' ? `0 0 0 2px ${c.sidebarBg}, 0 0 0 4px ${c.sun}` : 'none',
               }}>
               <Handshake size={14} color={c.ink} strokeWidth={2} style={{ flexShrink: 0 }} />
-              <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 700, flex: 1 }}>
+              <span className="font-mono" style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 700, flex: 1 }}>
                 {primaryLabel}
               </span>
             </a>
@@ -1987,13 +1988,13 @@ export default function App({ initialTab }) {
                 display: 'flex', alignItems: 'center', gap: 8,
               }}>
               <GraduationCap size={14} color="#FFFFFF" strokeWidth={2} style={{ flexShrink: 0 }} />
-              <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 600, flex: 1 }}>
+              <span className="font-mono" style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.18em', fontWeight: 600, flex: 1 }}>
                 Courses
               </span>
               <ExternalLink size={12} color="#FFFFFF" style={{ flexShrink: 0 }} />
             </a>
           </div>
-          <div className="font-mono" style={{ fontSize: 9, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.14em', lineHeight: 1.8, textTransform: 'uppercase' }}>
+          <div className="font-mono" style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.14em', lineHeight: 1.8, textTransform: 'uppercase' }}>
             Seattle, WA<br />
             She / Her
           </div>
@@ -2020,7 +2021,7 @@ export default function App({ initialTab }) {
             boxShadow: '0 4px 14px rgba(0,0,0,0.18)',
           }}>
           <Handshake size={15} color={c.ink} strokeWidth={2} />
-          <span className="font-mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.16em', fontWeight: 700 }}>
+          <span className="font-mono" style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.16em', fontWeight: 700 }}>
             {primaryLabel}
           </span>
         </button>
@@ -2036,8 +2037,8 @@ export default function App({ initialTab }) {
       }}>
         <div style={{
           maxWidth: 560, margin: '0 auto',
-          display: 'flex', justifyContent: 'space-around',
-          padding: '10px 4px 16px',
+          display: 'flex', flexWrap: 'wrap', justifyContent: 'center', rowGap: 4,
+          padding: '8px 4px 14px',
         }}>
           {tabs.map(t => {
             const active = activeTab === t.id;
@@ -2048,7 +2049,7 @@ export default function App({ initialTab }) {
                 style={{
                   background: 'transparent', border: 'none', cursor: 'pointer', textDecoration: 'none',
                   display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5,
-                  padding: '4px 3px',
+                  flex: '0 0 25%', padding: '4px 3px',
                   color: active ? t.color : c.inkLight,
                   transition: 'color 0.2s ease',
                 }}>
@@ -2059,7 +2060,7 @@ export default function App({ initialTab }) {
                   transition: 'all 0.2s ease',
                 }} />
                 <span className="font-mono" style={{
-                  fontSize: 9, textTransform: 'uppercase',
+                  fontSize: 12, textTransform: 'uppercase',
                   letterSpacing: '0.04em', fontWeight: active ? 500 : 400,
                 }}>
                   {t.short || t.label}
@@ -2079,7 +2080,7 @@ export default function App({ initialTab }) {
 function Section({ c, label, body, accent }) {
   return (
     <div style={{ marginTop: 14 }}>
-      <div className="font-mono" style={{ fontSize: 9, color: c.inkLight, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 6 }}>
+      <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, textTransform: 'uppercase', letterSpacing: '0.22em', marginBottom: 6 }}>
         {label}
       </div>
       <div className="font-body" style={{ fontSize: 14.5, color: c.ink, lineHeight: 1.55, padding: '10px 14px', background: `${accent}1A`, borderRadius: 14 }}>
@@ -2092,7 +2093,7 @@ function Section({ c, label, body, accent }) {
 function TabHeader({ c, label, tagline, color }) {
   return (
     <div style={{ position: 'relative' }}>
-      <div className="font-mono" style={{ position: 'relative', fontSize: 10, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 10 }}>
+      <div className="font-mono" style={{ position: 'relative', fontSize: 12, color: c.inkLight, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 10 }}>
         Section · {label}
       </div>
       <h2 className="font-display" style={{

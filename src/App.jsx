@@ -39,6 +39,8 @@ export default function App({ initialTab }) {
   };
   const [selectedNode, setSelectedNode] = useState(null);
   const [selectedThread, setSelectedThread] = useState(null);
+  const [coursePath, setCoursePath] = useState(null);   // Courses tab: which level the visitor picked
+  const [openCourse, setOpenCourse] = useState(null);   // Courses tab: which course shows "What's inside"
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
 
@@ -406,13 +408,52 @@ export default function App({ initialTab }) {
     },
   ];
 
-  // Free beginner courses — hosted in /public/courses/.
-  const courseList = [
-    { slug: 'being-valued', title: 'Being Valued, Not Just Visible', blurb: 'The difference between being included and being used, and what fair value actually looks like.' },
-    { slug: 'trauma-informed-care', title: 'Trauma-Informed Care, In Everyday Life', blurb: 'What trauma actually does, and how to treat people, including yourself, with that in mind.' },
-    { slug: 'lived-experience-to-advocacy', title: 'Lived Experience to Effective Advocacy', blurb: 'Housing is a right, not a report card. Turning what you already know into change.' },
-    { slug: 'speaking-up-for-yourself', title: 'Speaking Up for Yourself, Without Fighting Your Own Body', blurb: 'Self-advocacy that works with your nervous system, not against it.' },
+  // All 11 courses, live on courses.amandaricher.com. Titles, blurbs and "inside" lists are
+  // copied from the course site itself (Nov 6 2026). Minutes = word count / 200, rounded up to 5.
+  const courseBase = 'https://courses.amandaricher.com/courses/';
+  const courseLevels = [
+    {
+      id: 'foundations', label: 'Foundations', color: c.sage,
+      who: 'New to advocacy, or speaking up for yourself',
+      courses: [
+        { slug: 'lived-experience-to-advocacy', title: 'Lived Experience to Effective Advocacy', blurb: 'Turn what you already know into change. Housing is a right, not a report card.', mins: 20,
+          inside: ['Housing is a right, not a report card', 'Naming what you already know', 'How the system is supposed to work, and where it breaks', 'Speaking up: from frustration to advocacy', 'You’re not the first, and you’re not alone'] },
+        { slug: 'trauma-informed-care', title: 'Trauma-Informed Care, In Everyday Life', blurb: 'What trauma actually does, and how to treat people, including yourself, with that in mind.', mins: 15,
+          inside: ['What trauma actually does, not just what it is', 'Trauma-informed isn’t just clinical: it’s how you already treat people you love', 'Where good intentions still cause harm', 'Practicing it: scripts and small shifts', 'You don’t need a degree to do this well'] },
+        { slug: 'being-valued', title: 'Being Valued, Not Just Visible', blurb: 'The difference between being included and being used, and what fair value looks like.', mins: 15,
+          inside: ['The difference between being included and being used', 'What fair value actually looks like', 'The harm in exploitation', 'Asking to be paid for your work, in practice', 'Remote work and accessibility: when “we welcome everyone” doesn’t mean it','You get to set the terms of your own participation'] },
+        { slug: 'speaking-up-for-yourself', title: 'Speaking Up for Yourself, Without Fighting Your Own Body', blurb: 'Self-advocacy that works with your nervous system, not against it.', mins: 10,
+          inside: ['What’s happening in your body when you try to speak up', 'Small moves that work in the moment', 'Advocating for yourself as an ongoing practice'] },
+      ],
+    },
+    {
+      id: 'intermediate', label: 'Intermediate', color: c.teal,
+      who: 'Frontline workers, peers, and program staff',
+      courses: [
+        { slug: 'research-literacy', title: 'Research Literacy: Finding and Judging Trustworthy Sources', blurb: 'Find, judge, and responsibly use research, statistics, and sources, so the case you make rests on ground that holds.', mins: 15,
+          inside: ['Why the source matters before the number does', 'What makes a source trustworthy', 'Spotting bias, funding conflicts, and advocacy dressed as research', 'Reading statistics without being fooled', 'A practitioner’s quick-evaluation method'] },
+        { slug: 'intersections', title: 'Intersections: Climate, Disability, Race, Immigration, Aging, and Housing', blurb: 'Recognize how housing instability compounds with disability, race, immigration, aging, and climate, and adjust your practice.', mins: 15,
+          inside: ['Why single-issue case management keeps failing', 'Disability, as both cause and consequence', 'Race and immigration: structural barriers and chilling effects', 'Aging and climate: slower drivers, sharper edges', 'Practicing at the intersection'] },
+        { slug: 'peer-advocacy', title: 'Peer Advocacy and Supporting Others', blurb: 'Support others through systems and crisis while respecting their autonomy and protecting your own boundaries.', mins: 15,
+          inside: ['What peer advocacy is, and what it is not', 'Boundaries that protect both of you', 'Navigating systems alongside someone', 'Crisis support without overstepping', 'Sustaining yourself so you can keep showing up'] },
+        { slug: 'media-testimony', title: 'Communicating with Media, Public Comment, and Testimony', blurb: 'Represent a program to media, public comment, and testimony with accuracy, message discipline, and consent.', mins: 15,
+          inside: ['Speaking for an organization is not speaking for yourself', 'Message discipline is not spin', 'Working with journalists', 'Public comment and testimony', 'Telling stories ethically'] },
+      ],
+    },
+    {
+      id: 'expert', label: 'Expert', color: c.magenta,
+      who: 'Organization and systems leaders, and trainers',
+      courses: [
+        { slug: 'coalition-building', title: 'Building or Joining a Coalition', blurb: 'Build and govern cross-organization coalitions for sustained, equitable, structural change.', mins: 15,
+          inside: ['What a coalition is for, and when not to build one', 'Governance and decision-making', 'Power, equity, and who actually holds the table', 'Sustained strategy and the campaign trap', 'Conflict, exit, and keeping it alive'] },
+        { slug: 'policy-analysis', title: 'Policy Analysis Through a Rights Lens', blurb: 'Read, critique, and act on housing and homelessness policy through a structural, rights-based lens.', mins: 15,
+          inside: ['Reading what a policy does, not what it promises', 'The rights lens', 'Who bears the cost, and who holds the discretion', 'Evidence, claims, and hidden assumptions', 'From analysis to leverage'] },
+        { slug: 'training-the-trainer', title: 'Facilitation and Capacity Building', blurb: 'Deliver this curriculum to a room and build the capacity of others to carry the work forward.', mins: 15,
+          inside: ['From knowing it to teaching it', 'The pedagogy behind this curriculum', 'Reading and holding a room', 'Teaching hard and contested material', 'Adapting, assessing, and handing it on'] },
+      ],
+    },
   ];
+  const courseCount = courseLevels.reduce((n, l) => n + l.courses.length, 0);
 
   const educationItems = [
     { kind: 'Resources', text: 'Plain-language explainers on federal policy (OBBBA, FY27 budget, Medicaid changes) accessible to mixed audiences: advocates, frontline workers, and directly impacted people.' },
@@ -1318,64 +1359,163 @@ export default function App({ initialTab }) {
   // ─────────────────────────────────────────────
   // COURSES & RESOURCES TAB
   // ─────────────────────────────────────────────
-  const CoursesTab = () => (
+  const CoursesTab = () => {
+    const shown = coursePath ? courseLevels.filter(l => l.id === coursePath) : courseLevels;
+    const facts = [
+      { big: String(courseCount), small: 'free courses', color: c.sage },
+      { big: '$0', small: 'no sign-up, no catch', color: c.teal },
+      { big: '10–20', small: 'minutes each, at your pace', color: c.magenta },
+      { big: '1', small: 'certificate for each course', color: c.gold },
+    ];
+    let n = 0; // running course number across levels
+    return (
     <div className="anim-in" style={{ padding: '32px 22px 110px', maxWidth: 700, margin: '0 auto' }}>
-      <TabHeader c={c} label="Courses & Resources" tagline="Free beginner courses for people new to advocacy, and the people who walk alongside them." color={c.sage} />
+      <TabHeader c={c} label="Courses & Resources" tagline="Rights-based practice, taught from the frontline. Eleven free courses, from first steps to leading systems change." color={c.sage} />
 
-      {/* Link out to the standalone, shareable course platform */}
-      <a href="https://courses.amandaricher.com" target="_blank" rel="noopener noreferrer"
-        style={{
-          display: 'flex', alignItems: 'center', gap: 12, marginTop: 20,
-          background: `linear-gradient(135deg, ${c.creamDeep}, ${c.cream})`,
-          border: `1.5px solid ${c.gold}`, borderRadius: 14, padding: '16px 18px',
-          textDecoration: 'none',
-        }}>
-        <GraduationCap size={24} color={c.gold} strokeWidth={1.75} style={{ flexShrink: 0 }} />
-        <div style={{ flex: 1 }}>
-          <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500, fontStyle: 'italic', lineHeight: 1.15 }}>
-            Rights-Based Practice: the full course platform
+      {/* At a glance: four color blocks */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 10, marginTop: 22 }}>
+        {facts.map(f => (
+          <div key={f.small} style={{ background: tint(f.color, '17'), borderRadius: 14, padding: '14px 14px 12px' }}>
+            <div className="font-display" style={{ fontSize: 28, color: f.color, fontWeight: 500, lineHeight: 1 }}>{f.big}</div>
+            <div className="font-body" style={{ fontSize: 13, color: c.ink, lineHeight: 1.35, marginTop: 6 }}>{f.small}</div>
           </div>
-          <div className="font-body" style={{ fontSize: 13, color: c.inkSoft, marginTop: 2 }}>
-            All courses on their own site. Open or share it directly.
-          </div>
-        </div>
-        <ExternalLink size={16} color={c.gold} style={{ flexShrink: 0 }} />
-      </a>
-
-      <div style={{ marginTop: 24, marginBottom: 8 }}>
-        <span className="font-mono" style={{
-          fontSize: 12, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.2em',
-          border: `1px solid ${c.sage}`, borderRadius: 999, padding: '4px 10px',
-        }}>
-          Beginner Series · Free
-        </span>
-      </div>
-
-      <div style={{ marginTop: 14 }}>
-        {courseList.map((course, i) => (
-          <a key={course.slug}
-            href={`/courses/${course.slug}.html`}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'block', background: c.cream, border: `1px solid ${c.line}`,
-              borderRadius: 14, padding: '16px', marginBottom: 10, textDecoration: 'none',
-            }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10 }}>
-              <div className="font-mono" style={{ fontSize: 12, color: c.sage, textTransform: 'uppercase', letterSpacing: '0.22em' }}>
-                Course {i + 1} · Free
-              </div>
-              <ExternalLink size={14} color={c.inkLight} />
-            </div>
-            <div className="font-display" style={{ fontSize: 18, color: c.ink, fontWeight: 500, lineHeight: 1.2, marginTop: 6, fontStyle: 'italic' }}>
-              {course.title}
-            </div>
-            <p className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.5, marginTop: 6, marginBottom: 0 }}>
-              {course.blurb}
-            </p>
-          </a>
         ))}
       </div>
+      <p className="font-body" style={{ fontSize: 13, color: c.inkSoft, lineHeight: 1.5, margin: '10px 2px 0' }}>
+        Every course has larger-text and dyslexia-friendly reading options, short check-in quizzes, and a certificate you can download at the end.
+      </p>
+
+      {/* Where should I start? */}
+      <div style={{ marginTop: 30 }}>
+        <h3 className="font-display" style={{ fontSize: 22, color: c.ink, fontWeight: 500, fontStyle: 'italic', margin: 0 }}>
+          Where should I start?
+        </h3>
+        <p className="font-body" style={{ fontSize: 14, color: c.inkSoft, margin: '6px 0 12px' }}>
+          Pick the one that sounds most like you.
+        </p>
+        <div style={{ display: 'grid', gap: 8 }}>
+          {courseLevels.map(l => {
+            const on = coursePath === l.id;
+            return (
+              <button key={l.id} type="button" aria-pressed={on}
+                onClick={() => { setCoursePath(on ? null : l.id); setOpenCourse(null); }}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 12, width: '100%', textAlign: 'left',
+                  background: on ? l.color : c.cream, color: on ? '#fff' : c.ink,
+                  border: `1.5px solid ${l.color}`, borderRadius: 12, padding: '12px 14px',
+                  cursor: 'pointer', minHeight: 48,
+                }}>
+                <span style={{ flex: 1 }}>
+                  <span className="font-body" style={{ display: 'block', fontSize: 15, fontWeight: 600, lineHeight: 1.3 }}>{l.who}</span>
+                  <span className="font-mono" style={{ display: 'block', fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', marginTop: 3, color: on ? 'rgba(255,255,255,0.9)' : l.color }}>
+                    {l.label} · {l.courses.length} courses
+                  </span>
+                </span>
+                <ArrowRight size={18} color={on ? '#fff' : l.color} style={{ flexShrink: 0, transform: on ? 'rotate(90deg)' : 'none', transition: 'transform .2s' }} />
+              </button>
+            );
+          })}
+        </div>
+        {coursePath && (
+          <button type="button" onClick={() => { setCoursePath(null); setOpenCourse(null); }}
+            className="font-body"
+            style={{ marginTop: 10, background: 'none', border: 'none', color: c.teal, fontSize: 14, textDecoration: 'underline', cursor: 'pointer', padding: '4px 2px', minHeight: 28 }}>
+            Show all {courseCount} courses
+          </button>
+        )}
+      </div>
+
+      {/* The courses, by level */}
+      {courseLevels.map(level => {
+        const start = n; n += level.courses.length;
+        if (!shown.includes(level)) return null;
+        return (
+          <section key={level.id} style={{ marginTop: 30 }} aria-labelledby={`lvl-${level.id}`}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap', marginBottom: 12 }}>
+              <h3 id={`lvl-${level.id}`} className="font-display" style={{ fontSize: 22, color: level.color, fontWeight: 500, fontStyle: 'italic', margin: 0 }}>
+                {level.label}
+              </h3>
+              <span className="font-body" style={{ fontSize: 13, color: c.inkSoft }}>for {level.who.charAt(0).toLowerCase() + level.who.slice(1)}</span>
+            </div>
+            {level.courses.map((course, i) => {
+              const open = openCourse === course.slug;
+              const url = `${courseBase}${course.slug}.html`;
+              return (
+                <article key={course.slug} style={{
+                  background: c.cream, border: `1px solid ${c.line}`, borderRadius: 14,
+                  padding: '16px', marginBottom: 10,
+                }}>
+                  <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                    <span className="font-display" aria-hidden="true" style={{
+                      flexShrink: 0, width: 34, height: 34, borderRadius: '50%', background: tint(level.color, '22'),
+                      color: level.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 600,
+                    }}>{start + i + 1}</span>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <a href={url} target="_blank" rel="noopener noreferrer" className="font-display"
+                        style={{ display: 'block', fontSize: 18, color: c.ink, fontWeight: 500, lineHeight: 1.25, fontStyle: 'italic', textDecoration: 'none', padding: '3px 0' }}>
+                        {course.title}
+                      </a>
+                      <p className="font-body" style={{ fontSize: 14, color: c.inkSoft, lineHeight: 1.5, margin: '6px 0 0' }}>
+                        {course.blurb}
+                      </p>
+                      <div className="font-mono" style={{ fontSize: 12, color: c.inkLight, letterSpacing: '0.08em', marginTop: 8 }}>
+                        {course.inside.length} parts · about {course.mins} min · certificate
+                      </div>
+                    </div>
+                  </div>
+
+                  {open && (
+                    <ol className="font-body" style={{ margin: '12px 0 0 46px', padding: '0 0 0 18px', fontSize: 14, color: c.ink, lineHeight: 1.55 }}>
+                      {course.inside.map(s => <li key={s} style={{ marginBottom: 2 }}>{s}</li>)}
+                    </ol>
+                  )}
+
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 12, marginLeft: 46 }}>
+                    <a href={url} target="_blank" rel="noopener noreferrer" className="font-body"
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: 6, background: c.sun, color: c.ink,
+                        borderRadius: 999, padding: '7px 14px', fontSize: 14, fontWeight: 600, textDecoration: 'none', minHeight: 32,
+                      }}>
+                      Start the course <ExternalLink size={14} />
+                    </a>
+                    <button type="button" aria-expanded={open}
+                      onClick={() => setOpenCourse(open ? null : course.slug)}
+                      className="font-body"
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: 4, background: 'none', color: c.teal,
+                        border: `1px solid ${c.line}`, borderRadius: 999, padding: '7px 12px', fontSize: 14, cursor: 'pointer', minHeight: 32,
+                      }}>
+                      {open ? 'Hide' : 'What’s inside'}
+                      <ChevronDown size={14} style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }} />
+                    </button>
+                  </div>
+                </article>
+              );
+            })}
+          </section>
+        );
+      })}
+
+      {/* The whole course site */}
+      <a href="https://courses.amandaricher.com" target="_blank" rel="noopener noreferrer"
+        style={{
+          display: 'flex', alignItems: 'center', gap: 12, marginTop: 26,
+          background: tint(c.sage, '17'), borderRadius: 14, padding: '16px 18px', textDecoration: 'none',
+        }}>
+        <GraduationCap size={24} color={c.sage} strokeWidth={1.75} style={{ flexShrink: 0 }} />
+        <div style={{ flex: 1 }}>
+          <div className="font-display" style={{ fontSize: 17, color: c.ink, fontWeight: 500, fontStyle: 'italic', lineHeight: 1.15 }}>
+            Rights-Based Practice: the course site
+          </div>
+          <div className="font-body" style={{ fontSize: 13, color: c.inkSoft, marginTop: 2 }}>
+            All {courseCount} courses in one place. Share it with your team or your coalition.
+          </div>
+        </div>
+        <ExternalLink size={16} color={c.sage} style={{ flexShrink: 0 }} />
+      </a>
+      <p className="font-body" style={{ fontSize: 12, color: c.inkLight, lineHeight: 1.5, margin: '10px 2px 0' }}>
+        These are independent courses. Certificates show you completed the course; they are not accredited and do not carry continuing education credit.
+      </p>
 
       {/* Beyond the courses */}
       <div style={{ marginTop: 38 }}>
@@ -1395,9 +1535,17 @@ export default function App({ initialTab }) {
             </div>
           </div>
         ))}
+        <a href="/work" onClick={(e) => goToTab(e, 'work')} className="font-body"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 4, background: c.sun, color: c.ink,
+            borderRadius: 999, padding: '9px 16px', fontSize: 14, fontWeight: 600, textDecoration: 'none', minHeight: 36,
+          }}>
+          Book a workshop for your team <ArrowRight size={15} />
+        </a>
       </div>
     </div>
-  );
+    );
+  };
 
   // ─────────────────────────────────────────────
   // VISUAL TAB
